@@ -1,0 +1,71 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{title}}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body {font-family: Arial, Helvetica, sans-serif;}
+form {border: 2px solid #f1f1f1;}
+
+input[type=text], input[type=password] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+}
+
+button:hover {
+    opacity: 0.8;
+}
+
+
+
+
+.container {
+    padding: 16px;
+}
+</style>
+</head>
+
+<body>
+<div class="container">
+    <center><h1>Welcome to Our Photo Website!</h1></center>
+    <hr>
+
+    <form action='{{url_for('login')}}' method='get'>
+    <div class="container">
+        <b>Already a user? Please login here!</b>
+        <button type="submit">Log In</button>
+    </div>
+    </form>
+
+    <form action='{{url_for('signup')}}' method='get'>
+    <div class="container">
+        <b>New to our website? Please sign up here!</b>
+        <button type="submit">Sign Up</button>
+    </div>
+    </form>
+
+    <form action='{{url_for('script')}}' method='get'>
+    <div class="container">
+        <b>Want to upload lots of pictures in a row? press this button:</b>
+        <button type="submit">Script Upload</button>
+    </div>
+    </form>
+
+</div>
+</body>
+</html>
