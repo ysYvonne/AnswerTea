@@ -73,6 +73,11 @@ CREATE INDEX `fk_user_has_images_user_idx` ON `ece1779a1`.`user_has_images` (`us
 SHOW WARNINGS;
 CREATE INDEX `fk_user_has_images_images1_idx` ON `ece1779a1`.`user_has_images` (`images_id` ASC);
 
+CREATE USER 'ece1779a1' IDENTIFIED BY 'secret';
+commit;
+
+GRANT ALL ON ece1779a1.* TO 'ece1779a1';
+
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
