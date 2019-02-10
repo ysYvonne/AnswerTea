@@ -47,11 +47,11 @@ body {font-family: Arial, Helvetica, sans-serif;}
 
             {% if i == '' %}
 
-               <img src=" {{url_for('send_image_trans',filename=filename+i)}}"  > <h3> _full version</h3>
+               <img src=" {{url_for('send_image_trans',filepath=filepath+i)}}"  > <h3> _full version</h3>
                    <br><br>
 
             {% else %}
-               <img src=" {{url_for('send_image_trans',filename=filename+i)}}" ><h3> {{i}}</h3>
+               <img src=" {{url_for('send_image_trans',filepath=filepath+i)}}" ><h3> {{i}}</h3>
                    <br><br>
 
             {% endif %}

@@ -26,7 +26,7 @@ DROP TABLE IF EXISTS `ece1779a1`.`images` ;
 
 SHOW WARNINGS;
 CREATE TABLE IF NOT EXISTS `ece1779a1`.`images` (
-  `id` INT NOT NULL,
+  `id` INT NOT NULL AUTO_INCREMENT,
   `filepath` VARCHAR(200) NOT NULL,
   `description` VARCHAR(100) NULL,
   PRIMARY KEY (`id`));
@@ -42,7 +42,7 @@ SHOW WARNINGS;
 CREATE TABLE IF NOT EXISTS `ece1779a1`.`user` (
   `username` VARCHAR(20) NOT NULL,
   `password` VARCHAR(32) NOT NULL,
-  `id` INT NOT NULL,
+  `id` INT NOT NULL AUTO_INCREMENT,
   PRIMARY KEY (`id`));
 
 SHOW WARNINGS;
@@ -67,10 +67,8 @@ CREATE TABLE IF NOT EXISTS `ece1779a1`.`user_has_images` (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION);
 
-SHOW WARNINGS;
 CREATE INDEX `fk_user_has_images_user_idx` ON `ece1779a1`.`user_has_images` (`user_id` ASC);
 
-SHOW WARNINGS;
 CREATE INDEX `fk_user_has_images_images1_idx` ON `ece1779a1`.`user_has_images` (`images_id` ASC);
 
 CREATE USER 'ece1779a1' IDENTIFIED BY 'secret';

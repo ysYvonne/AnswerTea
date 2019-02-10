@@ -36,7 +36,7 @@ def teardown_db(exception):
 
 
 @webapp.route('/images/upload', methods=['POST'])
-# upload new images and save their filenames in the database.
+# upload new images and save their filepaths in the database.
 def images_upload():
 
     user_id = session.get('username')
@@ -45,73 +45,86 @@ def images_upload():
 
     cnx = get_db()
     cursor = cnx.cursor()
+    cursor1 = cnx.cursor()
+    cursor2 = cnx.cursor()
 
     for upload in request.files.getlist("file"):
-        filename = upload.filename
-        path = os.path.join(ROOT,filename)
+        filepath = upload.filename
+        path = os.path.join(ROOT,filepath)
         upload.save(path)
-        query = ''' INSERT INTO images (user_id,filename)
+
+        query1 = ''' INSERT INTO images (filepath)
+                           VALUES (%s)'''
+        cursor.execute(query1, (filepath,))
+
+        query2 =  '''SELECT id FROM images
+                     WHERE filepath = %s'''
+        cursor1.execute(query2, (filepath,))
+
+        query3 = ''' INSERT INTO user_has_images (user_id,images_id)
                            VALUES (%s,%s)'''
-        cursor.execute(query, (user_id,filename))
+        row = cursor.fetchone()
+
+        cursor2.execute(query3, (user_id, row[0]))
 
         # create thumbnails
-        filename_thumb = filename + '_thumbnail.png'
-        path_thumb_full = os.path.join(ROOT, filename_thumb)
+        filepath_thumb = filepath + '_thumbnail.png'
+        path_thumb_full = os.path.join(ROOT, filepath_thumb)
 
         # create rotated transformations path
-        filename_rotated = filename + '_rotated.png'
-        path_rotated_full = os.path.join(ROOT, filename_rotated)
+        filepath_rotated = filepath+ '_rotated.png'
+        path_rotated_full = os.path.join(ROOT, filepath_rotated)
 
         # create flopped transformations path
-        filename_flopped = filename + '_flopped.png'
-        path_flopped_full = os.path.join(ROOT, filename_flopped)
+        filepath_flopped = filepath + '_flopped.png'
+        path_flopped_full = os.path.join(ROOT, filepath_flopped)
 
         # created gray-scale transformations path
-        filename_gray = filename + '_gray.png'
-        path_gray_full = os.path.join(ROOT, filename_gray)
+        filepath_gray = filepath + '_gray.png'
+        path_gray_full = os.path.join(ROOT, filepath_gray)
 
         # generate all images and save
-        with Image(filename=path) as img:
+        with Image(filepath=path) as img:
             with img.clone() as thumb:
                 size = thumb.width if thumb.width < thumb.height else thumb.height
                 thumb.crop(width=size, height=size, gravity='center')
                 thumb.resize(128, 128)
                 thumb.format = "png"
-                thumb.save(filename=path_thumb_full)
+                thumb.save(filepath=path_thumb_full)
 
             with img.clone() as rotated:
                 rotated.rotate(135)
                 rotated.format = "png"
-                rotated.save(filename=path_rotated_full)
+                rotated.save(filepath=path_rotated_full)
 
             with img.clone() as flopped:
                 flopped.flop()
                 flopped.format = "png"
-                flopped.save(filename=path_flopped_full)
+                flopped.save(filepath=path_flopped_full)
 
             with img.clone() as gray:
                 gray.type = 'grayscale'
                 gray.format = "png"
-                gray.save(filename=path_gray_full)
+                gray.save(filepath=path_gray_full)
 
     cnx.commit()
     return redirect(url_for('user_home'))
 
 
-@webapp.route('/images/trans/<filename>', methods=['GET'])
+@webapp.route('/images/trans/<filepath>', methods=['GET'])
 # show the transformations of a specific image.
-def images_trans(filename):
+def images_trans(filepath):
     if 'authenticated' not in session:
         return redirect(url_for('login'))
 
-    return render_template("images/trans.html",title="Transformations", filename=filename)
+    return render_template("images/trans.html",title="Transformations", filepath=filepath)
 
 
-@webapp.route('/trans/<filename>', methods=['GET','POST'])
+@webapp.route('/trans/<filepath>', methods=['GET','POST'])
 # display thumbnails of a specific account
-def send_image_trans(filename):
+def send_image_trans(filepath):
     user_id = session.get('username')
-    path = os.path.join(str(user_id), filename)
+    path = os.path.join(str(user_id), filepath)
     return send_from_directory("images", path)
 
 
@@ -162,52 +175,52 @@ def script_upload():
     cursor = cnx.cursor()
 
     for upload in request.files.getlist("uploadedfile"):
-        filename = upload.filename
-        path = os.path.join(ROOT,filename)
+        filepath = upload.filepath
+        path = os.path.join(ROOT,filepath)
         upload.save(path)
-        query = ''' INSERT INTO images (user_id,filename)
+        query = ''' INSERT INTO images (id,filepath)
                            VALUES (%s,%s)'''
-        cursor.execute(query, (user_id,filename))
+        cursor.execute(query, (user_id,filepath))
 
         # create thumbnails
-        filename_thumb = filename + '_thumbnail.png'
-        path_thumb_full = os.path.join(ROOT, filename_thumb)
+        filepath_thumb = filepath + '_thumbnail.png'
+        path_thumb_full = os.path.join(ROOT, filepath_thumb)
 
         # create rotated transformations path
-        filename_rotated = filename + '_rotated.png'
-        path_rotated_full = os.path.join(ROOT, filename_rotated)
+        filepath_rotated = filepath + '_rotated.png'
+        path_rotated_full = os.path.join(ROOT, filepath_rotated)
 
         # create flopped transformations path
-        filename_flopped = filename + '_flopped.png'
-        path_flopped_full = os.path.join(ROOT, filename_flopped)
+        filepath_flopped = filepath + '_flopped.png'
+        path_flopped_full = os.path.join(ROOT, filepath_flopped)
 
         # created gray-scale transformations path
-        filename_gray = filename + '_gray.png'
-        path_gray_full = os.path.join(ROOT, filename_gray)
+        filepath_gray = filepath + '_gray.png'
+        path_gray_full = os.path.join(ROOT, filepath_gray)
 
         # generate all images and save
-        with Image(filename=path) as img:
+        with Image(filepath=path) as img:
             with img.clone() as thumb:
                 size = thumb.width if thumb.width < thumb.height else thumb.height
                 thumb.crop(width=size, height=size, gravity='center')
                 thumb.resize(128, 128)
                 thumb.format = "png"
-                thumb.save(filename=path_thumb_full)
+                thumb.save(filepath=path_thumb_full)
 
             with img.clone() as rotated:
                 rotated.rotate(135)
                 rotated.format = "png"
-                rotated.save(filename=path_rotated_full)
+                rotated.save(filepath=path_rotated_full)
 
             with img.clone() as flopped:
                 flopped.flop()
                 flopped.format = "png"
-                flopped.save(filename=path_flopped_full)
+                flopped.save(filepath=path_flopped_full)
 
             with img.clone() as gray:
                 gray.type = 'grayscale'
                 gray.format = "png"
-                gray.save(filename=path_gray_full)
+                gray.save(filepath=path_gray_full)
 
     cnx.commit()
     msg = 'Upload completed!'

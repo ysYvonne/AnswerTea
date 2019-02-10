@@ -63,8 +63,8 @@ button {
 
                {% for row  in cursor %}
 
-                    <a href="{{url_for('images_trans', filename=row[1])}}" >
-                          <img src=" {{url_for('send_image', filename=row[1])}}" class="img-cs"  >
+                    <a href="{{url_for('images_trans', filepath=row[1])}}" >
+                          <img src=" {{url_for('send_image', filepath=row[1])}}" class="img-cs"  >
                     </a>
                 {% endfor %}
 

@@ -165,18 +165,20 @@ def user_home():
     cnx = get_db()
     cursor = cnx.cursor()
 
-    query = '''SELECT user_id, filename FROM images
-                    WHERE user_id = %s'''
+    query = '''SELECT i.filepath
+                   FROM  user_has_images u, images i
+                   WHERE u.images_id = i.id AND
+                         u.user_id = %s'''
     cursor.execute(query,(user_id,))
 
     return render_template("images/home.html",title="User Home", cursor=cursor)
 
 
-@webapp.route('/show/<filename>', methods=['GET'])
-def send_image(filename):
-    filename_thumb = filename + '_thumbnail.png'
+@webapp.route('/show/<filepath>', methods=['GET'])
+def send_image(filepath):
+    filepath_thumb = filepath + '_thumbnail.png'
     user_id = session.get('username')
-    path = os.path.join(str(user_id), filename_thumb)
+    path = os.path.join(str(user_id), filepath_thumb)
     return send_from_directory("images", path)
 
 
