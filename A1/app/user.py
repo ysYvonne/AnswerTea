@@ -48,9 +48,9 @@ def teardown_db(exception):
 
 
 @webapp.route('/signup', methods=['GET'])
-# Display an HTML form that allows users to sign up.
+# Display an HTML form that allows user to sign up.
 def signup():
-    return render_template("users/signup.html",title="New User")
+    return render_template("user/signup.html",title="New User")
 
 
 @webapp.route('/signup', methods=['POST'])
@@ -74,7 +74,7 @@ def signup_save():
         cnx = get_db()
         cursor = cnx.cursor()
 
-        query = '''SELECT * FROM users
+        query = '''SELECT * FROM user
                           WHERE username = %s'''
         cursor.execute(query,(username,))
         row = cursor.fetchone()
@@ -85,12 +85,12 @@ def signup_save():
 
 
     if error:
-        return render_template("users/signup.html",title="New User",error_msg=error_msg, username=username)
+        return render_template("user/signup.html",title="New User",error_msg=error_msg, username=username)
 
     cnx = get_db()
     cursor = cnx.cursor()
 
-    query = ''' INSERT INTO users (username,password)
+    query = ''' INSERT INTO user (username,password)
                        VALUES (%s, %s)'''
 
     cursor.execute(query,(username,sign(password1)))
@@ -98,7 +98,7 @@ def signup_save():
 
     session['authenticated'] = True
 
-    query = '''SELECT id FROM users
+    query = '''SELECT id FROM user
                       WHERE username = %s'''
     cursor.execute(query,(username,))
     row = cursor.fetchone()
@@ -112,9 +112,9 @@ def signup_save():
 
 
 @webapp.route('/login',methods=['GET'])
-# Display an HTML form that allows users to log in.
+# Display an HTML form that allows user to log in.
 def login():
-    return render_template("users/login.html",title="Log in")
+    return render_template("user/login.html",title="Log in")
 
 
 @webapp.route('/login_submit',methods=['POST'])
@@ -133,7 +133,7 @@ def login_submit():
         cnx = get_db()
         cursor = cnx.cursor()
 
-        query = '''SELECT id, password FROM users
+        query = '''SELECT id, password FROM user
                           WHERE username = %s'''
         cursor.execute(query,(username,))
         row = cursor.fetchone()
@@ -147,7 +147,7 @@ def login_submit():
             error_msg="Error: password does not match!"
 
     if error :
-        return render_template("users/login.html",title="Log in",error_msg=error_msg, username=username)
+        return render_template("user/login.html",title="Log in",error_msg=error_msg, username=username)
 
     session['authenticated'] = True
     session['username'] = row[0]
@@ -160,14 +160,14 @@ def user_home():
     if 'authenticated' not in session:
         return redirect(url_for('login'))
 
-    users_id = session.get('username')
+    user_id = session.get('username')
 
     cnx = get_db()
     cursor = cnx.cursor()
 
-    query = '''SELECT users_id, filename FROM images
-                    WHERE users_id = %s'''
-    cursor.execute(query,(users_id,))
+    query = '''SELECT user_id, filename FROM images
+                    WHERE user_id = %s'''
+    cursor.execute(query,(user_id,))
 
     return render_template("images/home.html",title="User Home", cursor=cursor)
 
@@ -175,13 +175,13 @@ def user_home():
 @webapp.route('/show/<filename>', methods=['GET'])
 def send_image(filename):
     filename_thumb = filename + '_thumbnail.png'
-    users_id = session.get('username')
-    path = os.path.join(str(users_id), filename_thumb)
+    user_id = session.get('username')
+    path = os.path.join(str(user_id), filename_thumb)
     return send_from_directory("images", path)
 
 
 @webapp.route('/logout',methods=['POST'])
-# Clear the session when users want to log out.
+# Clear the session when user want to log out.
 def logout():
     session.clear()
     return redirect(url_for('main'))

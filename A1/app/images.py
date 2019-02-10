@@ -1,7 +1,7 @@
 from flask import render_template, session, redirect, url_for, request, g, send_from_directory
 from app import webapp
 
-from app.users import sign, verify
+from app.user import sign, verify
 
 import mysql.connector
 
@@ -39,9 +39,9 @@ def teardown_db(exception):
 # upload new images and save their filenames in the database.
 def images_upload():
 
-    users_id = session.get('username')
+    user_id = session.get('username')
 
-    ROOT = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'images', str(users_id))
+    ROOT = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'images', str(user_id))
 
     cnx = get_db()
     cursor = cnx.cursor()
@@ -50,9 +50,9 @@ def images_upload():
         filename = upload.filename
         path = os.path.join(ROOT,filename)
         upload.save(path)
-        query = ''' INSERT INTO images (users_id,filename)
+        query = ''' INSERT INTO images (user_id,filename)
                            VALUES (%s,%s)'''
-        cursor.execute(query, (users_id,filename))
+        cursor.execute(query, (user_id,filename))
 
         # create thumbnails
         filename_thumb = filename + '_thumbnail.png'
@@ -110,8 +110,8 @@ def images_trans(filename):
 @webapp.route('/trans/<filename>', methods=['GET','POST'])
 # display thumbnails of a specific account
 def send_image_trans(filename):
-    users_id = session.get('username')
-    path = os.path.join(str(users_id), filename)
+    user_id = session.get('username')
+    path = os.path.join(str(user_id), filename)
     return send_from_directory("images", path)
 
 
@@ -137,7 +137,7 @@ def script_upload():
         cnx = get_db()
         cursor = cnx.cursor()
 
-        query = '''SELECT id, password FROM users
+        query = '''SELECT id, password FROM user
                           WHERE username = %s'''
         cursor.execute(query,(username,))
         row = cursor.fetchone()
@@ -154,9 +154,9 @@ def script_upload():
         return render_template("script.html",title="uploadForm",
                     error_msg=error_msg, username=username)
 
-    users_id = row[0]
+    user_id = row[0]
 
-    ROOT = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'images', str(users_id))
+    ROOT = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'images', str(user_id))
 
     cnx = get_db()
     cursor = cnx.cursor()
@@ -165,9 +165,9 @@ def script_upload():
         filename = upload.filename
         path = os.path.join(ROOT,filename)
         upload.save(path)
-        query = ''' INSERT INTO images (users_id,filename)
+        query = ''' INSERT INTO images (user_id,filename)
                            VALUES (%s,%s)'''
-        cursor.execute(query, (users_id,filename))
+        cursor.execute(query, (user_id,filename))
 
         # create thumbnails
         filename_thumb = filename + '_thumbnail.png'
