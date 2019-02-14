@@ -48,7 +48,6 @@ def images_upload():
 
     cnx = get_db()
     cursor = cnx.cursor()
-
     #cursor1 = cnx.cursor()
     #cursor2 = cnx.cursor()
 
@@ -122,7 +121,6 @@ def images_trans(filepath):
 # display thumbnails of a specific account
 def send_image_trans(filepath):
     user_id = session.get('username')
-
     path = os.path.join('images', str(user_id))
     return send_from_directory(path, filepath)
 
