@@ -44,19 +44,23 @@ button {
 }
 </style>
 </head>
+
 <body>
+
 <div  class="container">
     <center><h1>Welcome to Our User Home!</h1></center>
 
     <form action="{{url_for('main')}}" method='get'>
     <button type="submit" class="cancelbtn">Log Out</button>
     </form>
+
     <hr>
 
     <div class="container">
         <div>
             <h3>If you have uploaded some images, it will be shown below：</h3>
         </div>
+
         <br>
 
         <div>
@@ -67,9 +71,9 @@ button {
                           <img src=" {{url_for('send_image', filepath=row[0])}}" class="img-cs" >
                     </a>
                 {% endfor %}
+        </div>
+    </div>
 
-
-     </div>
        <br><br>
 
     <div><h3>You can also upload your images below:</h3></div>
@@ -81,8 +85,19 @@ button {
 
     </form>
 
+    <form action="{{ url_for('auto_upload') }}" method="POST">
+
+       <div class = "container" >
+
+           <button id = 'auto_upload' type = 'submit'> Auto upload one image! </button>
+       </div>
+
+    </form>
+
 </div>
+
 </body>
+
 </html>
 
 

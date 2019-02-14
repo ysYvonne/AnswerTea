@@ -25,7 +25,7 @@ Perform these steps to run the codes:
 
    a) Start mysqlworkbench
    b) Connect to the database server
-   d) Run the SQL queries in the file A1.sql
+   d) Run the SQL queries in the file ece1779a1.sql
 
 3)Run the example
 
