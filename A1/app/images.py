@@ -7,6 +7,9 @@ import mysql.connector
 
 from app.config import db_config
 
+import cv2
+import numpy
+
 import os
 
 from wand.image import Image
@@ -45,67 +48,62 @@ def images_upload():
 
     cnx = get_db()
     cursor = cnx.cursor()
-    cursor1 = cnx.cursor()
-    cursor2 = cnx.cursor()
+
+    #cursor1 = cnx.cursor()
+    #cursor2 = cnx.cursor()
 
     for upload in request.files.getlist("file"):
         filepath = upload.filename
         path = os.path.join(ROOT,filepath)
         upload.save(path)
 
+        print("HERE filepath: " + filepath +'\n')
+        print('HERE Path: ' + path + '\n')
+
         query1 = ''' INSERT INTO images (filepath)
                            VALUES (%s)'''
         cursor.execute(query1, (filepath,))
 
-        query2 =  '''SELECT id FROM images
-                     WHERE filepath = %s'''
-        cursor1.execute(query2, (filepath,))
-
-        query3 = ''' INSERT INTO user_has_images (user_id,images_id)
-                           VALUES (%s,%s)'''
-        row = cursor.fetchone()
-
-        cursor2.execute(query3, (user_id, row[0]))
+        query2 = '''INSERT INTO user_has_images (user_id, image_name) VALUES(%s, %s)'''
+        cursor.execute(query2, (user_id, filepath))
 
         # create thumbnails
         filepath_thumb = filepath + '_thumbnail.png'
         path_thumb_full = os.path.join(ROOT, filepath_thumb)
 
         # create rotated transformations path
-        filepath_rotated = filepath+ '_rotated.png'
-        path_rotated_full = os.path.join(ROOT, filepath_rotated)
+        filepath_detected = filepath+ '_detected.png'
+        path_detected_full = os.path.join(ROOT, filepath_detected)
 
-        # create flopped transformations path
-        filepath_flopped = filepath + '_flopped.png'
-        path_flopped_full = os.path.join(ROOT, filepath_flopped)
 
-        # created gray-scale transformations path
-        filepath_gray = filepath + '_gray.png'
-        path_gray_full = os.path.join(ROOT, filepath_gray)
+        img = cv2.imread(path)
+        #use CV2 to create thumbnail figures
+        thumb_nail = img.copy()
+        r = 100.0 / thumb_nail.shape[1]
+        dim = (100, int(thumb_nail.shape[0] * r))
+        maxsize = (128,128)
 
-        # generate all images and save
-        with Image(filepath=path) as img:
-            with img.clone() as thumb:
-                size = thumb.width if thumb.width < thumb.height else thumb.height
-                thumb.crop(width=size, height=size, gravity='center')
-                thumb.resize(128, 128)
-                thumb.format = "png"
-                thumb.save(filepath=path_thumb_full)
+        # perform the actual resizing of the image and show it
+        resized = cv2.resize(thumb_nail, maxsize, interpolation=cv2.INTER_AREA)
+        cv2.imwrite(path_thumb_full, resized)
+        cv2.waitKey(0)
 
-            with img.clone() as rotated:
-                rotated.rotate(135)
-                rotated.format = "png"
-                rotated.save(filepath=path_rotated_full)
+        #use cv2 to detect face and save in folder
+        classifier_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'haarcascade_frontalface_default.xml')
+        face_cascade = cv2.CascadeClassifier(classifier_path)
+        detect = img.copy()
+        gray = cv2.cvtColor(detect, cv2.COLOR_BGR2GRAY)
 
-            with img.clone() as flopped:
-                flopped.flop()
-                flopped.format = "png"
-                flopped.save(filepath=path_flopped_full)
+        faces = face_cascade.detectMultiScale(gray, 1.3, 5)
 
-            with img.clone() as gray:
-                gray.type = 'grayscale'
-                gray.format = "png"
-                gray.save(filepath=path_gray_full)
+        # Draw a rectangle around the faces
+        if len(faces) != 0:
+            for (x, y, w, h) in faces:
+                    cv2.rectangle(detect, (x, y), (x+w, y+h), (0, 255, 0), 2)
+            cv2.imwrite(path_detected_full, detect)
+        else:
+            msg = 'No face detected in the picture!'
+        cv2.destroyAllWindows()
 
     cnx.commit()
     return redirect(url_for('user_home'))
@@ -124,8 +122,10 @@ def images_trans(filepath):
 # display thumbnails of a specific account
 def send_image_trans(filepath):
     user_id = session.get('username')
-    path = os.path.join(str(user_id), filepath)
-    return send_from_directory("images", path)
+
+    path = os.path.join('images', str(user_id))
+    return send_from_directory(path, filepath)
+
 
 
 @webapp.route('/test/FileUpload', methods=['GET'])
