@@ -48,7 +48,7 @@ button {
 <div  class="container">
     <center><h1>Welcome to Our User Home!</h1></center>
 
-    <form action='{{url_for('main')}}' method='get'>
+    <form action="{{url_for('main')}}" method='get'>
     <button type="submit" class="cancelbtn">Log Out</button>
     </form>
     <hr>
@@ -63,8 +63,8 @@ button {
 
                {% for row  in cursor %}
 
-                    <a href="{{url_for('images_trans', filename=row[1])}}" >
-                          <img src=" {{url_for('send_image', filename=row[1])}}" class="img-cs"  >
+                    <a href="{{url_for('images_trans', filepath=row[0])}}" >
+                          <img src=" {{url_for('send_image', filepath=row[0])}}" class="img-cs" >
                     </a>
                 {% endfor %}
 
