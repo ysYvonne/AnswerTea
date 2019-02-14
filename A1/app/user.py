@@ -8,6 +8,7 @@ import mysql.connector
 from app.config import db_config
 
 import os
+import random
 
 webapp.secret_key = '\x80\xa9s*\x12\xc7x\xa9d\x1f(\x03\xbeHJ:\x9f\xf0!\xb1a\xaa\x0f\xee'
 
@@ -109,6 +110,35 @@ def signup_save():
     os.makedirs(path)
 
     return redirect(url_for('login'))
+
+@webapp.route('/main', methods=['POST'])
+def auto_signup():
+    username = ''.join( random.sample("1234567890abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!@#$%^&*()_+=-><:}{?/", 8))
+    password = ''.join( random.sample("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ_.1234567890", 6))
+
+
+    cnx = get_db()
+    cursor = cnx.cursor()
+
+    query =  "INSERT INTO user (username,password) VALUES (%s, %s)"
+    cursor.execute(query, (username, sign(password)))
+    cnx.commit()
+
+    session['authenticated'] = True
+
+    session['username'] = username
+
+    query = '''SELECT id, password FROM user
+                              WHERE username = %s'''
+    cursor.execute(query, (username,))
+    row = cursor.fetchone()
+
+    ROOT = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'images')
+    path = os.path.join(ROOT, str(row[0]))
+    os.makedirs(path)
+
+
+    return render_template(('user/login.html'), username = username, password = password)
 
 
 @webapp.route('/login',methods=['GET'])

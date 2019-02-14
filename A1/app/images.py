@@ -9,10 +9,12 @@ from app.config import db_config
 
 import cv2
 import numpy
+import random
 
 import os
 
 from wand.image import Image
+import glob
 
 webapp.secret_key = '\x80\xa9s*\x12\xc7x\xa9d\x1f(\x03\xbeHJ:\x9f\xf0!\xb1a\xaa\x0f\xee'
 
@@ -58,6 +60,7 @@ def images_upload():
 
         print("HERE filepath: " + filepath +'\n')
         print('HERE Path: ' + path + '\n')
+        print('HERE Root: ' + ROOT + '\n')
 
         query1 = ''' INSERT INTO images (filepath)
                            VALUES (%s)'''
@@ -225,3 +228,86 @@ def script_upload():
 
     return render_template("script.html",title="uploadForm",
                 msg=msg,username=username,password=password)
+
+
+@webapp.route('/', methods=['POST'])
+def auto_upload():
+    user_id = session.get('username')
+
+    random_id = ''.join(random.sample("123450", 1))
+    test_image_name = 'test' + random_id + '.jpg'  # test1.jpg
+
+    abspath = "C:\\Users\\yafan\\Desktop\\ECE_1779\\A1\\A1\\app\\"
+    test_image_path = abspath + 'test_images\\' + test_image_name    ###
+    img = cv2.imread(test_image_path)
+
+    # abspath = "C:\\Users\\yafan\\Desktop\\ECE_1779\\A1\\A1\\app\\"
+
+    ROOT = os.path.join(abspath, 'images', str(user_id))
+    #save_path = '/images/' + str(user_id) + '/' + test_image_name
+    path = os.path.join(ROOT, test_image_name)
+
+    print('Auto filePath:' + test_image_name + '\n')
+    print('Auto savePath: ' + test_image_path + '\n')
+    print('Auto root: '+ ROOT + '\n')
+
+    cv2.imwrite(ROOT, img)
+
+    create_thumbnail(test_image_path, test_image_name, ROOT)
+
+    # database insert successfully!
+    cnx = get_db()
+    cursor = cnx.cursor()
+
+    filepath = test_image_name
+
+    query1 = ''' INSERT INTO images (filepath) VALUES (%s)'''
+    cursor.execute(query1, (filepath,))
+
+    query2 = "INSERT INTO user_has_images (user_id, image_name) VALUE(%s, %s)"
+    cursor.execute(query2, (user_id, filepath))
+
+
+    cnx.commit()
+    cnx.close()
+
+    return redirect(url_for('user_home'))
+
+def create_thumbnail(self, test_image_path, test_image_name, ROOT):
+
+    filepath_thumb = test_image_name + '_thumbnail.png'
+    path_thumb_full = os.path.join(ROOT, filepath_thumb)
+
+    # create rotated transformations path
+    filepath_detected = test_image_name + '_detected.png'
+    path_detected_full = os.path.join(ROOT, filepath_detected)
+
+    # img = cv2.imread(path)
+    # use CV2 to create thumbnail figures
+    img = cv2.imread(test_image_path)
+    thumb_nail = img.copy()
+    r = 100.0 / thumb_nail.shape[1]
+    dim = (100, int(thumb_nail.shape[0] * r))
+    maxsize = (128, 128)
+
+    # perform the actual resizing of the image and show it
+    resized = cv2.resize(thumb_nail, maxsize, interpolation=cv2.INTER_AREA)
+    cv2.imwrite(path_thumb_full, resized)
+    cv2.waitKey(0)
+
+    # use cv2 to detect face and save in folder
+    classifier_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'haarcascade_frontalface_default.xml')
+    face_cascade = cv2.CascadeClassifier(classifier_path)
+    detect = img.copy()
+    gray = cv2.cvtColor(detect, cv2.COLOR_BGR2GRAY)
+
+    faces = face_cascade.detectMultiScale(gray, 1.3, 5)
+
+    # Draw a rectangle around the faces
+    if len(faces) != 0:
+        for (x, y, w, h) in faces:
+            cv2.rectangle(detect, (x, y), (x + w, y + h), (0, 255, 0), 2)
+        cv2.imwrite(path_detected_full, detect)
+    else:
+        msg = 'No face detected in the picture!'
+    cv2.destroyAllWindows()
