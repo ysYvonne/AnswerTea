@@ -7,6 +7,7 @@ import mysql.connector
 
 from app.config import db_config
 
+from passlib.hash import pbkdf2_sha256
 import os
 import random
 
@@ -16,15 +17,19 @@ SECRET_KEY = b'pseudo randomly generated secret key'
 AUTH_SIZE = 16
 
 
-def sign(cookie):  # sign(password1)
-    h = hashlib.md5()
-    h.update(bytes(cookie, 'utf-8'))
-    return h.hexdigest().encode('utf-8')
+def sign(pwd):  # sign(password1)
+    #h = hashlib.md5()
+    #h.update(bytes(cookie, 'utf-8'))
+    #return h.hexdigest().encode('utf-8')
+    hash = pbkdf2_sha256.encrypt((bytes(pwd, 'utf-8')), salt_size=16)
+    print (hash)
+    return hash
 
 
-def verify(cookie, sig):
-    good_sig = sign(cookie)
-    return compare_digest(good_sig, sig)
+def verify(pwd, sig):
+    # good_sig = sign(pwd)
+    # return compare_digest(good_sig, sig)
+    return pbkdf2_sha256.verify(pwd, sig)
 
 
 def connect_to_database():
@@ -66,6 +71,10 @@ def signup_save():
     if username == "" or password1== "" or password2== "" :
         error=True
         error_msg="Error: All fields are required!"
+
+    elif len(password1) > 8 or len(password1)<6 :
+        error=True
+        error_msg = "Error: Password must be between 6 to 8 characters!"
 
     elif password1 != password2 :
         error=True
@@ -113,8 +122,8 @@ def signup_save():
 
 @webapp.route('/main', methods=['POST'])
 def auto_signup():
-    username = ''.join( random.sample("1234567890abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!@#$%^&*()_+=-><:}{?/", 8))
-    password = ''.join( random.sample("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ_.1234567890", 6))
+    username = ''.join( random.sample("1234567890abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ", 8))
+    password = ''.join( random.sample("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ_1234567890", 6))
 
 
     cnx = get_db()
@@ -168,13 +177,13 @@ def login_submit():
         cursor.execute(query,(username,))
         row = cursor.fetchone()
 
-        if row is None :
+        if row is None or not verify(password, bytes(row[1], 'utf-8')):
             error=True
-            error_msg="Error: User Does not exist!"
+            error_msg="Error: Username doesn't exist or Password doesn't match!"
 
-        elif not verify(password, bytes(row[1], 'utf-8')) :
-            error=True
-            error_msg="Error: password does not match!"
+        # elif not verify(password, bytes(row[1], 'utf-8')) :
+        #     error=True
+        #     error_msg="Error: password does not match!"
 
     if error :
         return render_template("user/login.html",title="Log in",error_msg=error_msg, username=username)
@@ -182,11 +191,18 @@ def login_submit():
     session['authenticated'] = True
     session['username'] = row[0]
 
-    return redirect(url_for('user_home'))
+    flag = True
+
+    return redirect(url_for('user_home', flag=flag))
 
 
-@webapp.route('/home', methods=['GET'])
-def user_home():
+@webapp.route('/home/<flag>', methods=['GET'])
+def user_home(flag):
+    flag = flag
+    error_msg = ''
+    if flag == 'False':
+        error_msg = 'Cannot upload more than 100 pictures!'
+    # error_msg = ''
     if 'authenticated' not in session:
         return redirect(url_for('login'))
 
@@ -201,7 +217,7 @@ def user_home():
 
     cursor.execute(query,(user_id,))
 
-    return render_template("images/home.html",title="User Home", cursor=cursor)
+    return render_template("images/home.html",title="User Home", cursor=cursor, error_msg = error_msg)
 
 
 @webapp.route('/show/<filepath>', methods=['GET'])
