@@ -28,14 +28,14 @@ body {font-family: Arial, Helvetica, sans-serif;}
     width: auto;
     margin: 5px 0;
     padding: 10px 18px;
-    background-color: #f44336;
+    background-color: #A9A9A9;
 }
 
 .backbtn {
     width: auto;
     margin: 5px 0;
     padding: 10px 18px;
-    background-color: #4CAF50;
+    background-color: #FFA500;
 }
 
 
@@ -43,13 +43,13 @@ body {font-family: Arial, Helvetica, sans-serif;}
 </head>
 <body>
 
-  <center><h1>Transformations!</h1></center>
+  <center><h1>Face Detection!</h1></center>
 
   <form action='{{url_for('main')}}' method='get'>
      <button type="submit" class="cancelbtn">Log Out</button>
   </form>
 
-  <form action="{{url_for('user_home')}}" method='get'>
+  <form action="{{url_for('user_home', flag = 'True')}}" method='get'>
   <button type="submit" class="backbtn"> Back </button>
   </form>
 
