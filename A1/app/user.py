@@ -4,7 +4,7 @@ import hashlib
 from hmac import compare_digest
 
 import mysql.connector
-
+import traceback
 from app.config import db_config
 
 from passlib.hash import pbkdf2_sha256
@@ -66,19 +66,22 @@ def signup_save():
     password1 = request.form.get('password1',"")
     password2 = request.form.get('password2',"")
 
-    error = False
-
-    if username == "" or password1== "" or password2== "" :
-        error=True
-        error_msg="Error: All fields are required!"
-
-    elif len(password1) > 8 or len(password1)<6 :
-        error=True
-        error_msg = "Error: Password must be between 6 to 8 characters!"
-
-    elif password1 != password2 :
-        error=True
-        error_msg="Error: The re-typed password does not match your first entry!"
+    # error = False
+    #
+    # if username == "" or password1== "" or password2== "" :
+    #     error=True
+    #     error_msg="Error: All fields are required!"
+    #
+    # elif len(password1) > 8 or len(password1)<6 :
+    #     error=True
+    #     error_msg = "Error: Password must be between 6 to 8 characters!"
+    #
+    # elif password1 != password2 :
+    #     error=True
+    #     error_msg="Error: The re-typed password does not match your first entry!"
+    error,error_msg = input_validation(username,password1,password2)
+    if error == True:
+        error_msg = error_msg
 
     else :
         cnx = get_db()
@@ -119,6 +122,65 @@ def signup_save():
     os.makedirs(path)
 
     return redirect(url_for('login'))
+
+def input_validation(username,password1,password2):
+    error = False
+    error_msg = ''
+    if username == "" or password1== "" or password2== "" :
+        error=True
+        error_msg = "Error: All fields are required!"
+
+    char_list = [' ','/','~','.',',',"'"]
+    if any (username in s for s in char_list):
+        error = True
+        error_msg="Username cannot contain: (space,./~')"
+
+    elif len(password1) > 8 or len(password1)<6 :
+        error=True
+        error_msg= "Error: Password must be between 6 to 8 characters!"
+
+    elif password1 != password2 :
+        error=True
+        error_msg= "Error: The re-typed password does not match your first entry!"
+
+    return error, error_msg
+
+
+@webapp.route('/api/register', methods=['GET'])
+def auto_register():
+    try:
+        username = str(request.args.get('username'))
+        password = str(request.args.get('password'))
+
+        error,error_msg = input_validation(username,password,password)
+        if error:
+            return error_msg
+
+        #check if user already exist
+        cnx = get_db()
+        cursor = cnx.cursor()
+
+        query1 = '''SELECT * FROM user
+                    WHERE username = %s'''
+        cursor.execute(query1, (username,))
+        row = cursor.fetchone()
+
+        if row is not None:
+            # error = True
+            return "Error: Username already exists!"
+        else:
+
+            query2 = ''' INSERT INTO user (username,password)
+                                   VALUES (%s, %s)'''
+
+            cursor.execute(query2, (username, sign(password)))
+            cnx.commit()
+        return 'Sign up successfully!'
+
+    except Exception as e:
+        # print(e)
+        traceback.print_tb(e.__traceback__)
+        return 'Failed to sign up!'
 
 @webapp.route('/main', methods=['POST'])
 def auto_signup():
@@ -191,18 +253,13 @@ def login_submit():
     session['authenticated'] = True
     session['username'] = row[0]
 
-    flag = True
 
-    return redirect(url_for('user_home', flag=flag))
+    return redirect(url_for('user_home'))
 
 
-@webapp.route('/home/<flag>', methods=['GET'])
-def user_home(flag):
-    flag = flag
-    error_msg = ''
-    if flag == 'False':
-        error_msg = 'Cannot upload more than 100 pictures!'
-    # error_msg = ''
+@webapp.route('/home', methods=['GET'])
+def user_home():
+
     if 'authenticated' not in session:
         return redirect(url_for('login'))
 
@@ -217,7 +274,7 @@ def user_home(flag):
 
     cursor.execute(query,(user_id,))
 
-    return render_template("images/home.html",title="User Home", cursor=cursor, error_msg = error_msg)
+    return render_template("images/home.html",title="User Home", cursor=cursor)
 
 
 @webapp.route('/show/<filepath>', methods=['GET'])

@@ -4,6 +4,7 @@ from app import webapp
 from app.user import sign, verify
 
 import mysql.connector
+import traceback
 
 from app.config import db_config
 
@@ -57,70 +58,65 @@ def images_upload():
     for img in row:
         img_saved.append(img)
 
-    flag = True
-    #Check if user has already uploaded 5 pictures
-    if len(img_saved)>=5:
-        flag = False
-
-    if flag == True:
-
-        for upload in request.files.getlist("file"):
-            filepath = upload.filename
-            path = os.path.join(ROOT,filepath)
-            upload.save(path)
-
-            print("HERE filepath: " + filepath +'\n')
-            print('HERE Path: ' + path + '\n')
-            print('HERE Root: ' + ROOT + '\n')
-
-            query1 = ''' INSERT INTO images (filepath)
-                               VALUES (%s)'''
-            cursor.execute(query1, (filepath,))
-
-            query2 = '''INSERT INTO user_has_images (user_id, image_name) VALUES(%s, %s)'''
-            cursor.execute(query2, (user_id, filepath))
-
-            # create thumbnails
-            filepath_thumb = filepath + '_thumbnail.png'
-            path_thumb_full = os.path.join(ROOT, filepath_thumb)
-
-            # create rotated transformations path
-            filepath_detected = filepath+ '_detected.png'
-            path_detected_full = os.path.join(ROOT, filepath_detected)
 
 
-            img = cv2.imread(path)
-            #use CV2 to create thumbnail figures
-            thumb_nail = img.copy()
-            r = 100.0 / thumb_nail.shape[1]
-            dim = (100, int(thumb_nail.shape[0] * r))
-            maxsize = (128,128)
+    for upload in request.files.getlist("file"):
+        filepath = upload.filename
+        path = os.path.join(ROOT,filepath)
+        upload.save(path)
 
-            # perform the actual resizing of the image and show it
-            resized = cv2.resize(thumb_nail, maxsize, interpolation=cv2.INTER_AREA)
-            cv2.imwrite(path_thumb_full, resized)
-            cv2.waitKey(0)
+        print("HERE filepath: " + filepath +'\n')
+        print('HERE Path: ' + path + '\n')
+        print('HERE Root: ' + ROOT + '\n')
 
-            #use cv2 to detect face and save in folder
-            classifier_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'haarcascade_frontalface_default.xml')
-            face_cascade = cv2.CascadeClassifier(classifier_path)
-            detect = img.copy()
-            gray = cv2.cvtColor(detect, cv2.COLOR_BGR2GRAY)
+        query1 = ''' INSERT INTO images (filepath)
+                           VALUES (%s)'''
+        cursor.execute(query1, (filepath,))
 
-            faces = face_cascade.detectMultiScale(gray, 1.3, 5)
+        query2 = '''INSERT INTO user_has_images (user_id, image_name) VALUES(%s, %s)'''
+        cursor.execute(query2, (user_id, filepath))
 
-            # Draw a rectangle around the faces
-            if len(faces) != 0:
-                for (x, y, w, h) in faces:
-                        cv2.rectangle(detect, (x, y), (x+w, y+h), (0, 255, 0), 2)
-                cv2.imwrite(path_detected_full, detect)
-            else:
-                msg = 'No face detected in the picture!'
-            cv2.destroyAllWindows()
+        # create thumbnails
+        filepath_thumb = filepath + '_thumbnail.png'
+        path_thumb_full = os.path.join(ROOT, filepath_thumb)
+
+        # create rotated transformations path
+        filepath_detected = filepath+ '_detected.png'
+        path_detected_full = os.path.join(ROOT, filepath_detected)
+
+
+        img = cv2.imread(path)
+        #use CV2 to create thumbnail figures
+        thumb_nail = img.copy()
+        r = 100.0 / thumb_nail.shape[1]
+        dim = (100, int(thumb_nail.shape[0] * r))
+        maxsize = (128,128)
+
+        # perform the actual resizing of the image and show it
+        resized = cv2.resize(thumb_nail, maxsize, interpolation=cv2.INTER_AREA)
+        cv2.imwrite(path_thumb_full, resized)
+        cv2.waitKey(0)
+
+        #use cv2 to detect face and save in folder
+        classifier_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'haarcascade_frontalface_default.xml')
+        face_cascade = cv2.CascadeClassifier(classifier_path)
+        detect = img.copy()
+        gray = cv2.cvtColor(detect, cv2.COLOR_BGR2GRAY)
+
+        faces = face_cascade.detectMultiScale(gray, 1.3, 5)
+
+        # Draw a rectangle around the faces
+        if len(faces) != 0:
+            for (x, y, w, h) in faces:
+                    cv2.rectangle(detect, (x, y), (x+w, y+h), (0, 255, 0), 2)
+            cv2.imwrite(path_detected_full, detect)
+        else:
+            msg = 'No face detected in the picture!'
+        cv2.destroyAllWindows()
 
     cnx.commit()
 
-    return redirect(url_for('user_home', flag=flag))
+    return redirect(url_for('user_home'))
 
 
 @webapp.route('/images/trans/<filepath>', methods=['GET'])
@@ -138,6 +134,52 @@ def send_image_trans(filepath):
     user_id = session.get('username')
     path = os.path.join('images', str(user_id))
     return send_from_directory(path, filepath)
+
+@webapp.route('/api/upload',methods=['POST'])
+def upload_testing():
+    try:
+
+        #first user username and password to login the database
+        username = str(request.args.get('username'))
+        password = str(request.args.get('password'))
+
+        error = False
+
+        if username == "" or password == "":
+            error = True
+            error_msg = "Error: All fields are required!"
+
+        else:
+            cnx = get_db()
+            cursor = cnx.cursor()
+
+            query = '''SELECT id, password FROM user
+                                  WHERE username = %s'''
+            cursor.execute(query, (username,))
+            row = cursor.fetchone()
+
+            if row is None or not verify(password, bytes(row[1], 'utf-8')):
+                error = True
+                error_msg = "Error: Username doesn't exist or Password doesn't match!"
+
+        if error:
+            return render_template("user/login.html", title="Log in", error_msg=error_msg, username=username)
+
+        session['authenticated'] = True
+        session['username'] = row[0]
+
+        #store uploaded images and detect faces
+        images_upload()
+
+
+        # return redirect(url_for('user_home'))
+
+
+
+    except Exception as e:
+        # print(e)
+        traceback.print_tb(e.__traceback__)
+        return 'Failed to upload pictures!'
 
 
 @webapp.route('/', methods=['POST'])
@@ -157,17 +199,14 @@ def auto_upload():
     img_saved = []
     for img in row:
         img_saved.append(img)
-    print (img_saved)
-    print (row[0])
 
     repeat = True
-    flag = True
+
     while repeat == True:
-        if len(img_saved) >= 5:
+        if len(img_saved) > 100:
             repeat = False
-            flag = False
             break
-        gen_id = randint(0, 5)
+        gen_id = randint(0, 100)
         test_image_name = 'test' + str(gen_id) + '.jpg'  # test1.jpg
         if any (test_image_name in s for s in img_saved):
             # random img id already exist
@@ -175,43 +214,41 @@ def auto_upload():
         else:
             repeat = False
 
-    if flag == True:
-        test_image_path = abspath + 'test_images\\' + test_image_name
 
-        img = cv2.imread(test_image_path)
+    print(test_image_name)
+    test_image_path = abspath + 'test_images\\' + test_image_name
 
-        ROOT = os.path.join(abspath, 'images', str(user_id))
-        path = os.path.join(ROOT, test_image_name)
+    img = cv2.imread(test_image_path)
 
-        print('Auto file name:' + test_image_name + '\n')
-        print('Auto file Path: ' + test_image_path + '\n')
-        print('Auto root: '+ ROOT + '\n')
-        print('Auto save file path: ' + path + '\n')
+    ROOT = os.path.join(abspath, 'images', str(user_id))
+    path = os.path.join(ROOT, test_image_name)
 
-        cv2.imwrite(path, img)
+    print('Auto file name:' + test_image_name + '\n')
+    print('Auto file Path: ' + test_image_path + '\n')
+    print('Auto root: '+ ROOT + '\n')
+    print('Auto save file path: ' + path + '\n')
 
-        create_thumbnail(test_image_path, test_image_name, ROOT)
+    cv2.imwrite(path, img)
 
-        # database insert successfully!
-        # cnx = get_db()
-        # cursor = cnx.cursor()
+    create_thumbnail(test_image_path, test_image_name, ROOT)
 
-        filepath = test_image_name
+    # database insert successfully!
+    # cnx = get_db()
+    # cursor = cnx.cursor()
 
-        query1 = ''' INSERT INTO images (filepath) VALUES (%s)'''
-        cursor.execute(query1, (filepath,))
+    filepath = test_image_name
 
-        query2 = "INSERT INTO user_has_images (user_id, image_name) VALUE(%s, %s)"
-        cursor.execute(query2, (user_id, filepath))
+    query1 = ''' INSERT INTO images (filepath) VALUES (%s)'''
+    cursor.execute(query1, (filepath,))
 
-
+    query2 = "INSERT INTO user_has_images (user_id, image_name) VALUE(%s, %s)"
+    cursor.execute(query2, (user_id, filepath))
 
     cnx.commit()
     cnx.close()
 
-    # flag = False
 
-    return redirect(url_for('user_home', flag=flag))
+    return redirect(url_for('user_home'))
 
 def create_thumbnail(test_image_path, test_image_name, ROOT):
 
