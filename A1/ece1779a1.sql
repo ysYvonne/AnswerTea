@@ -26,7 +26,7 @@ DROP TABLE IF EXISTS `ece1779a1`.`user` ;
 CREATE TABLE IF NOT EXISTS `ece1779a1`.`user` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `username` VARCHAR(45) NOT NULL,
-  `password` VARCHAR(45) NOT NULL,
+  `password` VARCHAR(145) NOT NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
@@ -54,8 +54,8 @@ CREATE TABLE IF NOT EXISTS `ece1779a1`.`user_has_images` (
   `user_id1` INT NULL,
   `images_id` INT NULL,
   PRIMARY KEY (`user_id`, `image_name`),
-  INDEX `fk_user_has_images_user_idx` (`user_id1` ASC) VISIBLE,
-  INDEX `fk_user_has_images_images1_idx` (`images_id` ASC) VISIBLE,
+  INDEX `fk_user_has_images_user_idx` (`user_id1` ASC),
+  INDEX `fk_user_has_images_images1_idx` (`images_id` ASC),
   CONSTRAINT `fk_user_has_images_user`
     FOREIGN KEY (`user_id1`)
     REFERENCES `ece1779a1`.`user` (`id`)

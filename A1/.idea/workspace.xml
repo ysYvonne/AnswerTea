@@ -4,47 +4,79 @@
     <list default="true" id="a97398b2-b59d-427a-9507-d3e45a30fdfc" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/images.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/images.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/images/1/WechatIMG365.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/app/images/1/WechatIMG365.jpeg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/images/1/WechatIMG365.jpeg_detected.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/images/1/WechatIMG365.jpeg_detected.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/images/1/WechatIMG365.jpeg_thumbnail.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/images/1/WechatIMG365.jpeg_thumbnail.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/images/1/WechatIMG366.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/app/images/1/WechatIMG366.jpeg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/images/1/WechatIMG366.jpeg_thumbnail.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/images/1/WechatIMG366.jpeg_thumbnail.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/images/1/test0.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/app/images/1/test0.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/images/1/test0.jpg_thumbnail.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/images/1/test0.jpg_thumbnail.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/images/1/test1.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/app/images/1/test1.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/images/1/test1.jpg_detected.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/images/1/test1.jpg_detected.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/images/1/test1.jpg_thumbnail.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/images/1/test1.jpg_thumbnail.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/images/1/test3.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/app/images/1/test3.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/images/1/test3.jpg_detected.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/images/1/test3.jpg_detected.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/images/1/test3.jpg_thumbnail.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/images/1/test3.jpg_thumbnail.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/images/1/test4.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/app/images/1/test4.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/images/1/test5.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/app/images/1/test5.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/images/1/test5.jpg_detected.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/images/1/test5.jpg_detected.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/images/1/test5.jpg_thumbnail.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/images/1/test5.jpg_thumbnail.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/images/5/IMG_149.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/app/images/5/IMG_149.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/images/5/IMG_149.jpg_thumbnail.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/images/5/IMG_149.jpg_thumbnail.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/images/5/test1.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/app/images/5/test1.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/images/5/test1.jpg_detected.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/images/5/test1.jpg_detected.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/images/5/test1.jpg_thumbnail.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/images/5/test1.jpg_thumbnail.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/images/5/test2.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/app/images/5/test2.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/images/5/test2.jpg_detected.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/images/5/test2.jpg_detected.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/images/5/test2.jpg_thumbnail.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/images/5/test2.jpg_thumbnail.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/images/5/test4.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/app/images/5/test4.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/images/5/test4.jpg_detected.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/images/5/test4.jpg_detected.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/images/5/test4.jpg_thumbnail.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/images/5/test4.jpg_thumbnail.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/images/6/test1.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/app/images/6/test1.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/images/6/test1.jpg_detected.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/images/6/test1.jpg_detected.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/images/6/test1.jpg_thumbnail.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/images/6/test1.jpg_thumbnail.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/images/6/test5.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/app/images/6/test5.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/images/6/test5.jpg_detected.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/images/6/test5.jpg_detected.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/images/6/test5.jpg_thumbnail.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/images/6/test5.jpg_thumbnail.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/images/1/WechatIMG365.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/images/1/WechatIMG365.jpeg_detected.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/images/1/WechatIMG365.jpeg_thumbnail.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/images/1/WechatIMG366.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/images/1/WechatIMG366.jpeg_thumbnail.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/images/1/test0.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/images/1/test0.jpg_thumbnail.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/images/1/test1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/images/1/test1.jpg_detected.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/images/1/test1.jpg_thumbnail.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/images/1/test3.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/images/1/test3.jpg_detected.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/images/1/test3.jpg_thumbnail.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/images/1/test4.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/images/1/test5.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/images/1/test5.jpg_detected.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/images/1/test5.jpg_thumbnail.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/images/5/IMG_149.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/images/5/IMG_149.jpg_thumbnail.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/images/5/test1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/images/5/test1.jpg_detected.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/images/5/test1.jpg_thumbnail.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/images/5/test2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/images/5/test2.jpg_detected.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/images/5/test2.jpg_thumbnail.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/images/5/test4.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/images/5/test4.jpg_detected.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/images/5/test4.jpg_thumbnail.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/images/6/test1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/images/6/test1.jpg_detected.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/images/6/test1.jpg_thumbnail.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/images/6/test5.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/images/6/test5.jpg_detected.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/images/6/test5.jpg_thumbnail.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/images/8/WechatIMG365.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/images/8/WechatIMG365.jpeg_detected.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/images/8/WechatIMG365.jpeg_thumbnail.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/images/8/WechatIMG366.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/images/8/WechatIMG366.jpeg_thumbnail.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/images/8/test0.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/images/8/test0.jpg_thumbnail.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/images/8/test2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/images/8/test3.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/images/8/test3.jpg_detected.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/images/8/test3.jpg_thumbnail.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/images/8/test33.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/images/8/test4.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/images/8/test4.jpg_detected.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/images/8/test4.jpg_thumbnail.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/images/8/test5.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/images/8/test5.jpg_detected.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/images/8/test5.jpg_thumbnail.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/images/8/test6.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/images/8/test6.jpg_detected.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/images/8/test6.jpg_thumbnail.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/images/8/test7.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/images/8/test7.jpg_detected.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/images/8/test7.jpg_thumbnail.png" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/app/templates/images/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/images/home.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/templates/images/trans.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/images/trans.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/templates/images/trans.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/images/detected.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/templates/main.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/main.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/templates/user/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/user/login.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/templates/user/signup.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/user/signup.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/test_images/test0.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/test_images/test1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/test_images/test2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/test_images/test3.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/test_images/test4.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/test_images/test5.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/test_images/test6.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/test_images/test7.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/test_images/test8.jpg" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/app/user.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/user.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ece1779a1.sql" beforeDir="false" afterPath="$PROJECT_DIR$/ece1779a1.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/run.py" beforeDir="false" afterPath="$PROJECT_DIR$/run.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -52,28 +84,43 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="CreatePatchCommitExecutor">
+    <option name="PATCH_PATH" value="" />
+  </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/images.py">
+        <entry file="file://$PROJECT_DIR$/app/user.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1922">
-              <caret line="14" selection-start-line="14" selection-end-line="14" selection-end-column="16" />
-              <folding>
-                <element signature="e#0#94#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="46">
+              <caret line="221" selection-start-line="221" selection-end-line="221" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/user.py">
+        <entry file="file://$PROJECT_DIR$/app/images.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="258">
-              <caret line="42" lean-forward="true" selection-start-line="42" selection-end-line="42" />
-              <folding>
-                <element signature="e#0#94#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="172">
+              <caret line="117" column="54" lean-forward="true" selection-start-line="117" selection-start-column="54" selection-end-line="117" selection-end-column="54" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file:///usr/local/lib/python3.7/site-packages/werkzeug/local.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="168">
+              <caret line="346" selection-start-line="346" selection-end-line="346" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/__init__.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="135">
+              <caret line="9" selection-start-line="9" selection-end-line="9" />
             </state>
           </provider>
         </entry>
@@ -92,6 +139,14 @@
       <find>glob</find>
       <find>5</find>
       <find>cannot</find>
+      <find>PIC</find>
+      <find>PICLIST</find>
+      <find>print</find>
+      <find>trans</find>
+      <find>tran</find>
+      <find>api</find>
+      <find>home</find>
+      <find>repeat</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -103,18 +158,20 @@
         <option value="$PROJECT_DIR$/app/config.py" />
         <option value="$PROJECT_DIR$/app/users.py" />
         <option value="$PROJECT_DIR$/images.py" />
-        <option value="$PROJECT_DIR$/app/templates/images/home.html" />
         <option value="$PROJECT_DIR$/app/templates/images/trans.html" />
-        <option value="$PROJECT_DIR$/app/templates/user/login.html" />
-        <option value="$PROJECT_DIR$/app/templates/user/signup.html" />
         <option value="$PROJECT_DIR$/app/main.py" />
         <option value="$PROJECT_DIR$/app/templates/main.html" />
-        <option value="$PROJECT_DIR$/app/images.py" />
+        <option value="$PROJECT_DIR$/app/templates/user/login.html" />
+        <option value="$PROJECT_DIR$/app/templates/user/signup.html" />
+        <option value="$PROJECT_DIR$/app/templates/images/home.html" />
+        <option value="$PROJECT_DIR$/run.py" />
         <option value="$PROJECT_DIR$/app/user.py" />
+        <option value="$PROJECT_DIR$/app/templates/images/detected.html" />
+        <option value="$PROJECT_DIR$/app/images.py" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="y" value="23" />
     <option name="width" value="1280" />
     <option name="height" value="777" />
@@ -143,19 +200,6 @@
               <item name="app" type="462c0819:PsiDirectoryNode" />
               <item name="images" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="A1" type="b2602c69:ProjectViewProjectNode" />
-              <item name="A1" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="A1" type="b2602c69:ProjectViewProjectNode" />
-              <item name="A1" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
-              <item name="images" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
@@ -180,6 +224,59 @@
     </option>
   </component>
   <component name="RunManager" selected="Python.run">
+    <configuration default="true" type="ccruntests" factoryName="Run Study Tests">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="A1" />
+      <option name="studyTest" value="" />
+      <method />
+    </configuration>
+    <configuration default="true" type="tests" factoryName="Attests">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="A1" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="CLASS_NAME" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="FOLDER_NAME" value="" />
+      <option name="TEST_TYPE" value="TEST_SCRIPT" />
+      <option name="PATTERN" value="" />
+      <option name="USE_PATTERN" value="false" />
+      <method />
+    </configuration>
+    <configuration default="true" type="PythonConfigurationType" factoryName="Python">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="run" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="A1" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -222,10 +319,13 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <list>
+      <item itemvalue="Python.run" />
+      <item itemvalue="Python.user" />
+    </list>
     <recent_temporary>
       <list>
         <item itemvalue="Python.run" />
-        <item itemvalue="Python.user" />
       </list>
     </recent_temporary>
   </component>
@@ -243,46 +343,42 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="1280" height="777" extended-state="0" />
-    <editor active="true" />
+    <frame x="0" y="23" width="1280" height="777" extended-state="6" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2494043" />
-      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info id="Favorites" side_tool="true" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.19936457" />
+      <window_info id="Structure" order="1" weight="0.25" />
+      <window_info anchor="bottom" id="Event Log" side_tool="true" />
+      <window_info anchor="bottom" id="Terminal" weight="0.329927" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.329927" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.329927" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.28899837" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.35328466" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Version Control" order="7" />
-      <window_info anchor="bottom" id="Terminal" order="8" weight="0.329927" />
-      <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
-      <window_info anchor="bottom" id="Python Console" order="10" />
+      <window_info anchor="bottom" id="Python Console" order="8" weight="0.32842106" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
     </layout>
-    <layout-to-restore>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2494043" />
-      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info id="Favorites" order="2" side_tool="true" />
-      <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.329927" />
-      <window_info anchor="bottom" id="Run" order="2" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Version Control" order="7" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="8" visible="true" weight="0.329927" />
-      <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
-      <window_info anchor="bottom" id="Python Console" order="10" />
-      <window_info anchor="right" id="Commander" order="0" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-    </layout-to-restore>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/app/images.py</url>
+          <line>43</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/app/images.py</url>
+          <line>101</line>
+          <option name="timeStamp" value="6" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/app/images/2/WechatIMG365.jpeg_rotated.png" />
@@ -291,37 +387,16 @@
     <entry file="file://$PROJECT_DIR$/app/images/2/WechatIMG365.jpeg_flopped.png" />
     <entry file="file://$PROJECT_DIR$/app/images/2/WechatIMG365.jpeg" />
     <entry file="file://$PROJECT_DIR$/ece1779a1-1.sql" />
-    <entry file="file://$USER_HOME$/Library/Caches/PyCharmCE2018.3/python_stubs/-1199943126/builtins.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="143">
-          <caret line="237" column="4" selection-start-line="237" selection-start-column="4" selection-end-line="237" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$USER_HOME$/Library/Caches/PyCharmCE2018.3/python_stubs/-1199943126/builtins.py" />
     <entry file="file://$PROJECT_DIR$/app/templates/script.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1301" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/images/1/WechatIMG367.jpeg" />
-    <entry file="file:///usr/local/lib/python3.7/site-packages/mysql/connector/connection_cext.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-745">
-          <caret line="530" selection-start-line="530" selection-end-line="530" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file:///usr/local/lib/python3.7/site-packages/mysql/connector/connection_cext.py" />
     <entry file="file://$PROJECT_DIR$/app/images/3/WechatIMG369.jpeg" />
-    <entry file="file:///usr/local/lib/python3.7/site-packages/flask/globals.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="537">
-          <caret line="59" selection-start-line="59" selection-end-line="59" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/haarcascade_frontalface_default.xml">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
+    <entry file="file:///usr/local/lib/python3.7/site-packages/flask/globals.py" />
     <entry file="file://$PROJECT_DIR$/app/images/1/WechatIMG365.jpeg_thumbnail.png" />
     <entry file="file://$PROJECT_DIR$/app/user.py~master" />
     <entry file="file://$PROJECT_DIR$/app/images/1/WechatIMG365.jpeg" />
@@ -333,94 +408,93 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/images/1/WechatIMG365.jpeg_detected.png" />
-    <entry file="file:///usr/local/lib/python3.7/site-packages/flask/app.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="127">
-          <caret line="1220" selection-start-line="1220" selection-end-line="1220" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file:///usr/local/lib/python3.7/site-packages/flask/app.py" />
     <entry file="file://$PROJECT_DIR$/user.py" />
     <entry file="file://$PROJECT_DIR$/login.html" />
     <entry file="file://$PROJECT_DIR$/images.py" />
     <entry file="file://$PROJECT_DIR$/app/images/4/test4.jpg" />
-    <entry file="file://$PROJECT_DIR$/run.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/templates/images/trans.html">
+    <entry file="file:///usr/local/lib/python3.7/site-packages/werkzeug/routing.py" />
+    <entry file="file://$PROJECT_DIR$/app/main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1230">
-          <caret line="82" lean-forward="true" selection-start-line="82" selection-end-line="82" />
+        <state relative-caret-position="135">
+          <caret line="9" selection-start-line="9" selection-end-line="9" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/templates/images/home.html">
+    <entry file="file://$PROJECT_DIR$/app/templates/main.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="79" column="10" selection-start-line="79" selection-start-column="10" selection-end-line="79" selection-end-column="10" />
+        <state relative-caret-position="605">
+          <caret line="63" lean-forward="true" selection-start-line="63" selection-end-line="63" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/templates/user/login.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="421">
+          <caret line="73" column="7" selection-start-line="73" selection-start-column="7" selection-end-line="73" selection-end-column="7" />
           <folding>
-            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/templates/user/signup.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="605">
+        <state relative-caret-position="419">
           <caret line="79" lean-forward="true" selection-start-line="79" selection-end-line="79" />
           <folding>
-            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/templates/user/login.html">
+    <entry file="file://$PROJECT_DIR$/app/templates/images/detected.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="531">
-          <caret line="73" column="7" selection-start-line="73" selection-start-column="7" selection-end-line="73" selection-end-column="7" />
-          <folding>
-            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
+        <state relative-caret-position="116">
+          <caret line="51" column="48" selection-start-line="51" selection-start-column="48" selection-end-line="51" selection-end-column="48" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/templates/base.html">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/templates/main.html">
+    <entry file="file://$PROJECT_DIR$/run.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="945">
-          <caret line="63" lean-forward="true" selection-start-line="63" selection-end-line="63" />
+        <state relative-caret-position="45">
+          <caret line="3" selection-start-line="3" selection-end-line="3" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/images/1/test0.jpg">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/main.py">
+    <entry file="file://$PROJECT_DIR$/app/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="36" selection-start-column="36" selection-end-column="64" />
+        <state relative-caret-position="135">
+          <caret line="9" selection-start-line="9" selection-end-line="9" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/images.py">
+    <entry file="file://$PROJECT_DIR$/app/templates/images/home.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1922">
-          <caret line="14" selection-start-line="14" selection-end-line="14" selection-end-column="16" />
-          <folding>
-            <element signature="e#0#94#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="75">
+          <caret line="72" selection-start-line="72" selection-end-line="72" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/user.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="258">
-          <caret line="42" lean-forward="true" selection-start-line="42" selection-end-line="42" />
-          <folding>
-            <element signature="e#0#94#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="46">
+          <caret line="221" selection-start-line="221" selection-end-line="221" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///usr/local/lib/python3.7/site-packages/werkzeug/local.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="168">
+          <caret line="346" selection-start-line="346" selection-end-line="346" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/images.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="172">
+          <caret line="117" column="54" lean-forward="true" selection-start-line="117" selection-start-column="54" selection-end-line="117" selection-end-column="54" />
         </state>
       </provider>
     </entry>

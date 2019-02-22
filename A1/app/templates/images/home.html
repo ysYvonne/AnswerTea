@@ -3,64 +3,59 @@
 <head>
     <title>{{title}}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <style>
-        body {font-family: Arial, Helvetica, sans-serif;}
-
-        /* Add padding to container elements */
-        .container {
-        padding: 16px;
-        }
-
-        button {
-        background-color: #FFA500;
-        color: white;
-        padding: 14px 20px;
-        margin: 8px 0;
-        border: none;
-        cursor: pointer;
-        width:50%;
-        }
-
-        /* Add padding to container elements */
-        .container {
-        padding: 16px;
-        }
-
-        .img-cs{
-        height:15%;
-        margin-left:10px;
-        }
-
-        .cancelbtn {
-        width: auto;
-        padding: 10px 18px;
-        background-color: #A9A9A9;
-        }
-
-        /* Change styles for span and cancel button on extra small screens */
-        @media screen and (max-width: 300px) {
-        .cancelbtn {
-        width: 50%;
-        }
+<style>
+body {font-family: Arial, Helvetica, sans-serif;}
+/* Add padding to container elements */
+.container {
+    padding: 16px;
 }
 
-    </style>
-</head>
+button {
+    background-color: #FFA500;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width:50%;
+}
 
+
+/* Add padding to container elements */
+.container {
+    padding: 16px;
+}
+ .img-cs{
+            height:15%;
+            margin-left:10px;
+            }
+
+.cancelbtn {
+    width: auto;
+    padding: 10px 18px;
+    background-color: #A9A9A9;
+}
+
+/* Change styles for span and cancel button on extra small screens */
+@media screen and (max-width: 300px) {
+
+    .cancelbtn {
+       width: 50%;
+    }
+}
+</style>
+</head>
 <body>
 <div  class="container">
-
     <center><h1>Pictures Portfolio Home!</h1></center>
 
     <form action="{{url_for('main')}}" method='get'>
     <button type="submit" class="cancelbtn">Log Out</button>
     </form>
-
     <hr>
-
+    <div class="error" style ="color:red; font-size:80%;">{{error_msg if error_msg != None}}</div>
     <div class="container">
-        <div class='error' style="color:red; font-size:80%;" >{{error_msg if error_msg != None}}</div>
+        <!--<div class='error' style="color:red; font-size:80%;" >{{error_msg if error_msg != None}}</div>-->
         <div>
             <center><h3>Below are the pictures you have uploaded：</h3></center>
         </div>
@@ -70,14 +65,14 @@
 
                {% for row in cursor %}
 
-                    <a href="{{url_for('images_trans', filepath=row[0])}}" >
+                    <a href="{{url_for('images_detected', filepath=row[0])}}" >
                           <img src=" {{url_for('send_image', filepath=row[0])}}" class="img-cs" >
                     </a>
                 {% endfor %}
 
-        </div>
+
+     </div>
        <br><br>
-    </div>
 
         <div><center><h3>Upload a new picture:</h3></center></div>
 
@@ -91,16 +86,18 @@
     </form>
 
 
-    <form action="{{ url_for('auto_upload') }}" method="POST">
+    <!--<form action="{{ url_for('auto_upload') }}" method="POST">-->
 
-       <div class = "container" >
+       <!--<div class = "container" >-->
 
-           <button id = 'auto_upload' type = 'submit'> Auto upload one image! </button>
-       </div>
+           <!--<button id = 'auto_upload' type = 'submit'> Auto upload one image! </button>-->
+       <!--</div>-->
 
-    </form>
+    <!--</form>-->
             </center>
 
 </div>
 </body>
 </html>
+
+
