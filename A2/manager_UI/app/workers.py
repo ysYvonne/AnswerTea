@@ -1,5 +1,8 @@
 from flask import render_template, redirect, url_for, request, g
 from app import webapp
+import time
+
+from datetime import datetime, timedelta
 
 import boto3
 
@@ -20,7 +23,7 @@ def ec2_create():
     # create connection to ec2
     ec2 = boto3.resource('ec2')
 
-    ec2.create_instances(ImageId=config.ami_id, InstanceType='t2.small', MinCount=1, MaxCount=1,
+    ec2.create_instances(ImageId=config.ami_id, InstanceType='t2.micro', MinCount=1, MaxCount=1,
                          Monitoring={'Enabled': True},
                          Placement={'AvailabilityZone': 'us-east-1c', 'GroupName': placementGroup_name},
                          SecurityGroups=['launch-wizard-10'],
@@ -61,7 +64,7 @@ def ec2_list():
 
     for instance in instances:
 
-        print(instance.id, instance.image_id, instance.key_name, instance.tags)
+         print(instance.id, instance.image_id, instance.key_name, instance.tags)
 
     return render_template("workers/list.html", title="EC2 Instances", instances=instances)
 
@@ -70,7 +73,7 @@ def ec2_list():
 # Display details about a specific instance.
 def ec2_view(id):
 
-    print(id)
+    # print(id)
     ec2 = boto3.resource('ec2')
 
     # acquire an EC2 instance
@@ -78,6 +81,8 @@ def ec2_view(id):
 
     # Create CloudWatch client
     client = boto3.client('cloudwatch')
+
+    request_client = boto3.client('cloudwatch')
 
     metric_name = 'CPUUtilization'
     namespace = 'AWS/EC2'
@@ -96,29 +101,60 @@ def ec2_view(id):
 
     )
 
-    print(cpu)
+    # print(cpu)
+
+    requestrate = request_client.get_metric_statistics(
+        Namespace = 'AWS/ApplicationELB',
+        MetricName = 'RequestCount',
+        Dimensions = [
+            {
+                'Name':'LoadBalancer',
+                'Value': 'app/aa2lb/69e0a446233f9d49'
+            }
+        ],
+        StartTime = datetime.utcnow() - timedelta(seconds=61 * 60),
+        EndTime = datetime.utcnow() - timedelta(seconds=1 * 60),
+        Period = 60,
+        Statistics = ['Sum']
+    )
+
+    print("request: " + str(requestrate))
+    # num = 0
+    # for i in requestrate['Datapoints']:
+    #     num = num + i.value()[1]
+    # print('aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa' + str(num))
+    request_rate = []
+    for i in requestrate['Datapoints']:
+        sum = i['Sum']
+        hour = i['Timestamp'].hour
+        minute = i['Timestamp'].minute
+        time = hour + minute/60
+        request_rate.append([time,sum])
+
+
 
     # gather return statistics
     cpu_stats = []
 
     for point in cpu['Datapoints']:
         hour = point['Timestamp'].hour
-        print(hour)
+        # print(hour)
         minute = point['Timestamp'].minute
-        print(minute)
+        # print(minute)
         time = hour + minute/60
-        print(time)
-        print(point)
+        # print(time)
+        # print(point)
         cpu_stats.append([time, point['Average']])
 
-    print(cpu_stats)
+    # print(cpu_stats)
 
     cpu_stats = sorted(cpu_stats, key=itemgetter(0))
-    print(cpu_stats)
+    # print(cpu_stats)
 
     return render_template("workers/view.html", title="Instance Info",
                            instance=instance,
-                           cpu_stats=cpu_stats)
+                           cpu_stats=cpu_stats,
+                           request_rate = request_rate)
 
 
 # connect the database
@@ -147,6 +183,31 @@ def teardown_db(exception):
 # delete all files in s3 bucket and the data in RDS
 def delete():
 
+    cnx = get_db()
+    cursor = cnx.cursor()
+    cursor.execute("""SET FOREIGN_KEY_CHECKS = 0""")
+    cnx.commit()
+
+    cnx = get_db()
+    cursor = cnx.cursor()
+    cursor.execute("""TRUNCATE table photo""")
+    cnx.commit()
+
+    cnx = get_db()
+    cursor = cnx.cursor()
+    cursor.execute("""TRUNCATE table user""")
+    cnx.commit()
+
+    cnx = get_db()
+    cursor = cnx.cursor()
+    cursor.execute("""SET FOREIGN_KEY_CHECKS = 1""")
+    cnx.commit()
+
+    cnx = get_db()
+    cursor = cnx.cursor()
+    cursor.execute("""TRUNCATE table storedphoto""")
+    cnx.commit()
+
     s3 = boto3.resource('s3')
     bucket = s3.Bucket(s3_bucketName)
 
@@ -154,27 +215,185 @@ def delete():
 
     for k in keys:
         image_name = k.key
+        print(image_name)
         s3.Object(s3_bucketName, image_name).delete()
-        thumb_name = image_name + '_thumbnail'
-        s3.Object(s3_bucketName, thumb_name).delete()
-        flopped_name = image_name + '_flopped'
-        s3.Object(s3_bucketName, flopped_name).delete()
-        gray_name = image_name + '_gray'
-        s3.Object(s3_bucketName, gray_name).delete()
-        rotated_name = '_rotated'
-        s3.Object(s3_bucketName, rotated_name).delete()
-
-    cnx = get_db()
-    cursor = cnx.cursor()
-
-    cursor.execute("""TRUNCATE TABLE users""")
-    cnx.commit()
-
-    cnx = get_db()
-    cursor = cnx.cursor()
-
-    cursor.execute("""TRUNCATE TABLE images""")
-    cnx.commit()
 
     return redirect(url_for('s3_list'))
 
+
+
+
+@webapp.route('/manage_worker_pool', methods=['POST'])
+def  manage_worker_pool():
+# while True:
+    increase_rate = float(request.form.get('grow_rate'))
+    print(increase_rate)
+
+    min_threshold = float(request.form.get('min_threshold'))
+    print(min_threshold)
+
+    decrease_rate = float(request.form.get('shrink_rate'))
+    print(decrease_rate)
+
+    max_threshold = float(request.form.get('max_threshold'))
+    print(max_threshold)
+
+
+    # create connection to ec2
+    ec2 = boto3.resource('ec2')
+
+    instances = ec2.instances.filter(
+      Filters=[
+          {'Name': 'Group Name',
+           'Values': [placementGroup_name]
+           },
+
+          {'Name': 'instance-state-name',
+           'Values': ['running']
+           },
+      ]
+    )
+
+    #instances = ec2.instances.all()
+    cpu_stats_1 = []
+    ids = []
+
+    for instance in instances:
+
+        ids.append(instance.id)
+
+        client = boto3.client('cloudwatch')
+
+        # get cpu statistics in 1 minute(60s)
+
+        cpu_1 = client.get_metric_statistics(
+            Period=60,
+            StartTime=datetime.utcnow() - timedelta(seconds=2 * 60),
+            EndTime=datetime.utcnow() - timedelta(seconds=1 * 60),
+            MetricName='CPUUtilization',
+            Namespace='AWS/EC2',  # Unit='Percent',
+            Statistics=['Average'],
+            Dimensions=[{'Name': 'InstanceId',
+                         'Value': instance.id}]
+        )
+
+        # gather return statistics
+
+        for point in cpu_1['Datapoints']:
+
+            load = round(point['Average'], 2)
+            cpu_stats_1.append(load)
+
+    average_load = sum(cpu_stats_1) / len(cpu_stats_1)
+
+    # print(cpu_stats_1)
+    # print(average_load)
+    # print(ids)
+
+# option 1
+    if average_load > max_threshold:
+        # the number of new ec2 instances
+        add_instance_num = int(len(cpu_stats_1) * (increase_rate-1)+1)
+        # print(add_instance_num)
+
+        # add instances
+        for i in range(add_instance_num) :
+            instances = ec2.create_instances(ImageId=config.ami_id, InstanceType='t2.micro', MinCount=1, MaxCount=1,
+                         Monitoring={'Enabled': True},
+                         Placement={'AvailabilityZone': 'us-east-1c', 'GroupName': placementGroup_name},
+                         SecurityGroups=['launch-wizard-10'],
+                         KeyName='ece1779_winter2019', TagSpecifications=[
+                            {
+                                'ResourceType': 'instance',
+                                'Tags': [
+                                    {
+                                        'Key': 'Name',
+                                        'Value': 'a2_additional_workers'
+                                    },
+                                ]
+                            }, ])
+
+
+        # resize ELB
+        for instance in instances:
+            # print(instance.id)
+            ec2 = boto3.resource('ec2')
+            instance.wait_until_running(
+                Filters=[
+                    {
+                        'Name': 'instance-id',
+                        'Values': [
+                            instance.id,
+                        ]
+                    },
+                ],
+            )
+
+            # print(instance.id)
+            client = boto3.client('elbv2')
+            client.register_targets(
+                TargetGroupArn='arn:aws:elasticloadbalancing:us-east-1:530961352462:'
+                               'targetgroup/a2elb/aea4707646845fce',
+                Targets=[
+                    {
+                        'Id': instance.id,
+                    },
+                ]
+            )
+
+
+            # wait until finish
+            waiter = client.get_waiter('target_in_service')
+            waiter.wait(
+                TargetGroupArn= 'arn:aws:elasticloadbalancing:us-east-1:530961352462:'
+                               'targetgroup/a2elb/aea4707646845fce',
+                Targets=[
+                    {
+                        'Id': instance.id,
+                    },
+                ],
+            )
+
+
+# option 2
+    if average_load < min_threshold:
+        minus_instance_num = int(len(cpu_stats_1) * (1-decrease_rate))
+        # print(minus_instance_num)
+
+        if minus_instance_num > 0:
+            ids_to_delete = ids[:minus_instance_num]
+            # print(ids_to_delete)
+
+            #resize ELB
+            for id in ids_to_delete:
+                # print(id)
+                client = boto3.client('elbv2')
+                client.deregister_targets(
+                    TargetGroupArn='arn:aws:elasticloadbalancing:us-east-1:244202399167:targetgroup/target/05c97e5450467af2',
+                    Targets=[
+                        {
+                            'Id': id,
+                        },
+                    ]
+                )
+
+                # wait until finish
+                waiter = client.get_waiter('target_deregistered')
+                waiter.wait(
+                    TargetGroupArn='arn:aws:elasticloadbalancing:us-east-1:244202399167:targetgroup/target/05c97e5450467af2',
+                    Targets=[
+                        {
+                            'Id': id,
+                        },
+                    ],
+
+                )
+
+            # drop instances
+            for id in ids_to_delete:
+                # print(id)
+                ec2.instances.filter(InstanceIds=[id]).terminate()
+
+    # wait for 1 minute
+    time.sleep(60)
+    return 0

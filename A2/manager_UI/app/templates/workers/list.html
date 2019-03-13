@@ -12,28 +12,37 @@
 .clearfix:after{clear:both;display:block}
 a{color:inherit;text-decoration:none}
 
+ body{
+	margin:0;
+	/*color:#6a6f8c;*/
+	/*background:#c8c8c8;*/
+	font:600 16px/18px 'Open Sans',sans-serif;
+}
 .login-wrap{
 	width:100%;
 	margin:auto;
-	max-width:870px;
-	min-height:670px;
-	position:relative;
+	min-height:1000px;
+	/*position:relative;*/
+    background:url(https://i0.wp.com/pakish.pk/wp-content/uploads/2018/05/website-login-background.jpg?ssl=1) no-repeat center;
+	/*box-shadow:0 12px 15px 0 rgba(0,0,0,0.1),0 17px 50px 0 rgba(0,0,0,0.1);*/
+    filter: Alpha(Opacity=50);
+    opacity:0.9;
 }
 
 .login-html{
 	width:100%;
 	height:100%;
 	position:absolute;
-	padding:20px 40px 40px 40px;
-	background:rgba(208,217,225, 0.8);
+	/*padding:20px 40px 40px 40px;*/
+	/*background:rgba(208,217,225, 0.8);*/
 }
 
-h1 {
-font-family: Verdana;
-  font-weight: normal;
-  color: #024457;
-  span {color: #167F92;}
-}
+/*h1 {*/
+/*font-family: Verdana;*/
+  /*font-weight: normal;*/
+  /*!*color: #024457;*!*/
+  /*!*span {color: #167F92;}*!*/
+/*}*/
 
 
 
@@ -61,16 +70,16 @@ font-family: Verdana;
 }
 .login-html .tab{
 	font-size:22px;
-	margin-right:15px;
-	padding-bottom:5px;
-	margin:0 15px 10px 0;
+	/*margin-right:15px;*/
+	/*padding-bottom:5px;*/
+	/*margin:0 15px 10px 0;*/
 	display:inline-block;
-	border-bottom:2px solid transparent;
+	border-bottom: solid transparent;
 }
 .login-html .sign-in:checked + .tab,
 .login-html .sign-up:checked + .tab{
-	color:#fff;
-	border-color:#1161ee;
+	color:rgb(216,96,18);
+	border-color:rgb(216,96,18);
 }
 .login-form{
 	min-height:345px;
@@ -79,32 +88,32 @@ font-family: Verdana;
 	transform-style:preserve-3d;
 }
 .login-form .group{
-	margin-bottom:10px;
+	/*margin-bottom:10px;*/
 }
 .login-form .group .label,
 .login-form .group .input,
 .login-form .group .button{
-	width:60%;
+	width:200px;
 	color:#fff;
-	display:block;
+	display: block;
 }
 .login-form .group .input,
 .login-form .group .button{
 	border:none;
-	padding:10px 20px;
+	*padding:10px 20px;
 	border-radius:25px;
-	background:rgba(255,255,255,.1);
+	/*background:rgba(255,255,255,.1);*/
 }
 .login-form .group input[data-type="password"]{
 	text-security:circle;
 	-webkit-text-security:circle;
 }
 .login-form .group .label{
-	color:#aaa;
+	/*color:#aaa;*/
 	font-size:12px;
 }
 .login-form .group .button{
-	background:#1161ee;
+	background:rgba(216,96,18,0.6);
 }
 .login-form .group label .icon{
 	width:15px;
@@ -112,7 +121,7 @@ font-family: Verdana;
 	border-radius:2px;
 	position:relative;
 	display:inline-block;
-	background:rgba(255,255,255,.1);
+	/*background:rgba(255,255,255,.1);*/
 }
 .login-form .group label .icon:before,
 .login-form .group label .icon:after{
@@ -124,13 +133,13 @@ font-family: Verdana;
 	transition:all .2s ease-in-out 0s;
 }
 .login-form .group label .icon:before{
-	left:3px;
-	width:5px;
-	bottom:6px;
+	/*left:3px;*/
+	/*width:5px;*/
+	/*bottom:6px;*/
 	transform:scale(0) rotate(0);
 }
 .login-form .group label .icon:after{
-	top:6px;
+	/*top:6px;*/
 	right:0;
 	transform:scale(0) rotate(0);
 }
@@ -138,7 +147,7 @@ font-family: Verdana;
 	color:#fff;
 }
 .login-form .group .check:checked + label .icon{
-	background:#1161ee;
+	background:rgb(216,96,18);
 }
 .login-form .group .check:checked + label .icon:before{
 	transform:scale(1) rotate(45deg);
@@ -156,7 +165,7 @@ font-family: Verdana;
 .hr{
 	height:2px;
 	margin:60px 0 50px 0;
-	background:rgba(255,255,255,.2);
+	/*background:rgba(255,255,255,.2);*/
 }
 .foot-lnk{
 	text-align:center;
@@ -165,23 +174,40 @@ font-family: Verdana;
 
 
 .backbtn {
-    width: 10%;
+    width: 100px;
+    height: 30px;
+    margin-left: 30px;
+    /*background-color: rgb(216,96,18);*/
 
-    padding: 10px 18px;
-    background-color: #4CAF50;
+    border:none;
+	*padding:10px 20px;
+	border-radius:25px;
+    background:rgba(216,96,18,0.6);
 }
 
 .cancelbtn {
     width: 10%;
-
     padding: 10px 18px;
     background-color: #f44336;
+}
+
+.detail_button {
+    width: 50px;
+    height: 20px;
+    margin-left: 10px;
+    /*background-color: rgb(216,96,18);*/
+    border:none;
+	*padding:10px 20px;
+	border-radius:25px;
+    background:rgba(216,96,18,0.6);
 }
 
 th, td {
 text-align: center;
       vertical-align: middle;
 }
+
+
 
 
 </style>
@@ -197,34 +223,71 @@ text-align: center;
 
             <center>
                 <br><br>
-       <h1>AWS <span>Worker</span> Pool</h1></center>
+       <h1 style="color: rgb(216,96,18)">AWS <span>Worker</span> Pool</h1></center>
 
             <form action='{{url_for("main")}}' method='get'>
      <button type="submit" class="backbtn"> Back </button>
     </form>
+ <center>
+ <form action="{{url_for('manage_worker_pool')}}" method='post'>
+    <div class = 'user_set'>
+        <select name="grow_rate">
+            <span>grow rate </span>
+
+            <option id="gr0" value="1.25"> 1.25</option>
+        </select>
 
 
-<center>
+        <select name="min_threshold">
+            <option id="mint0" value="2"> 2</option>
+        </select>
+
+
+        <select name="shrink_rate">
+            <option id="sr0" value="0.75"> 0.75</option>
+        </select>
+
+
+        <select name="max_threshold">
+            <option id="maxt0" value="5"> 5</option>
+        </select>
+
+        <button type="submit" id="apply_user_set"> apply</button>
+
+
+    </div>
+</form>
+</center>
+
+
+       <center><div style="display: block">
             <form action="{{url_for('ec2_create')}}" method="post">
-                <div class="group">
-                    <p style="color:#0c4550"><font size="5.85">Want to add a new worker?</font></p>
+                <div class="group" style="display: inline;float: left; margin-left:400px">
+                    <p style="color:rgb(216,96,18)"><font size="4">Add New Worker</font></p >
                 <input type="submit" class="button" value="New">
                 </div>
 			</form>
 
             <form action="{{url_for('delete')}}" method='post' onsubmit='return confirm("Are you sure?")'>
-                <div class="group">
-                <p style="color:#f44336"><font size="5.85">Want to DELETE ALL DATA?</font></p>
+                <div class="group" style="display: inline;float: left; margin-left: 50px">
+                <p style="color:rgb(216,96,18)"><font size="4">Delete All Data</font></p >
 
                 <input type="submit" class="button" value="Delete">
                 </div>
-			</form><br>
-</center>
-            <br><br>
-<center>
-    <div class="table-users">
+			</form>
+       </div></center>
 
-    <div class="header"></div>
+            <br><br>
+            <div>
+
+
+            </div>
+
+
+<center>
+    <div class="table-users" style="margin-top: 100px;color: rgb(216,96,18)">
+
+    <div class="header" style="color: rgb(216,96,18)"></div>
         <table cellspacing="0">
 
         <tr>
@@ -238,7 +301,7 @@ text-align: center;
 
         </tr>
 
-          {% for instance in instances %}
+         {% for instance in instances %}
         <tr>
             <td>{{ instance.id }}</td>
             {% for tag in instance.tags %}
@@ -253,15 +316,17 @@ text-align: center;
             <td>{{ instance.placement['AvailabilityZone']}}</td>
             <td>{{ instance.state['Name'] }}</td>
 
+
+
             <td>
                 <form action="{{url_for('ec2_view',id=instance.id)}}" method='get'>
-                    <input type='submit' value='Details' />
+                    <input type='submit' class="detail_button" value='Details' />
                 </form>
             </td>
 
             <td>
                 <form action="{{url_for('ec2_destroy',id=instance.id)}}" method='post' onsubmit='return confirm("Are you sure?")'>
-                    <input type='submit' value='Destroy' />
+                    <input type='submit' class="detail_button" value='Destroy' />
                 </form>
             </td>
 
@@ -271,14 +336,7 @@ text-align: center;
     </table>
     </div></center></div>
 
-
-
-
-
 	</div>
-
-
-
 
 </center>
 
@@ -286,6 +344,3 @@ text-align: center;
 </div>
 </body>
 </html>
-
-
-

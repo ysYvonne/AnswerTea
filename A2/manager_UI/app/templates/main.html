@@ -5,10 +5,13 @@
     <meta charset="UTF-8">
     <title>Manager Home</title>
     <style>
+
+
+
         body{
 	margin:0;
-	color:#6a6f8c;
-	background:#c8c8c8;
+	/*color:#6a6f8c;*/
+	/*background:#c8c8c8;*/
 	font:600 16px/18px 'Open Sans',sans-serif;
 }
 *,:after,:before{box-sizing:border-box}
@@ -19,11 +22,13 @@ a{color:inherit;text-decoration:none}
 .login-wrap{
 	width:100%;
 	margin:auto;
-	max-width:525px;
-	min-height:670px;
+	/*max-width:1000px;*/
+	min-height:1000px;
 	position:relative;
-	background:url(https://raw.githubusercontent.com/khadkamhn/day-01-login-form/master/img/bg.jpg) no-repeat center;
-	box-shadow:0 12px 15px 0 rgba(0,0,0,.24),0 17px 50px 0 rgba(0,0,0,.19);
+	background:url(https://i0.wp.com/pakish.pk/wp-content/uploads/2018/05/website-login-background.jpg?ssl=1) no-repeat center;
+	/*box-shadow:0 12px 15px 0 rgba(0,0,0,0.1),0 17px 50px 0 rgba(0,0,0,0.1);*/
+    filter: Alpha(Opacity=50);
+    opacity:0.9;
 }
 
 .login-html{
@@ -31,7 +36,7 @@ a{color:inherit;text-decoration:none}
 	height:100%;
 	position:absolute;
 	padding:90px 70px 50px 70px;
-	background:rgba(208,217,225, 0.8);
+	/*background:rgba(208,217,225, 0.8);*/
 }
 
 
@@ -81,8 +86,10 @@ a{color:inherit;text-decoration:none}
 .login-form .group .label,
 .login-form .group .input,
 .login-form .group .button{
+
 	width:100%;
 	color:#fff;
+
 	display:block;
 }
 .login-form .group .input,
@@ -97,11 +104,13 @@ a{color:inherit;text-decoration:none}
 	-webkit-text-security:circle;
 }
 .login-form .group .label{
-	color:#aaa;
+	/*color:#aaa;*/
 	font-size:12px;
 }
 .login-form .group .button{
-	background:#1161ee;
+	/*background:#1161ee;*/
+
+    background:rgba(216,96,18,0.6);
 }
 .login-form .group label .icon{
 	width:15px;
@@ -109,7 +118,7 @@ a{color:inherit;text-decoration:none}
 	border-radius:2px;
 	position:relative;
 	display:inline-block;
-	background:rgba(255,255,255,.1);
+	/*background:rgba(255,255,255,.1);*/
 }
 .login-form .group label .icon:before,
 .login-form .group label .icon:after{
@@ -175,24 +184,24 @@ b {
 
 <div class="login-wrap">
 	<div class="login-html">
-        <center><h1>Welcome to Our <br><br>Manager Website!</br></h1></center>
-<br><br>
-        <div class="login-form">
+        <center><h1 style="color:rgb(216,96,18)">Manager Application</h1></center>
+<br><br><br><br>
+        <div class="login-form" style="">
 
             <form action="{{url_for('ec2_list')}}" method='get'>
-                <div class="group">
-                    <p style="color:#3e3030"><font size="4.85">Want to look at our worker pool?</font></p>
+                <center><div class="group" style="width: 500px">
+                    <p style="color:rgb(216,96,18); text-align:left;"><font size="4.85">Check worker pool</font></p>
 
-                <input type="submit" class="button" value="Look">
-                </div>
+                    <center><input type="submit" class="button" value="Check"></center>
+                </div></center>
 			</form><br>
 
             <form action="{{url_for('s3_list')}}" method='get'>
-                <div class="group">
-                <p style="color:#3e3030"><font size="4.85">Want to look at the images in s3 bucket?</font></p>
+                <center><div class="group" style="width: 500px">
+                <p style="color:rgb(216,96,18); text-align:left;"><font size="4.85">Check images in s3 bucket</font></p>
 
-                <input type="submit" class="button" value="Look">
-                </div>
+                <input type="submit" class="button" value="Check">
+                </div></center>
 			</form><br>
 
 
