@@ -2,60 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9a8bb993-2ec1-4dfb-bde0-a55ab05bfd00" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../user_UI/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../user_UI/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../user_UI/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../user_UI/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../user_UI/.idea/user_UI.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../user_UI/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../user_UI/app/.idea/app.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../user_UI/app/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../user_UI/app/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../user_UI/app/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../user_UI/app/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../user_UI/app/config.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../user_UI/app/db.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../user_UI/app/photos.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../user_UI/app/static/User_Images/I2019-03-10-11-27-21-ab13be85-8770-4604-a4e9-ee2e77e98846.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../user_UI/app/static/User_Images/I2019-03-10-11-27-21-ab13be85-8770-4604-a4e9-ee2e77e98846_df.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../user_UI/app/static/User_Images/I2019-03-10-11-27-21-ab13be85-8770-4604-a4e9-ee2e77e98846_thumb.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../user_UI/app/static/User_Images/I2019-03-10-11-33-46-9cc7adf7-caec-4744-935b-62263b18f8c1.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../user_UI/app/static/User_Images/I2019-03-10-11-33-46-9cc7adf7-caec-4744-935b-62263b18f8c1_df.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../user_UI/app/static/User_Images/I2019-03-10-11-33-46-9cc7adf7-caec-4744-935b-62263b18f8c1_thumb.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../user_UI/app/static/User_Images/I2019-03-10-11-54-30-3f48f510-7f77-48d1-9727-044a83dd00b7.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../user_UI/app/static/User_Images/I2019-03-10-11-54-30-3f48f510-7f77-48d1-9727-044a83dd00b7_df.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../user_UI/app/static/User_Images/I2019-03-10-11-54-30-3f48f510-7f77-48d1-9727-044a83dd00b7_thumb.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../user_UI/app/static/User_Images/I2019-03-10-12-15-15-f1cc47d2-5833-4256-bfab-5f639fdf6bd8.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../user_UI/app/static/User_Images/I2019-03-10-12-15-15-f1cc47d2-5833-4256-bfab-5f639fdf6bd8_df.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../user_UI/app/static/User_Images/I2019-03-10-12-15-15-f1cc47d2-5833-4256-bfab-5f639fdf6bd8_thumb.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../user_UI/app/static/User_Images/I2019-03-10-12-33-53-77885c0f-8d1d-4177-abf8-acd171092487.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../user_UI/app/static/User_Images/I2019-03-10-12-33-53-77885c0f-8d1d-4177-abf8-acd171092487_df.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../user_UI/app/static/User_Images/I2019-03-10-12-33-53-77885c0f-8d1d-4177-abf8-acd171092487_thumb.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../user_UI/app/static/User_Images/I2019-03-10-12-34-17-24efb7d6-e40d-4c71-9652-528437b09fcd.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../user_UI/app/static/User_Images/I2019-03-10-12-34-17-24efb7d6-e40d-4c71-9652-528437b09fcd_df.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../user_UI/app/static/User_Images/I2019-03-10-12-34-17-24efb7d6-e40d-4c71-9652-528437b09fcd_thumb.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../user_UI/app/static/css/base.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../user_UI/app/static/js/jquery.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../user_UI/app/templates/base.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../user_UI/app/templates/main.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../user_UI/app/templates/photos/album.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../user_UI/app/templates/photos/details.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../user_UI/app/templates/photos/upload_form.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../user_UI/app/templates/users/login.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../user_UI/app/templates/users/new.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../user_UI/app/users.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../user_UI/photos.sql" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../user_UI/requirements.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../user_UI/run.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../user_UI/run.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/config.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/config.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/templates/main.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/main.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/templates/s3_examples/list.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/s3_examples/list.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/templates/workers/list.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/workers/list.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/templates/workers/view.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/workers/view.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cpu_check.py" beforeDir="false" afterPath="$PROJECT_DIR$/cpu_check.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -80,17 +29,20 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/cpu_check.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="15">
-              <caret line="3" column="40" selection-start-line="1" selection-end-line="3" selection-end-column="40" />
+            <state relative-caret-position="255">
+              <caret line="17" column="39" lean-forward="true" selection-start-line="17" selection-start-column="39" selection-end-line="17" selection-end-column="39" />
+              <folding>
+                <element signature="e#0#12#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/workers.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="283">
-              <caret line="71" column="41" lean-forward="true" selection-start-line="71" selection-start-column="41" selection-end-line="71" selection-end-column="41" />
+            <state relative-caret-position="140">
+              <caret line="319" column="45" lean-forward="true" selection-start-line="319" selection-start-column="45" selection-end-line="319" selection-end-column="45" />
               <folding>
                 <element signature="e#0#64#0" expanded="true" />
               </folding>
@@ -99,10 +51,25 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/config.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="45">
+              <caret line="3" column="76" lean-forward="true" selection-start-line="3" selection-start-column="76" selection-end-line="3" selection-end-column="76" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/templates/workers/list.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="130">
-              <caret line="306" selection-start-line="306" selection-end-line="306" />
+            <state relative-caret-position="348">
+              <caret line="265" column="54" lean-forward="true" selection-start-line="265" selection-start-column="54" selection-end-line="265" selection-end-column="54" />
+              <folding>
+                <element signature="n#style#0;n#th#0;n#div#0;n#form#0;n#center#1;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#form#0;n#div#0;n#from#0;n#center#2;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#form#1;n#div#0;n#from#0;n#center#2;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#center#3;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -116,6 +83,10 @@
       <find>print</find>
       <find>des</find>
       <find>placementGroup_name</find>
+      <find>ec2_list</find>
+      <find>arn</find>
+      <find>ec2</find>
+      <find>add new</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -135,18 +106,18 @@
         <option value="$PROJECT_DIR$/app/s3_images.py" />
         <option value="$PROJECT_DIR$/../user/app/users.py" />
         <option value="$PROJECT_DIR$/../user/app/images.py" />
-        <option value="$PROJECT_DIR$/app/config.py" />
         <option value="$PROJECT_DIR$/cpu_check.py" />
-        <option value="$PROJECT_DIR$/app/templates/workers/list.html" />
-        <option value="$PROJECT_DIR$/app/templates/workers/view.html" />
         <option value="$PROJECT_DIR$/run.sh" />
+        <option value="$PROJECT_DIR$/app/config.py" />
+        <option value="$PROJECT_DIR$/app/templates/workers/view.html" />
         <option value="$PROJECT_DIR$/app/workers.py" />
         <option value="$PROJECT_DIR$/app/workers.py" />
+        <option value="$PROJECT_DIR$/app/templates/workers/list.html" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="42" />
+    <option name="x" value="16" />
     <option name="y" value="23" />
     <option name="width" value="1209" />
     <option name="height" value="773" />
@@ -312,23 +283,23 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="42" y="23" width="1209" height="773" extended-state="0" />
+    <frame x="16" y="23" width="1209" height="773" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info id="Favorites" side_tool="true" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.16666667" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.16666667" />
       <window_info id="Structure" order="1" weight="0.25" />
-      <window_info anchor="bottom" id="Event Log" side_tool="true" />
-      <window_info anchor="bottom" id="Terminal" weight="0.32892805" />
+      <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.27258065" />
-      <window_info active="true" anchor="bottom" id="Debug" order="3" visible="true" weight="0.3979442" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.15418503" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.43612334" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info anchor="bottom" id="Python Console" order="8" />
+      <window_info anchor="bottom" id="Terminal" order="9" weight="0.32892805" />
+      <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -339,13 +310,103 @@
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/app/workers.py</url>
-          <line>59</line>
+          <line>24</line>
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/app/workers.py</url>
+          <line>26</line>
+          <option name="timeStamp" value="6" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/app/workers.py</url>
+          <line>42</line>
+          <option name="timeStamp" value="9" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/app/workers.py</url>
+          <line>43</line>
+          <option name="timeStamp" value="10" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/app/workers.py</url>
+          <line>55</line>
+          <option name="timeStamp" value="11" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/app/workers.py</url>
+          <line>56</line>
+          <option name="timeStamp" value="12" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/app/workers.py</url>
+          <line>66</line>
+          <option name="timeStamp" value="13" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/app/workers.py</url>
+          <line>76</line>
+          <option name="timeStamp" value="14" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/app/workers.py</url>
+          <line>322</line>
+          <option name="timeStamp" value="15" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/app/workers.py</url>
+          <line>328</line>
+          <option name="timeStamp" value="16" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/app/workers.py</url>
+          <line>334</line>
+          <option name="timeStamp" value="17" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/app/workers.py</url>
+          <line>390</line>
+          <option name="timeStamp" value="18" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/app/workers.py</url>
+          <line>394</line>
+          <option name="timeStamp" value="19" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/app/workers.py</url>
+          <line>412</line>
+          <option name="timeStamp" value="20" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/app/workers.py</url>
+          <line>424</line>
+          <option name="timeStamp" value="21" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/app/workers.py</url>
+          <line>431</line>
+          <option name="timeStamp" value="22" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/app/workers.py</url>
+          <line>352</line>
+          <option name="timeStamp" value="23" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/app/workers.py</url>
+          <line>366</line>
           <option name="timeStamp" value="24" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/app/workers.py</url>
-          <line>68</line>
+          <line>354</line>
           <option name="timeStamp" value="25" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/app/workers.py</url>
+          <line>378</line>
+          <option name="timeStamp" value="26" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -389,14 +450,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/templates/workers/view.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="127">
-          <caret line="237" column="23" lean-forward="true" selection-start-line="237" selection-start-column="23" selection-end-line="237" selection-end-column="23" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/templates/main.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="277">
@@ -406,13 +459,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/../aws/venv/lib/python3.5/site-packages/flask/app.py" />
-    <entry file="file://$PROJECT_DIR$/run.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" selection-start-line="2" selection-end-line="2" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/run.sh">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="15">
@@ -423,13 +469,6 @@
     <entry file="file://$PROJECT_DIR$/error.log">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-223" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/config.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="9" lean-forward="true" selection-start-line="9" selection-end-line="9" />
-        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/main.py">
@@ -456,33 +495,91 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$USER_HOME$/Desktop/manager_UI_ori/app/templates/workers/list.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-3456">
+          <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///usr/local/lib/python3.7/site-packages/flask/templating.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="172">
+          <caret line="134" selection-start-line="134" selection-end-line="134" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///usr/local/lib/python3.7/site-packages/boto3/__init__.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/templates/workers/view.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="405">
+          <caret line="238" column="26" lean-forward="true" selection-start-line="238" selection-start-column="26" selection-end-line="238" selection-end-column="26" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#center#1;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#center#1;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file:///usr/local/lib/python3.7/site-packages/flask/app.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="2308" selection-start-line="2308" selection-end-line="2308" />
+        <state relative-caret-position="127">
+          <caret line="1798" selection-start-line="1798" selection-end-line="1798" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/templates/workers/list.html">
+    <entry file="jar://$APPLICATION_HOME_DIR$/lib/platform-impl.jar!/resources/html5-schema/html5/tables.rnc">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="130">
-          <caret line="306" selection-start-line="306" selection-end-line="306" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/cpu_check.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="3" column="40" selection-start-line="1" selection-end-line="3" selection-end-column="40" />
+        <state relative-caret-position="118">
+          <caret line="232" column="16" selection-start-line="232" selection-start-column="16" selection-end-line="232" selection-end-column="16" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/workers.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="283">
-          <caret line="71" column="41" lean-forward="true" selection-start-line="71" selection-start-column="41" selection-end-line="71" selection-end-column="41" />
+        <state relative-caret-position="140">
+          <caret line="319" column="45" lean-forward="true" selection-start-line="319" selection-start-column="45" selection-end-line="319" selection-end-column="45" />
           <folding>
             <element signature="e#0#64#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cpu_check.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="17" column="39" lean-forward="true" selection-start-line="17" selection-start-column="39" selection-end-line="17" selection-end-column="39" />
+          <folding>
+            <element signature="e#0#12#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/run.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" selection-start-line="2" selection-end-line="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/config.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="3" column="76" lean-forward="true" selection-start-line="3" selection-start-column="76" selection-end-line="3" selection-end-column="76" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/templates/workers/list.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="348">
+          <caret line="265" column="54" lean-forward="true" selection-start-line="265" selection-start-column="54" selection-end-line="265" selection-end-column="54" />
+          <folding>
+            <element signature="n#style#0;n#th#0;n#div#0;n#form#0;n#center#1;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#form#0;n#div#0;n#from#0;n#center#2;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#form#1;n#div#0;n#from#0;n#center#2;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#center#3;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>

@@ -15,6 +15,7 @@ import mysql.connector
 
 s3_bucketName = 'ece1779imagesstorage'
 placementGroup_name = 'A2_workerpool_s'
+targetGroupArn = 'arn:aws:elasticloadbalancing:us-east-1:530961352462:targetgroup/1779a2targetgroup/3e80dbe44f0607b6'
 
 
 @webapp.route('/ec2_worker/create', methods=['POST'])
@@ -23,10 +24,10 @@ def ec2_create():
     # create connection to ec2
     ec2 = boto3.resource('ec2')
 
-    ec2.create_instances(ImageId=config.ami_id, InstanceType='t2.micro', MinCount=1, MaxCount=1,
+    instances = ec2.create_instances(ImageId=config.ami_id, InstanceType='t2.micro', MinCount=1, MaxCount=1,
                          Monitoring={'Enabled': True},
                          Placement={'AvailabilityZone': 'us-east-1c', 'GroupName': placementGroup_name},
-                         SecurityGroups=['launch-wizard-10'],
+                         SecurityGroups=['load-balancer-wizard-21'],
                          KeyName='ece1779_winter2019', TagSpecifications=[
                             {
                                 'ResourceType': 'instance',
@@ -37,6 +38,41 @@ def ec2_create():
                                     },
                                 ]
                             }, ])
+
+    # register new instance to target group
+    for instance in instances:
+        instance.wait_until_running(
+            Filters=[
+                {
+                    'Name': 'instance-id',
+                    'Values': [
+                        instance.id,
+                    ]
+                },
+            ],
+        )
+
+        # print(instance.id)
+        client = boto3.client('elbv2')
+        client.register_targets(
+            TargetGroupArn=targetGroupArn,
+            Targets=[
+                {
+                    'Id': instance.id,
+                },
+            ]
+        )
+
+        # wait until finish
+        waiter = client.get_waiter('target_in_service')
+        waiter.wait(
+            TargetGroupArn=targetGroupArn,
+            Targets=[
+                {
+                    'Id': instance.id,
+                },
+            ],
+        )
 
     return redirect(url_for('ec2_list'))
 
@@ -59,12 +95,15 @@ def ec2_list():
     # create connection to ec2
     ec2 = boto3.resource('ec2')
 
+    # instances = ec2.instances.filter(
+    #     Filters=[]
+    # )
+
     instances = ec2.instances.filter(
-      Filters=[{'Name': 'placement-group-name', 'Values': [placementGroup_name]}])
+        Filters=[{'Name': 'placement-group-name', 'Values': [placementGroup_name]}])
 
     for instance in instances:
-
-         print(instance.id, instance.image_id, instance.key_name, instance.tags)
+        print(instance.id, instance.image_id, instance.key_name, instance.tags)
 
     return render_template("workers/list.html", title="EC2 Instances", instances=instances)
 
@@ -221,8 +260,6 @@ def delete():
     return redirect(url_for('s3_list'))
 
 
-
-
 @webapp.route('/manage_worker_pool', methods=['POST'])
 def  manage_worker_pool():
 # while True:
@@ -244,10 +281,9 @@ def  manage_worker_pool():
 
     instances = ec2.instances.filter(
       Filters=[
-          {'Name': 'Group Name',
+          {'Name': 'placement-group-name',
            'Values': [placementGroup_name]
            },
-
           {'Name': 'instance-state-name',
            'Values': ['running']
            },
@@ -288,36 +324,34 @@ def  manage_worker_pool():
 
     # print(cpu_stats_1)
     # print(average_load)
-    # print(ids)
 
 # option 1
     if average_load > max_threshold:
         # the number of new ec2 instances
         add_instance_num = int(len(cpu_stats_1) * (increase_rate-1)+1)
-        # print(add_instance_num)
+        print("add_instance_num: " + str(add_instance_num))
 
         # add instances
         for i in range(add_instance_num) :
+
             instances = ec2.create_instances(ImageId=config.ami_id, InstanceType='t2.micro', MinCount=1, MaxCount=1,
-                         Monitoring={'Enabled': True},
-                         Placement={'AvailabilityZone': 'us-east-1c', 'GroupName': placementGroup_name},
-                         SecurityGroups=['launch-wizard-10'],
-                         KeyName='ece1779_winter2019', TagSpecifications=[
-                            {
-                                'ResourceType': 'instance',
-                                'Tags': [
-                                    {
-                                        'Key': 'Name',
-                                        'Value': 'a2_additional_workers'
-                                    },
-                                ]
-                            }, ])
+                                             Monitoring={'Enabled': True},
+                                             Placement={'AvailabilityZone': 'us-east-1c','GroupName': placementGroup_name},
+                                             SecurityGroups=['load-balancer-wizard-21'],
+                                             KeyName='ece1779_winter2019',
+                                             TagSpecifications=[
+                                                 {
+                                                    'ResourceType': 'instance',
+                                                    'Tags': [{
+                                                                'Key': 'Name',
+                                                                'Value': 'a2_additional_workers'
+                                                            },]
+                                                 }, ])
 
 
         # resize ELB
         for instance in instances:
             # print(instance.id)
-            ec2 = boto3.resource('ec2')
             instance.wait_until_running(
                 Filters=[
                     {
@@ -332,8 +366,7 @@ def  manage_worker_pool():
             # print(instance.id)
             client = boto3.client('elbv2')
             client.register_targets(
-                TargetGroupArn='arn:aws:elasticloadbalancing:us-east-1:530961352462:'
-                               'targetgroup/a2elb/aea4707646845fce',
+                TargetGroupArn=targetGroupArn,
                 Targets=[
                     {
                         'Id': instance.id,
@@ -345,8 +378,7 @@ def  manage_worker_pool():
             # wait until finish
             waiter = client.get_waiter('target_in_service')
             waiter.wait(
-                TargetGroupArn= 'arn:aws:elasticloadbalancing:us-east-1:530961352462:'
-                               'targetgroup/a2elb/aea4707646845fce',
+                TargetGroupArn= targetGroupArn,
                 Targets=[
                     {
                         'Id': instance.id,
@@ -358,18 +390,18 @@ def  manage_worker_pool():
 # option 2
     if average_load < min_threshold:
         minus_instance_num = int(len(cpu_stats_1) * (1-decrease_rate))
-        # print(minus_instance_num)
+        print("minus_instance_num: " + str(minus_instance_num))
 
         if minus_instance_num > 0:
             ids_to_delete = ids[:minus_instance_num]
-            # print(ids_to_delete)
+            print(ids_to_delete)
 
             #resize ELB
             for id in ids_to_delete:
                 # print(id)
                 client = boto3.client('elbv2')
                 client.deregister_targets(
-                    TargetGroupArn='arn:aws:elasticloadbalancing:us-east-1:244202399167:targetgroup/target/05c97e5450467af2',
+                    TargetGroupArn=targetGroupArn,
                     Targets=[
                         {
                             'Id': id,
@@ -380,7 +412,7 @@ def  manage_worker_pool():
                 # wait until finish
                 waiter = client.get_waiter('target_deregistered')
                 waiter.wait(
-                    TargetGroupArn='arn:aws:elasticloadbalancing:us-east-1:244202399167:targetgroup/target/05c97e5450467af2',
+                    TargetGroupArn=targetGroupArn,
                     Targets=[
                         {
                             'Id': id,
@@ -390,10 +422,13 @@ def  manage_worker_pool():
                 )
 
             # drop instances
+            ec2 = boto3.resource('ec2')
             for id in ids_to_delete:
                 # print(id)
                 ec2.instances.filter(InstanceIds=[id]).terminate()
 
     # wait for 1 minute
+
     time.sleep(60)
-    return 0
+    # return 'good'
+    return redirect(url_for('ec2_list'))
