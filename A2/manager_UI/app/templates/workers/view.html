@@ -230,6 +230,11 @@ text-align: center;
 
     <div id="cpu_plot" style="width:300px;height:150px;color: rgb(216,96,18)"></div>
 
+    <h2 style="color: rgb(216,96,18); ">Request count</h2>
+
+    <div id="request_rate_plot" style="width:300px;height:150px;color: rgb(216,96,18)"></div>
+
+
 </center>
         </div></div></div>
 
@@ -248,6 +253,8 @@ text-align: center;
 
 
         $.plot($("#cpu_plot"), [ {{ cpu_stats }} ] , options);
+
+        $.plot($("#request_rate_plot"), [ {{ request_rate }} ] , options);
 
 
     </script>

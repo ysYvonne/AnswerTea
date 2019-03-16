@@ -223,73 +223,70 @@ text-align: center;
 
             <center>
                 <br><br>
-       <h1 style="color: rgb(216,96,18)">AWS <span>Worker</span> Pool</h1></center>
+       <h1 style="color: rgb(216,96,18)">AWS <span>Worker</span> Pool</h1>
+            </center>
 
             <form action='{{url_for("main")}}' method='get'>
-     <button type="submit" class="backbtn"> Back </button>
-    </form>
+                <button type="submit" class="backbtn"> Back </button>
+            </form>
+
  <center>
- <form action="{{url_for('manage_worker_pool')}}" method='post'>
+ <form  action="{{url_for('auto_manage')}}" method='post'>
     <div class = 'user_set'>
-        <select name="grow_rate">
-            <span>grow rate </span>
-
-            <option id="gr0" value="1.25"> 1.25</option>
-        </select>
 
 
+        <th style="color:rgb(216,96,18)"><font size="2"  style="color:rgb(216,96,18)">Min Threshold</font></th >
         <select name="min_threshold">
-            <option id="mint0" value="20"> 20</option>
+            <span style="color:rgb(216,96,18)">Min Threshold </span>
+            <option id="mint2" value="20"> 20</option>
+            <option id="mint3" value="30"> 30</option>
+            <option id="mint4" value="40"> 40</option>
+            <option id="mint0" value="5"> 5</option>
             <option id="mint1" value="10"> 10</option>
-             <option id="mint2" value="30"> 30</option>
-             <option id="mint3" value="40"> 40</option>
-             <option id="mint4" value="5"> 5</option>
         </select>
 
-
-        <select name="shrink_rate">
-            <option id="sr0" value="0.5"> 0.5</option>
-        </select>
-
-
+        <th style="color:rgb(216,96,18)"><font size="2"  style="color:rgb(216,96,18)">Max Threshold</font></th >
         <select name="max_threshold">
-            <option id="maxt0" value="50"> 50</option>
-            <option id="maxt1" value="60"> 60</option>
-            <option id="maxt2" value="70"> 70</option>
-            <option id="maxt3" value="30"> 30</option>
+            <span style="color:rgb(216,96,18)">Max Threshold </span>
+            <option id="maxt2" value="50"> 50</option>
+            <option id="maxt3" value="60"> 60</option>
+            <option id="maxt4" value="70"> 70</option>
+             <option id="maxt0" value="20"> 20</option>
+            <option id="maxt1" value="30"> 30</option>
         </select>
 
-        <button type="submit" id="apply_user_set"> apply</button>
-
+        <button type="submit" id=""> save</button>
 
     </div>
 </form>
+     <form name = "my_form" action="{{url_for('manage_worker_pool')}}" method='post'>
+         <button type="submit" id="apply_user_set"> start function</button>
+     </form>
+
+
+
 </center>
 
-
-       <center><div style="display: block">
+ <center>
+     <from>
+     <div style="display: block">
             <form action="{{url_for('ec2_create')}}" method="post">
-                <div class="group" style="display: inline;float: left; margin-left:400px">
+                <div class="group" >
                     <p style="color:rgb(216,96,18)"><font size="4">Add New Worker</font></p >
                 <input type="submit" class="button" value="New">
                 </div>
 			</form>
 
-            <form action="{{url_for('delete')}}" method='post' onsubmit='return confirm("Are you sure?")'>
-                <div class="group" style="display: inline;float: left; margin-left: 50px">
-                <p style="color:rgb(216,96,18)"><font size="4">Delete All Data</font></p >
+            <!--<form action="{{url_for('delete')}}" method='post' onsubmit='return confirm("Are you sure?")'>-->
+                <!--<div class="group" style="display: inline;float: left; margin-left: 50px">-->
+                <!--<p style="color:rgb(216,96,18)"><font size="4">Delete All Data</font></p >-->
 
-                <input type="submit" class="button" value="Delete">
-                </div>
-			</form>
-       </div></center>
-
-            <br><br>
-            <div>
-
-
-            </div>
-
+                <!--<input type="submit" class="button" value="Delete">-->
+                <!--</div>-->
+			<!--</form>-->
+       </div>
+         </from>
+ </center>
 
 <center>
     <div class="table-users" style="margin-top: 100px;color: rgb(216,96,18)">
@@ -299,11 +296,12 @@ text-align: center;
 
         <tr>
 
-        <th>ID</th>
+        <th>Instance ID</th>
         <th>Name</th>
         <th>Type</th>
         <th>Availability Zone</th>
         <th>Status</th>
+        <th>Launch Time</th>
 
 
         </tr>
@@ -322,7 +320,7 @@ text-align: center;
             <td>{{ instance.instance_type }}</td>
             <td>{{ instance.placement['AvailabilityZone']}}</td>
             <td>{{ instance.state['Name'] }}</td>
-
+            <td>{{ instance.launch_time}}</td>
 
 
             <td>
@@ -351,3 +349,14 @@ text-align: center;
 </div>
 </body>
 </html>
+
+<script>
+
+    <!--window.setInterval(document.getElementById("apply_user_set").click(), 6000);-->
+
+    setInterval('my_form.submit()',10000);
+
+
+
+
+</script>

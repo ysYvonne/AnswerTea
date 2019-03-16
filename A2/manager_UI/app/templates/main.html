@@ -204,6 +204,15 @@ b {
                 </div></center>
 			</form><br>
 
+             <form action="{{url_for('delete')}}" method='post' onsubmit='return confirm("Are you sure?")'>
+             <center><div class="group" style="width: 500px">
+                <p style="color:rgb(216,96,18); text-align:left;"><font size="4.85">delete all data</font></p>
+
+                <input type="submit" class="button" value="delete">
+                </div></center>
+
+             </form>
+
 
 		</div>
 

@@ -3,7 +3,7 @@ from app import webapp
 
 import boto3
 
-s3_bucketName = 'ece1779a2-yf'
+s3_bucketName = 'ece1779imagesstorage'
 
 @webapp.route('/s3_bucket', methods=['GET'])
 # Display an HTML list of all s3 buckets.
