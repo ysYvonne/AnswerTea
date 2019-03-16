@@ -5,18 +5,17 @@ from datetime import datetime, timedelta
 
 from app import config
 
-max_threshold = 70
-min_threshold = 20
+max_threshold = 80
+min_threshold = 30
 
 increase_rate = 1.25
 decrease_rate = 0.75
 
+placementGroup_name = 'A2_workerpool_s'
+targetGroupArn = 'arn:aws:elasticloadbalancing:us-east-1:530961352462:targetgroup/1779a2targetgroup/3e80dbe44f0607b6'
+
 
 # def get_user_set():
-
-
-placementGroup_name = 'A2_workerpool_s'
-
 
 while True:
 
@@ -118,8 +117,7 @@ while True:
             # print(instance.id)
             client = boto3.client('elbv2')
             client.register_targets(
-                TargetGroupArn='arn:aws:elasticloadbalancing:us-east-1:530961352462:'
-                               'targetgroup/a2elb/aea4707646845fce',
+                TargetGroupArn=targetGroupArn,
                 Targets=[
                     {
                         'Id': instance.id,
@@ -131,8 +129,7 @@ while True:
             # wait until finish
             waiter = client.get_waiter('target_in_service')
             waiter.wait(
-                TargetGroupArn= 'arn:aws:elasticloadbalancing:us-east-1:530961352462:'
-                               'targetgroup/a2elb/aea4707646845fce',
+                TargetGroupArn= targetGroupArn,
                 Targets=[
                     {
                         'Id': instance.id,
@@ -155,7 +152,7 @@ while True:
                 # print(id)
                 client = boto3.client('elbv2')
                 client.deregister_targets(
-                    TargetGroupArn='arn:aws:elasticloadbalancing:us-east-1:244202399167:targetgroup/target/05c97e5450467af2',
+                    TargetGroupArn=targetGroupArn,
                     Targets=[
                         {
                             'Id': id,
@@ -166,7 +163,7 @@ while True:
                 # wait until finish
                 waiter = client.get_waiter('target_deregistered')
                 waiter.wait(
-                    TargetGroupArn='arn:aws:elasticloadbalancing:us-east-1:244202399167:targetgroup/target/05c97e5450467af2',
+                    TargetGroupArn=targetGroupArn,
                     Targets=[
                         {
                             'Id': id,

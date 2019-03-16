@@ -1,9 +1,17 @@
+import urllib
+
 from flask import render_template, session, request, redirect, url_for, g
 import random
 import hashlib
 import boto3
+
+from datetime import datetime, timedelta
 from app import webapp
 from app.db import get_db
+
+custom_metric_name="http-request"
+namespace = 'AWS/EC2'
+statistic = 'Average'
 
 s3_bucketName = 'ece1779imagesstorage'
 
@@ -15,12 +23,40 @@ def teardown_db(exception):
 
 @webapp.route('/logout', methods=['GET', 'POST'])
 def logout():
+
     session.clear()
     return redirect(url_for('login'))
 
 
 @webapp.route('/login', methods=['GET', 'POST'])
 def login():
+
+    # # send data to metric
+    instance_id = urllib.request.urlopen('http://169.254.169.254/latest/meta-data/instance-id').read().decode()
+    print(instance_id)
+
+    print(datetime.utcnow());
+    cwclient = boto3.client("cloudwatch")
+    response = cwclient.put_metric_data(
+        Namespace=namespace,
+        MetricData=[
+            {
+                'MetricName': custom_metric_name,
+                'Dimensions': [
+                    {
+                        'Name': 'InstanceId',
+                        'Value': instance_id
+                    },
+                ],
+                'Timestamp': datetime.utcnow(),
+                'Value': 1.0,
+                'Unit': 'None',
+            },
+        ]
+
+    )
+    print(response)
+
     uname = None
     e = None
 

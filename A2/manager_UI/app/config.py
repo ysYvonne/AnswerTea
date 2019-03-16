@@ -4,6 +4,6 @@ db_config = {'user': 'master',
              'host': 'ece1779a2db.cdjxdjgx0cib.us-east-1.rds.amazonaws.com',
              'database': 'photos'}
 
-ami_id = 'ami-09655c1332fdc8329'
+ami_id = 'ami-011ca59f929d7842d'
 
 

@@ -16,7 +16,7 @@ def s3_list():
 
     for key in bucket.objects.all():
         k = key
-        print(k)
+        # print(k)
 
     keys = bucket.objects.all()
 
