@@ -231,28 +231,29 @@ text-align: center;
             </form>
 
  <center>
- <form  action="{{url_for('auto_manage')}}" method='post'>
+<form  action="{{url_for('auto_manage')}}" method='post'>
     <div class = 'user_set'>
 
 
         <th style="color:rgb(216,96,18)"><font size="2"  style="color:rgb(216,96,18)">Min Threshold</font></th >
         <select name="min_threshold">
             <span style="color:rgb(216,96,18)">Min Threshold </span>
-            <option id="mint2" value="20"> 20</option>
-            <option id="mint3" value="30"> 30</option>
-            <option id="mint4" value="40"> 40</option>
-            <option id="mint0" value="5"> 5</option>
-            <option id="mint1" value="10"> 10</option>
+            <option id="mint0" value="Please select"> Please Select </option>
+            <option id="mint1" value="20"> 20</option>
+            <option id="mint2" value="30"> 30</option>
+            <option id="mint3" value="40"> 40</option>
+            <option id="mint4" value="5"> 50</option>
         </select>
 
         <th style="color:rgb(216,96,18)"><font size="2"  style="color:rgb(216,96,18)">Max Threshold</font></th >
         <select name="max_threshold">
             <span style="color:rgb(216,96,18)">Max Threshold </span>
-            <option id="maxt2" value="50"> 50</option>
-            <option id="maxt3" value="60"> 60</option>
-            <option id="maxt4" value="70"> 70</option>
-             <option id="maxt0" value="20"> 20</option>
-            <option id="maxt1" value="30"> 30</option>
+            <option id="maxt0" value="Please select"> Please Select </option>
+            <option id="maxt1" value="50"> 50</option>
+            <option id="maxt2" value="60"> 60</option>
+            <option id="maxt3" value="70"> 70</option>
+            <option id="maxt4" value="20"> 80</option>
+            <option id="maxt5" value="30"> 90</option>
         </select>
 
         <button type="submit" id=""> save</button>
@@ -262,6 +263,11 @@ text-align: center;
      <form name = "my_form" action="{{url_for('manage_worker_pool')}}" method='post'>
          <!--<button type="submit" id="apply_user_set"> start function</button>-->
      </form>
+
+     <div>
+        <p style="color:white;">Current min threshold = {{ min_threshold }}
+                                Current max threshold = {{ max_threshold }}</p >
+     </div>
 
 
 

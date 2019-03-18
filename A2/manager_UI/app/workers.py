@@ -1,3 +1,5 @@
+import calendar
+
 from flask import render_template, redirect, url_for, request, g
 from app import webapp
 import time
@@ -101,18 +103,43 @@ def ec2_list():
     # create connection to ec2
     ec2 = boto3.resource('ec2')
 
-    # instances = ec2.instances.filter(
-    #     Filters=[]
-    # )
+    # start instance which are stopped
+    instances = ec2.instances.filter(
+        Filters=[
+            {'Name': 'placement-group-name',
+             'Values': [placementGroup_name]
+             },
+            {'Name': 'instance-state-name',
+             'Values': ['stopped']
+             },
+        ]
+    )
+
+    for instance in instances:
+        ec2.instances.filter(InstanceIds=[instance.id]).start()
+
 
     instances = ec2.instances.filter(
         Filters=[{'Name': 'placement-group-name', 'Values': [placementGroup_name]}])
 
-    for instance in instances:
-        print(instance.id, instance.image_id, instance.key_name, instance.tags)
+    # for instance in instances:
+    #     print(instance.id, instance.image_id, instance.key_name, instance.tags)
 
-    return render_template("workers/list.html", title="EC2 Instances", instances=instances)
+    #Get current threshold settings to display
+    # read from db
+    cnx = get_db()
+    cursor = cnx.cursor()
+    query = '''SELECT min,max FROM threshold ORDER BY id DESC LIMIT 1'''
+    cursor.execute(query, )
+    row = cursor.fetchone()
 
+    min_threshold_s = row[0]
+    max_threshold_s = row[1]
+    min_threshold = int(min_threshold_s)
+    max_threshold = int(max_threshold_s)
+
+    return render_template("workers/list.html", title="EC2 Instances", instances=instances, \
+                           min_threshold = min_threshold, max_threshold = max_threshold)
 
 @webapp.route('/ec2_worker/<id>', methods=['GET'])
 # Display details about a specific instance.
@@ -143,18 +170,21 @@ def ec2_view(id):
                      'Value': id}]
 
     )
-    # print(cpu)
 
     # gather return statistics
     cpu_stats = []
     for point in cpu['Datapoints']:
         hour = point['Timestamp'].hour
         minute = point['Timestamp'].minute
-        time = hour + minute/60
+        # time = hour + minute/60
+
+        time = hour + minute / 100
+        time = round(time, 2)
+        print(time)
         cpu_stats.append([time, point[statistic]])
 
     cpu_stats = sorted(cpu_stats, key=itemgetter(0))
-    # print(cpu_stats)
+    print(cpu_stats)
 
     # get request  statistic
     custom_metric_name = "http-request"
@@ -184,9 +214,9 @@ def ec2_view(id):
 
         print(point['Timestamp'])
 
-        time = hour + minute / 60
-        # time = str(hour) + ':' + str(minute)
-        print(str(minute) + "->" + str(point[statistic]))
+        time = hour+minute/100
+        time = round(time, 2)
+        # print(str(minute) + "->" + str(point[statistic]))
         request_rate.append([time, point[statistic]])
 
     request_rate = sorted(request_rate, key=itemgetter(0))
@@ -266,7 +296,6 @@ def delete():
 @webapp.route('/auto_manage', methods=['POST'])
 def auto_manage():
     min_threshold = str(request.form.get('min_threshold'))
-    # g.increase_threshold = min_threshold
     print(min_threshold)
 
     max_threshold = str(request.form.get('max_threshold'))
@@ -285,22 +314,12 @@ def auto_manage():
 @webapp.route('/manage_worker_pool', methods=['POST'])
 def manage_worker_pool():
 
-        # print("test runningggggggg")
-
-        # min_threshold = float(request.form.get('min_threshold'))
-        # print(min_threshold)
-        # max_threshold = float(request.form.get('max_threshold'))
-        # print(max_threshold)
-
         # read from db
         cnx = get_db()
         cursor = cnx.cursor()
         query = '''SELECT min,max FROM threshold ORDER BY id DESC LIMIT 1'''
         cursor.execute(query,)
         row = cursor.fetchone()
-        # threshold_id = []
-        # for id in row[0]:
-        #     threshold_id.append(id)
 
         min_threshold_s =row[0]
         max_threshold_s =row[1]
@@ -321,7 +340,6 @@ def manage_worker_pool():
           ]
         )
 
-        #instances = ec2.instances.all()
         cpu_stats_1 = []
         ids = []
 
@@ -373,9 +391,6 @@ def manage_worker_pool():
         logging.info("min_threshold: "+ str(min_threshold))
         logging.info("instance number: " + str(len(ids)))
 
-        # print(cpu_stats_1)
-        # print(average_load)
-
     # option 1
         if average_load > max_threshold:
             # the number of new ec2 instances
@@ -404,7 +419,6 @@ def manage_worker_pool():
 
             # resize ELB
             for instance in instances:
-                # print(instance.id)
                 instance.wait_until_running(
                     Filters=[
                         {
@@ -477,11 +491,6 @@ def manage_worker_pool():
                 # drop instances
                 ec2 = boto3.resource('ec2')
                 for id in ids_to_delete:
-                    # print(id)
                     ec2.instances.filter(InstanceIds=[id]).terminate()
 
-        # wait for 1 minute
-
-        # time.sleep(60)
-        # return 'good'
         return redirect(url_for('ec2_list'))
