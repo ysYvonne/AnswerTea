@@ -4,11 +4,11 @@ from app import app
 from app import dynamo
 from app import s3_config
 
-a3BucketName = 'ece1779a3itemsbucket'
+a3BucketName = 'ece1779a3itemsbucketxue'
 
 # set secret key for session
 app.secret_key = '\x86j\x94\xab\x15\xedy\xe4\x1f\x0b\xe9\xb9v}C\xb9\xf1\xech\x0bs.\x10$'
-ALLOWED_EXTENSIONS = set(['jpg', 'png', 'gif'])
+ALLOWED_EXTENSIONS = set(['jpg', 'png', 'gif','JPG'])
 
 def allowed_file(filename):
     return '.' in filename and \
@@ -45,11 +45,21 @@ def getLoginDetails():
 
 @app.route("/")
 def root():
+    # get login user info
     loggedIn, firstName, noOfItems,userId = getLoginDetails()
+    # get all products info
     itemData=dynamo.products_list_all()
+    # get all category info
     categoryData=dynamo.categories_list_all()
 
-    return render_template('home.html', itemData=itemData,loggedIn=loggedIn,firstName=firstName, noOfItems=noOfItems, categoryData=categoryData)
+    print(itemData)
+
+    return render_template('home.html',
+                           itemdata=itemData,
+                           loggedIn=loggedIn,
+                           firstName=firstName,
+                           noOfItems=noOfItems,
+                           categoryData=categoryData)
 
 @app.route("/search", methods = ["POST"])
 def search():
@@ -244,12 +254,22 @@ def login():
 
 @app.route("/productDescription")
 def productDescription():
+    # get user info
     loggedIn, firstName, noOfItems, userId = getLoginDetails()
+    # get id from front end
     productId = request.args.get('productId')
+    # get specific product item from dynamodb
     productData=dynamo.products_productId_search(int(productId))
+    # get corresponding image from s3 bucket
     imageurl = s3_config.get_element_from_bucket(a3BucketName, productData[0]['image'])
     productData[0]['image'] = imageurl
-    return render_template("productDescription.html",data=productData,loggedIn=loggedIn,firstName=firstName,noOfItems=noOfItems)
+
+    # render product detail page
+    return render_template("single.html",
+                           data=productData,
+                           loggedIn=loggedIn,
+                           firstName=firstName,
+                           noOfItems=noOfItems)
 
 
 @app.route("/addToCart")
@@ -349,3 +369,26 @@ def register():
 @app.route("/registrationForm")
 def registrationForm():
     return render_template("register.html")
+
+
+@app.route("/categories_list")
+def categories_list():
+
+    loggedIn, firstName, noOfItems, userId = getLoginDetails()
+
+    category_id = request.args.get('category_id')
+
+    productData = dynamo.products_productId_search(int(category_id))
+    # get corresponding image from s3 bucket
+    for product in productData:
+
+        imageurl = s3_config.get_element_from_bucket(a3BucketName, product['image'])
+        product['image'] = imageurl
+
+    # render product detail page
+    return render_template("list.html",
+                           itemdata=productData,
+                           loggedIn=loggedIn,
+                           firstName=firstName,
+
+                           noOfItems=noOfItems)

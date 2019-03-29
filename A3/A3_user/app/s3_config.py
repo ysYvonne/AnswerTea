@@ -55,6 +55,7 @@ def iterate_bucket(s3, Bucketname):
             keylist.append(key)
     return keylist
 
+
 # get one element from Bucket
 def get_element_from_bucket(Bucketname, key):
     s3 = boto3.client('s3')

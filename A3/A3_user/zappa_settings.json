@@ -4,7 +4,7 @@
        "keep_warm": false,
        "debug": true,
        "log_level": "DEBUG",
-       "s3_bucket": "ece1779winter2019a3code",
+       "s3_bucket": "ece1779fall2017a3shopping",
        "app_function": "app.app",
        "http_methods": ["GET","POST"],
        "parameter_depth": 1,
