@@ -1,0 +1,53 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Add items</title>
+	<!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="container text-center">
+	<h2>Add items</h2>
+	<form action={{url_for('addItem')}} method="POST" enctype="multipart/form-data">
+		<div class="form-group">
+			<label for="name">Name:</label>
+			<input type="text" class="form-control" id="name" name="name" placeholder="Product name">
+		</div>
+		<div class="form-group">
+			<label for="price">Price:</label>
+			<input type="text" class="form-control" id="price" name="price" placeholder="Product price">
+		</div>
+		<div class="form-group">
+			<label for="description">Description:</label>
+			<textarea class="form-control" name="description" rows=3 cols="40" id="description"></textarea>
+		</div>
+
+		Image: <input type="file" name="image"><br>
+		<div class="form-group">
+			<label for="stock">Stock:</label>
+			<input type="text" class="form-control" id="stock" name="stock" placeholder="Product stock">
+		</div>
+
+		Category: <select name="category">
+			{% for row in categories %}
+				<option value="{{row[0]}}">{{row[1]}}</option>
+			{% endfor %}
+		</select><br>
+		<br>
+		<button type="submit" class="btn btn-info">Submit</button><br><br>
+	</form>
+	<div id = "msg">{% with messages = get_flashed_messages() %}
+              {% if messages %}
+            {% for message in messages %}
+              <b>{{ message }}</b>
+            {% endfor %}
+             {% endif %}
+            {% endwith %}<br><br></div>
+</div>
+</body>
+</html>
+

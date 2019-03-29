@@ -1,0 +1,9 @@
+INFO:root:2019-03-29 19:20:30.982699
+INFO:root:average load: 0
+INFO:root:cpu_stats_1: []
+INFO:root:max_threshold: 50
+INFO:root:min_threshold: 20
+INFO:root:instance number: 0
+INFO:werkzeug:127.0.0.1 - - [29/Mar/2019 15:20:31] "POST /manage_worker_pool HTTP/1.1" 302 -
+INFO:werkzeug:127.0.0.1 - - [29/Mar/2019 15:20:32] "GET /ec2_worker HTTP/1.1" 200 -
+INFO:werkzeug: * Detected change in '/Users/yisheng/Developer/Github/AnswerTea/A2/manager_UI/app/workers.py', reloading

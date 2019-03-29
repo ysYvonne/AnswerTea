@@ -1,0 +1,18 @@
+{
+    "dev": {
+       "project_name": "a3_managerUI",
+       "keep_warm": false,
+       "debug": true,
+       "log_level": "DEBUG",
+       "s3_bucket": "ece1779winter2019a3code",
+       "app_function": "app.app",
+       "http_methods": ["GET","POST"],
+       "parameter_depth": 1,
+       "timeout_seconds": 300,
+       "memory_size": 128,
+       "use_precompiled_packages": true
+    }
+}
+
+
+

@@ -1,0 +1,30 @@
+<html>
+<head>
+	<title>	Online Shopping System </title>
+	<!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+	<div class="container text-center">
+		<p> {{error}} </p>
+		<form action={{url_for('login')}} method="POST">
+			<div class="form-group">
+				<!--<p>Email: <input type="text" name="email"></p>-->
+				<label for="email">Email address:</label>
+				<input type="email" class="form-control" id="email" name="email" placeholder="Enter email">
+			</div>
+			<div class="form-group">
+				<!--<p>Password: <input type="password" name="password"></p>-->
+				<label for="password">Password:</label>
+				<input type="password" class="form-control" id="password" name="password" placeholder="Enter password">
+			</div>
+			<button type="submit" class="btn btn-info">Submit</button><br><br>
+			<a href={{url_for('registrationForm')}} class="btn btn-info" role="button">Register here</a>
+		</form>
+	</div>
+</body>
+</html>

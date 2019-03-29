@@ -1,0 +1,7 @@
+#OrderView{
+ margin-left: 100px;
+ margin-right:100px;
+}
+#OrderView.table {
+    width: 80%;
+}

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>ManagerUI</title>
+	<!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href={{url_for('static', filename='dashboard.css') }} />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<table>
+<div class = "container" id="OrderItems">
+    <h1> Manager's Control Panel </h1>
+    <hr>
+    <h2> Products Control </h2>
+    <form action="{{url_for('add_product')}}">
+        <input type="submit" class="btn btn-info" value="Create New Product">
+    </form>
+    <br><br>
+    <form action="{{url_for('remove_product')}}" >
+        <input type="submit" class="btn btn-info" value="Remove products" />
+    </form>
+    <br><br>
+    <form action="{{url_for('products_restock')}}" >
+        <input type="submit" class="btn btn-info" value="Products Restock" />
+    </form></div>
+    <hr>
+    <div class = "container" id="OrderView">
+    <h2> Orders View </h2>
+    <table class="table table-bordered" id = "OrderView" width="50%">
+        <thead>
+         <tr>
+        <th>UserId</th>
+        <th>OrderId</th>
+        <th>Order Details</th>
+        <th>Order Price</th>
+        <th>Order Status</th>
+         </tr>
+        </thead>
+        <tbody>
+    {% for row in orders %}
+         <tr>
+        <td>{{ row[0] }}</td>
+        <td>{{ row[1] }}</td>
+        <td>{{ row[2] }}</td>
+        <td>{{ row[3] }}</td>
+        <td>{{ row[4] }}</td>
+        {% if row[4] != "completed" %}
+        <td>
+        <form action="{{url_for('complete_order',userId = row[0],orderId = row[1])}}" method="POST">
+                        <input type="submit" value="Mark as Complete" />
+                    </form>
+        </td>
+         {% endif %}
+        </tr>
+        {% endfor %}
+    </tbody>
+    </table>
+    </div>
+
+    <hr>
+    <div class = "container" id="S3">
+    <h2> S3 Instance</h2>
+    <table class="table table-hover">
+        <thead>
+            <th>Name</th>
+            <th>Creation Time</th>
+        </thead>
+        {% for bucket in buckets %}
+            <tr>
+            {% if bucket.name == "ece1779a3itemsbucket" %}
+                <td>{{ bucket.name }}</td>
+                <td>{{ bucket.creation_date }}</td>
+                <td>
+                    <form action="{{url_for('s3_view',id=bucket.name)}}" method="get">
+                        <input type="submit" value="Details" />
+                    </form>
+                </td>
+            {% endif %}
+            </tr>
+        {% endfor %}
+    </table>
+    </div>
+</body>
+</html>

@@ -1,0 +1,7 @@
+INFO:root:2019-03-29 19:22:32.035917
+INFO:root:average load: 30.0
+INFO:root:cpu_stats_1: [30.0]
+INFO:root:max_threshold: 50
+INFO:root:min_threshold: 20
+INFO:root:instance number: 1
+INFO:werkzeug:127.0.0.1 - - [29/Mar/2019 15:22:39] "POST /manage_worker_pool HTTP/1.1" 302 -

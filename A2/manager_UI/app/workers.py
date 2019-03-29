@@ -23,6 +23,7 @@ decrease_rate = 0.4
 
 s3_bucketName = 'ece1779imagesstorage'
 placementGroup_name = 'A2_workerpool_s'
+securityGroup_name = 'load-balancer-wizard-21'
 targetGroupArn = 'arn:aws:elasticloadbalancing:us-east-1:530961352462:targetgroup/1779a2targetgroup/3e80dbe44f0607b6'
 
 @webapp.route('/ec2_worker/create', methods=['POST'])
@@ -34,8 +35,8 @@ def ec2_create():
 
     instances = ec2.create_instances(ImageId=config.ami_id, InstanceType='t2.micro', MinCount=1, MaxCount=1,
                          Monitoring={'Enabled': True},
-                         Placement={'AvailabilityZone': 'us-east-1c', 'GroupName': placementGroup_name},
-                         SecurityGroups=['load-balancer-wizard-21'],
+                         Placement={'AvailabilityZone': 'us-east-1c'},
+                         SecurityGroups=[securityGroup_name],
                          KeyName='ece1779_winter2019', TagSpecifications=[
                             {
                                 'ResourceType': 'instance',
@@ -104,10 +105,22 @@ def ec2_list():
     ec2 = boto3.resource('ec2')
 
     # start instance which are stopped
+    # instances = ec2.instances.filter(
+    #     Filters=[
+    #         {'Name': 'placement-group-name',
+    #          'Values': [placementGroup_name]
+    #          },
+    #         {'Name': 'instance-state-name',
+    #          'Values': ['stopped']
+    #          },
+    #     ]
+    # )
+    #
+
     instances = ec2.instances.filter(
         Filters=[
-            {'Name': 'placement-group-name',
-             'Values': [placementGroup_name]
+            {'Name': 'image-id',
+             'Values': [config.ami_id]
              },
             {'Name': 'instance-state-name',
              'Values': ['stopped']
@@ -118,12 +131,9 @@ def ec2_list():
     for instance in instances:
         ec2.instances.filter(InstanceIds=[instance.id]).start()
 
-
     instances = ec2.instances.filter(
-        Filters=[{'Name': 'placement-group-name', 'Values': [placementGroup_name]}])
+        Filters=[{'Name': 'image-id','Values': [config.ami_id]}])
 
-    # for instance in instances:
-    #     print(instance.id, instance.image_id, instance.key_name, instance.tags)
 
     #Get current threshold settings to display
     # read from db
@@ -329,15 +339,26 @@ def manage_worker_pool():
 
         ec2 = boto3.resource('ec2')
 
+        # instances = ec2.instances.filter(
+        #   Filters=[
+        #       {'Name': 'placement-group-name',
+        #        'Values': [placementGroup_name]
+        #        },
+        #       {'Name': 'instance-state-name',
+        #        'Values': ['running']
+        #        },
+        #   ]
+        # )
+
         instances = ec2.instances.filter(
-          Filters=[
-              {'Name': 'placement-group-name',
-               'Values': [placementGroup_name]
-               },
+            Filters=[
+                {'Name': 'image-id',
+                 'Values': [config.ami_id]
+                 },
               {'Name': 'instance-state-name',
                'Values': ['running']
                },
-          ]
+            ]
         )
 
         cpu_stats_1 = []
@@ -402,9 +423,8 @@ def manage_worker_pool():
 
                 instances = ec2.create_instances(ImageId=config.ami_id, InstanceType='t2.micro', MinCount=1, MaxCount=1,
                                                  Monitoring={'Enabled': True},
-                                                 Placement={'AvailabilityZone': 'us-east-1c',
-                                                            'GroupName': placementGroup_name},
-                                                 SecurityGroups=['load-balancer-wizard-21'],
+                                                 Placement={'AvailabilityZone': 'us-east-1c'},
+                                                 SecurityGroups=[securityGroup_name],
                                                  KeyName='ece1779_winter2019', TagSpecifications=[
                         {
                             'ResourceType': 'instance',

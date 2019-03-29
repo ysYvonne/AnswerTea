@@ -37,6 +37,7 @@ def login():
 
     print(datetime.utcnow());
     cwclient = boto3.client("cloudwatch")
+
     response = cwclient.put_metric_data(
         Namespace=namespace,
         MetricData=[

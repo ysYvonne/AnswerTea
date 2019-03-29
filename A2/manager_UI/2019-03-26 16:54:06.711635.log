@@ -1,0 +1,13 @@
+INFO:root:2019-03-26 16:54:06.712136
+INFO:root:average load: 0
+INFO:root:cpu_stats_1: []
+INFO:root:max_threshold: 70
+INFO:root:min_threshold: 30
+INFO:root:instance number: 0
+INFO:werkzeug:127.0.0.1 - - [26/Mar/2019 12:54:06] "POST /manage_worker_pool HTTP/1.1" 302 -
+INFO:werkzeug:127.0.0.1 - - [26/Mar/2019 12:54:07] "GET /ec2_worker HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [26/Mar/2019 12:54:54] "GET /main? HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [26/Mar/2019 12:55:00] "GET /ec2_worker? HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [26/Mar/2019 12:55:09] "POST /ec2_worker/delete/i-07c7a766374145084 HTTP/1.1" 302 -
+INFO:werkzeug:127.0.0.1 - - [26/Mar/2019 12:55:10] "GET /ec2_worker HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [26/Mar/2019 12:55:21] "GET /ec2_worker HTTP/1.1" 200 -
