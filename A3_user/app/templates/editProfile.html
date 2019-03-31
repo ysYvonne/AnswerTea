@@ -1,0 +1,109 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Edit Profile </title>
+	<link rel="stylesheet" href={{url_for('static', filename='css/editProfile.css') }} />
+	<link rel="stylesheet" href={{url_for('static', filename='css/topStyle.css') }} />
+	<!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+<nav class = "navbar navbar-inverse">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href={{url_for('root')}}>
+                Online Shopping System
+            </a>
+        </div>
+        <form action={{url_for('search')}} method="POST" class="navbar-form navbar-left">
+            <div class = "input-group">
+                <input type="text" class = "form-control" id = "search" name = "search" placeholder="Search">
+                <div class="input-group-btn">
+                    <button class="btn btn-default" type="submit">
+                        <i class="glyphicon glyphicon-search"></i>
+                    </button>
+                </div>
+            </div>
+        </form>
+        <ul class="nav navbar-nav navbar-right">
+            {% if not loggedIn %}
+            <li><a href={{url_for('loginForm')}}><span class="glyphicon glyphicon-log-in"></span> LogIn</a></li>
+            {% else %}
+            <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown">Hello, {{firstName}}</a>
+                <ul class="dropdown-menu">
+                    <!--<li><a href="/account/orders">Your orders</a></li>-->
+                    <li><a href={{url_for('profileHome')}}>Your profile</a></li>
+                    <li><a href={{url_for('viewOrders')}}>Your orders</a></li>
+                    <li><a href={{url_for('logout')}}>Sign out</a></li>
+                </ul>
+            </li>
+            {% endif %}
+            <li><a href={{url_for('cart')}}><span class="glyphicon glyphicon-shopping-cart"></span> CART <span class="badge">{{ noOfItems }}</span></a></li>
+        </ul>
+    </div>
+</nav>
+
+<div class="container text-center">
+	<h2><em>Edit profile</em></h2>
+	<form action={{url_for('updateProfile')}} method="POST">
+		<div class="form-group">
+			<!--<p>Email:<input type="email" name="email" value={{profileData[1]}} readonly="readonly"></p>-->
+			<label for="email">Email: </label>
+			<input type="email" class="form-control" id="email" name="email" value="{{profileData[0][1]}}" readonly="readonly"/>
+		</div>
+		<div class="form-group">
+			<!--<p>First Name:<input type="text" name="firstName" value={{profileData[2]}}></p>-->
+			<label for="firstName">firstName: </label>
+			<input type="text" class="form-control" id="firstName" name="firstName" value="{{profileData[0][2]}}" />
+		</div>
+		<div class="form-group">
+			<!--<p>Last Name: <input type="text" name="lastName" value={{profileData[3]}}></p>-->
+			<label for="lastName">lastName: </label>
+			<input type="text" class="form-control" id="lastName" name="lastName" value="{{profileData[0][3]}}" />
+		</div>
+		<div class="form-group">
+			<!--<p>Address 1: <input type="text" name="address1" value={{profileData[4]}}></p>-->
+			<label for="address1">Address 1: </label>
+			<input type="text" class="form-control" id="address1" name="address1" value="{{profileData[0][4]}}" />
+		</div>
+		<div class="form-group">
+			<!--<p>Address 2: <input type="text" name="address2" value={{profileData[5]}}></p>-->
+			<label for="address2">Address 2: </label>
+			<input type="text" class="form-control" id="address2" name="address2" value="{{profileData[0][5]}}" />
+		</div>
+		<div class="form-group">
+			<!--<p>Zip Code: <input type="text" name="zipcode" value={{profileData[6]}}></p>-->
+			<label for="zipcode">Zip Code: </label>
+			<input type="text" class="form-control" id="zipcode" name="zipcode" value="{{profileData[0][6]}}" />
+		</div>
+		<div class="form-group">
+			<!--<p>City: <input type="text" name="city" value={{profileData[7]}}></p>-->
+			<label for="city">City: </label>
+			<input type="text" class="form-control" id="city" name="city" value="{{profileData[0][7]}}" />
+		</div>
+		<div class="form-group">
+			<!--<p>State: <input type="text" name="state" value={{profileData[8]}}></p>-->
+			<label for="province">Province: </label>
+			<input type="text" class="form-control" id="province" name="province" value="{{profileData[0][8]}}" />
+		</div>
+		<div class="form-group">
+			<!--<p>Country: <input type="text" name="country" value={{profileData[9]}}></p>-->
+			<label for="country">Country: </label>
+			<input type="text" class="form-control" id="country" name="country" value="{{profileData[0][9]}}" />
+		</div>
+		<div class="form-group">
+			<!--<p>Phone Number: <input type="text" name="phone" value={{profileData[10]}}></p>-->
+			<label for="phone">Phone Number: </label>
+			<input type="text" class="form-control" id="phone" name="phone" value="{{profileData[0][10]}}" />
+		</div>
+		<button type="submit" class="btn btn-info">Save</button><br><br>
+	</form>
+</div>
+</body>
+</html>
+
