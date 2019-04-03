@@ -267,7 +267,7 @@
 					<div class="occasion-cart" >
 {#						<h5>Check delivery, payment options and charges at your location</h5>#}
 {#						<input type="text" value="Enter pincode" onFocus="this.value = '';" onBlur="if (this.value == '') {this.value = 'Enter pincode';}" required="">#}
-                        <a href="#" data-toggle="modal" data-target="#my_try_on_modal" class= "item_add hvr-outline-out button2" id="try">try on me</a>
+                        <a href="#" data-toggle="modal" data-target="#my_try_on_modal" class= "item_add hvr-outline-out button2">try on me</a>
 					</div>
                     <div>
                         <br>
@@ -622,19 +622,6 @@
 </style>
 
 <script type="application/javascript">
-    var category = {{ data[0]['categoryId'] }};
-
-    if (category != 1 && category != 2){
-        {#alert(category);#}
-        {#$('#try').style.visibility = "hidden";#}
-        document.getElementById("try").style.visibility = "hidden";
-    }
-
-
-
-
-
-
 
     $("#img_input").on("change", function(e) {
 
@@ -642,7 +629,6 @@
 
         var formdata = new FormData();
         formdata.append("image",e.target.files[0]);
-        formdata.append("productId",{{ data[0]['productId'] }});
         alert(formdata);
         $.ajax({
             url: '/makeup',

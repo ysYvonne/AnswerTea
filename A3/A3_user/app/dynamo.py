@@ -547,9 +547,3 @@ def products_productId_categoryId(categoryId):
         records.append([[i['productId'], i['productName'], i['price'], imageurl]])
 
     return records
-
-
-    # for i in response['Items']:
-    #     records.append(i)
-    #
-    # return records

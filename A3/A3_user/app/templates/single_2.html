@@ -267,7 +267,9 @@
 					<div class="occasion-cart" >
 {#						<h5>Check delivery, payment options and charges at your location</h5>#}
 {#						<input type="text" value="Enter pincode" onFocus="this.value = '';" onBlur="if (this.value == '') {this.value = 'Enter pincode';}" required="">#}
-                        <a href="#" data-toggle="modal" data-target="#my_try_on_modal" class= "item_add hvr-outline-out button2" id="try">try on me</a>
+                        <a href="#" data-toggle="modal" data-target="#my_try_on_modal" class= "item_add hvr-outline-out button2">try on me</a>
+
+{#                        <a href= {{url_for('face_makeup',category_id=1)}}, id="face_makeup"></a>#}
 					</div>
                     <div>
                         <br>
@@ -303,7 +305,7 @@
 					<div class="occasion-cart">
 						<a href= '{{url_for('addToCart',productId=data[0]['productId'])}}'  class= "item_add hvr-outline-out button2">Add to cart</a>
 					</div>
-
+					
 		</div>
 				<div class="clearfix"> </div>
 
@@ -323,8 +325,8 @@
 						<div id="myTabContent" class="tab-content">
 							<div role="tabpanel" class="tab-pane fade in active bootstrap-tab-text" id="home" aria-labelledby="home-tab">
 								<h5>Product Brief Description</h5>
-								<p>Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica. Reprehenderit butcher retro keffiyeh dreamcatcher synth. Cosby sweater eu banh mi, qui irure terry richardson ex squid. Aliquip placeat salvia cillum iphone. Seitan aliquip quis cardigan american apparel, butcher voluptate nisi qui.
-									<span>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</span></p>
+								<p>ter cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica. Reprehenderit butcher retro keffiyeh dreamcatcher synth. Cosby sweater eu banh mi, qui irure terry richardson ex squid. Aliquip placeat salvia cillum iphone. Seitan aliquip quis cardigan american apparel, butcher voluptate nisi qui.
+{#									<span>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</span></p>#}
 							</div>
 							<div role="tabpanel" class="tab-pane fade bootstrap-tab-text" id="profile" aria-labelledby="profile-tab">
 								<div class="bootstrap-tab-text-grids">
@@ -337,19 +339,19 @@
 												<li><a href="#">Admin</a></li>
 												<li><a href="#"><span class="glyphicon glyphicon-share" aria-hidden="true"></span>Reply</a></li>
 											</ul>
-											<p>Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis
-												suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem
+											<p>Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis 
+												suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem 
 												vel eum iure reprehenderit.</p>
 										</div>
 										<div class="clearfix"> </div>
 									</div>
-
+									
 									<div class="add-review">
 										<h4>add a review</h4>
 										<form>
 											<input type="text" value="Name" onFocus="this.value = '';" onBlur="if (this.value == '') {this.value = 'Name';}" required="">
 											<input type="email" value="Email" onFocus="this.value = '';" onBlur="if (this.value == '') {this.value = 'Email';}" required="">
-
+											
 											<textarea type="text" onFocus="this.value = '';" onBlur="if (this.value == '') {this.value = 'Message...';}" required="">Message...</textarea>
 											<input type="submit" value="SEND">
 										</form>
@@ -546,15 +548,28 @@
 									<div class="login-bottom">
 
 										<h3>Upload Your Photo</h3>
-										<form id="uploadForm">
-                                            <input id="img_input" type="file" name="img_input" accept="image/*"/>
-                                            <label for="img_input" id="img_label">UPLOAD NOW
+
+                                       <!--<form id="my_form">-->
+										<form action="{{ url_for('makeup') }}" enctype="multipart/form-data" method="post" id="my_form">
+
+										   <!--<input id="img_input" name="img_input"  type="file" accept="image/*"/>-->
+
+                                            <input style="display: none" id="product_id" name="product_id" value="{{ data[0]['productId'] }}">
+
+											<label for="img_input" id="img_label">Choose Photo
                                             <i class="fa fa-plus fa-lg"></i>
                                             </label>
+										    <input id="img_input" type="file" name="img_input">
+
+											<input id="img_submit" type="submit" value="Apply Color">
+
 										</form>
+
+{#                                        <form action="{{ url_for('makeup') }}" enctype="multipart/form-data" method="post">#}
                                         <div id="_box" style="height: 300px; width: 200px">
 
                                         </div>
+{#                                        </form>#}
                                     </div>
                                 </div>
 
@@ -562,25 +577,10 @@
 									<div class="login-right">
 										<h3>Product Review</h3>
 										<form>
-{#											<div class="sign-in">#}
-{#												<h4>Email :</h4>#}
-{#												<input type="text" value="Type here" onFocus="this.value = '';" onBlur="if (this.value == '') {this.value = 'Type here';}" required="">#}
-{#											</div>#}
-{#											<div class="sign-in">#}
-{#												<h4>Password :</h4>#}
-{#												<input type="password" value="Password" onFocus="this.value = '';" onBlur="if (this.value == '') {this.value = 'Password';}" required="">#}
-{#												<a href="#">Forgot password?</a>#}
-{#											</div>#}
-{#											<div class="single-bottom">#}
-{#												<input type="checkbox"  id="brand" value="">#}
-{#												<label for="brand"><span></span>Remember Me.</label>#}
-{#											</div>#}
-{#											<div class="sign-in">#}
-{#												<input type="submit" value="SIGNIN" >#}
-{#											</div>#}
-										</form>
 
-                                        <div id="return_box" style="height: 300px; width: 200px">
+
+										</form>
+                                         <div id="return_box" style="height: 300px; width: 200px">
 
                                         </div>
 									</div>
@@ -608,7 +608,7 @@
 }
 
 
-#_box #return_box img {
+#_box img {
   width: 200px;
 
   height: 300px;
@@ -622,170 +622,75 @@
 </style>
 
 <script type="application/javascript">
-    var category = {{ data[0]['categoryId'] }};
+var image_input
+<!--$("#img_input").on("change", function(e) {-->
 
-    if (category != 1 && category != 2){
-        {#alert(category);#}
-        {#$('#try').style.visibility = "hidden";#}
-        document.getElementById("try").style.visibility = "hidden";
-    }
+        <!--var file = e.target.files[0]; //获取图片资源-->
+        <!--{#alert("0000000000");#}-->
 
 
+  <!--// 只选择图片文件-->
+        <!--if (!file.type.match('image.*')) {-->
+            <!--return false;-->
+        <!--}-->
+
+        <!--var reader = new FileReader();-->
+
+        <!--reader.readAsDataURL(file); // 读取文件-->
 
 
+  <!--// 渲染文件-->
+        <!--reader.onload = function(arg) {-->
+            <!--{#alert("0000000000");#}-->
+            <!--var img = '<img class="preview" src="' + arg.target.result + '" alt="preview"/>';-->
+            <!--var image_input = arg.target.result;-->
+            <!--alert(image_input)-->
 
+             <!--$("#_box").empty().append(img);-->
 
+             <!--$("#my_form").submit();-->
 
-    $("#img_input").on("change", function(e) {
+             <!--{#var return_img = '<img class="preview" src="' + {{ image_data }} + '" alt="preview"/>';#}-->
 
-        var file = e.target.files[0]; //获取图片资源
+             <!--{#$.ajax({#}-->
+             <!--{# type:'POST',#}-->
+             <!--{# dataType:'json',#}-->
+             <!--{# async: false,#}-->
+             <!--{# url: 'makeup',#}-->
+             <!--{#data:{#}-->
+             <!--{#  product_id: '{{ data[0]['productId'] }}'#}-->
 
-        var formdata = new FormData();
-        formdata.append("image",e.target.files[0]);
-        formdata.append("productId",{{ data[0]['productId'] }});
-        alert(formdata);
-        $.ajax({
-            url: '/makeup',
-            type: 'post',
-            data: formdata,
-            processData: false,
-            contentType: false,
-            success: function (msg) {
-                alert(msg);
-                var return_img = '<img class="preview" src="' + msg + '" alt="preview"/>';
-
-                $("#return_box").empty().append(return_img);
-            },
-            error:function(data){
-               alert('上传图片出错');
-           }
-        });
-
-        {#var return_img = '<img class="preview" src="' + msg + '" alt="preview"/>';#}
-        {##}
-        {#$("#return_box").empty().append(img);#}
-
-
-
-        if (!file.type.match('image.*')) {
-            return false;
-        }
-
-        var reader = new FileReader();
-
-        reader.readAsDataURL(file); // 读取文件
-
-        {#$("#uploadForm").submit()#}
-  // 渲染文件
-        reader.onload = function(arg) {
-            {#var formData = new FormData();#}
-            {#formData.append("imageInput", $("#img_input").files[0]);#}
-            {#alert($("#img_input").file[0]);#}
-            {#alert('{{ data[0]['productId'] }}');#}
-            var img = '<img class="preview" src="' + arg.target.result + '" alt="preview"/>';
-
-             $("#_box").empty().append(img);
-
-
-             {#$(this).parent().submit();#}
-             {#$.ajax({#}
-             {#      type: 'POST',#}
-             {#      dataType: 'json',#}
-             {#      async: false,#}
-             {#      url: 'makeup',#}
-             {#      data: {#}
-             {#          product_id: '{{ data[0]['productId'] }}',#}
-             {#          image_input: new FormData($('#uploadForm')[0])#}
-             {#      },#}
-             {#      processData: false,#}
-             {#       contentType:  false,#}
-             {#      success: function (data) {#}
-             {#          alert(data);#}
-             {#          var return_img = '<img class="preview" src="' + data + '" alt="preview"/>';#}
-             {##}
-             {#           $("#return_box").empty().append(return_img);#}
-             {##}
-             {#      },#}
-             {#      error: function () {#}
-             {#          alert('wrong');#}
-             {#      }#}
-             {##}
-             {#   });#}
-            {#$(this).ajaxSubmit({#}
-            {#   type:'POST',#}
-            {#   url: 'makeup',#}
-            {#   dataType: 'json',#}
-            {#   data: serializeData,#}
-            {#   // data: formData,#}
-            {##}
-            {#   //attention!!!#}
-            {#   contentType: false,#}
-            {#   cache: false,#}
-            {#   processData:false,#}
-            {##}
-            {#   beforeSubmit: function() {#}
-            {#        //上传图片之前的处理#}
-            {#   },#}
-            {#   uploadProgress: function (event, position, total, percentComplete){#}
-            {#       //在这里控制进度条#}
-            {#   },#}
-            {#   success:function(){#}
-            {##}
-            {#   },#}
-            {#   error:function(data){#}
-            {#       alert('上传图片出错');#}
-            {#   }#}
+             <!--{# success: function (data) {#}-->
+             <!--{#       alert(data);#}-->
+                <!--{#$("#_return_box").empty().append(return_img);#}-->
+             <!--{##}-->
+             <!--{# },#}-->
+             <!--{# error: function () {#}-->
+             <!--{#     alert('wrong');#}-->
+             <!--{# }#}-->
 
 
 
-
-        }
-    });
-
-
-    {#$("#uploadForm").submit();#}
-
-    $('#uploadForm').on('submit',(function(e) {
-   	    e.preventDefault();
-   	//序列化表单
-        var serializeData = '';
-        $(document).ready(function(){
-            alert($('#uploadForm').textContent)
-            serializeData = $('#uploadForm').serialize();
-
-            alert(serializeData);
-        $.ajax({
-           type:'POST',
-           url: 'makeup',
-           dataType: 'json',
-           data: serializeData,
-           // data: formData,
-
-           //attention!!!
-           contentType: false,
-           cache: false,
-           processData:false,
-
-           beforeSubmit: function() {
-           		//上传图片之前的处理
-           },
-           uploadProgress: function (event, position, total, percentComplete){
-               //在这里控制进度条
-           },
-           success:function(data){
-                alert(data)
-           },
-           error:function(data){
-               alert('上传图片出错');
-           }
-       });
-
-        });
+             <!--{#$("#_return_box").empty().append(return_img);#}-->
+        <!--}-->
+    <!--});-->
 
 
-      // var formData = new FormData(this);
 
-   }));
-
-
+ $('#my_form').on('submit', function(event) {
+     alert("submit file");
+               $.ajax({
+                  data : {
+                     productId : $('#product_id').val()
+                     imageInput: $('#img_input').val()
+                         },
+                     type : 'POST',
+                     url : '/makeup'
+                    })
+                .done(function(data) {
+                  {#$('#output').text(data.output).show();#}
+                    alert(data);
+              });
+              event.preventDefault();
+              });
 </script>

@@ -447,22 +447,21 @@ def categories_list():
 @app.route("/makeup",methods=["POST"])
 def makeup():
 
-    # product_id = request.form['productId']
-    # image_file = request.files['imageInput']
-
-    # print(image_file)
-    product_id = request.form['product_id']
-    image_file = request.files['img_input']
+    product_id = request.form['productId']
+    image_file = request.files['image']
     print(image_file)
 
-    process_face(product_id, image_file)
+    imageUrl = process_face(product_id, image_file)
 
-    # test = product_id
-
-    # return jsonify(test)
-    return 0
+    return jsonify(imageUrl)
 
 def process_face(product_id, image_file):
+
+    productData = dynamo.products_productId_search(int(product_id))
+    categoryId = productData[0]['categoryId']
+    rgb = productData[0]['RGB']
+    # categoryId, rgb = dynamo.get_categoryId_from_productId(product_id)
+    RGB = rgb.split('/')
 
     filename = secure_filename(image_file.filename)
 
@@ -483,7 +482,12 @@ def process_face(product_id, image_file):
     imageUrl = s3_config.get_face_from_bucket(a3BucketName, filename)
 
     AM = ApplyMakeup()
-    output_img_stream = AM.apply_lipstick(imageUrl, 255, 255, 0)  # (R,G,B) - (170,10,30)
+
+    if categoryId == 1:
+        output_img_stream = AM.apply_lipstick(imageUrl, int(RGB[0]), int(RGB[1]), int(RGB[2]))  # (R,G,B) - (170,10,30)
+    elif categoryId == 2:
+        output_img_stream = AM.apply_blush(imageUrl, int(RGB[0]), int(RGB[1]), int(RGB[2]))  # (R,G,B) - (170,10,30)
+
 
     # upload after pic to s3
     fn = filename.split('.')
