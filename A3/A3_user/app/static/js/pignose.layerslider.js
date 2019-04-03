@@ -15,7 +15,7 @@
 				var _this = this;
 
 				this.settings = $.extend({
-					speed       : 1200,
+					speed       : 1500,
 					interval    : 3000,
 					direction   : 'right',
 					easing      : 'easeInOutExpo',

@@ -31,32 +31,32 @@ def logout():
 @webapp.route('/login', methods=['GET', 'POST'])
 def login():
 
-    # # send data to metric
-    instance_id = urllib.request.urlopen('http://169.254.169.254/latest/meta-data/instance-id').read().decode()
-    print(instance_id)
-
-    print(datetime.utcnow());
-    cwclient = boto3.client("cloudwatch")
-
-    response = cwclient.put_metric_data(
-        Namespace=namespace,
-        MetricData=[
-            {
-                'MetricName': custom_metric_name,
-                'Dimensions': [
-                    {
-                        'Name': 'InstanceId',
-                        'Value': instance_id
-                    },
-                ],
-                'Timestamp': datetime.utcnow(),
-                'Value': 1.0,
-                'Unit': 'None',
-            },
-        ]
-
-    )
-    print(response)
+    # # # send data to metric
+    # instance_id = urllib.request.urlopen('http://169.254.169.254/latest/meta-data/instance-id').read().decode()
+    # print(instance_id)
+    #
+    # print(datetime.utcnow());
+    # cwclient = boto3.client("cloudwatch")
+    #
+    # response = cwclient.put_metric_data(
+    #     Namespace=namespace,
+    #     MetricData=[
+    #         {
+    #             'MetricName': custom_metric_name,
+    #             'Dimensions': [
+    #                 {
+    #                     'Name': 'InstanceId',
+    #                     'Value': instance_id
+    #                 },
+    #             ],
+    #             'Timestamp': datetime.utcnow(),
+    #             'Value': 1.0,
+    #             'Unit': 'None',
+    #         },
+    #     ]
+    #
+    # )
+    # print(response)
 
     uname = None
     e = None

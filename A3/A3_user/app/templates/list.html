@@ -37,7 +37,7 @@
 		<ul>
 			<li><span class="glyphicon glyphicon-time" aria-hidden="true"></span>Free and Fast Delivery</li>
 			<li><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>Free shipping On all orders</li>
-			<li><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span><a href="mailto:info@example.com">info@example.com</a></li>
+			<li><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span><a href="mailto:xue.geng@mail.utoronto.ca">xue.geng@mail.utoronto.ca</a></li>
 		</ul>
 	</div>
 </div>
@@ -46,7 +46,7 @@
 <div class="header-bot">
 	<div class="container">
 		<div class="col-md-3 header-left">
-			<h1><a href="index.html"><img src="images/logo3.jpg"></a></h1>
+			<h1><a href=""><img src="{{url_for('static', filename='images/1779-logo.png')}}"></a></h1>
 		</div>
 		<div class="col-md-6 header-middle">
 			<form>
@@ -108,7 +108,7 @@
 							<ul class="dropdown-menu multi-column columns-3">
 								<div class="row">
 									<div class="col-sm-6 multi-gd-img1 multi-gd-text ">
-										<a href="mens.html"><img src="images/woo1.jpg" alt=" "/></a>
+										<a href="mens.html"><img src=  "{{url_for('static', filename='images/woo1.jpg')}}" alt=" "/></a>
 									</div>
 									<div class="col-sm-3 multi-gd-img">
 										<ul class="multi-column-dropdown">
@@ -127,9 +127,9 @@
 											<li><a href="mens.html">Sunglasses</a></li>
 											<li><a href="mens.html">Perfumes</a></li>
 											<li><a href="mens.html">Beauty</a></li>
-											<li><a href="mens.html">Shirts</a></li>
-											<li><a href="mens.html">Sunglasses</a></li>
-											<li><a href="mens.html">Swimwear</a></li>
+{#											<li><a href="mens.html">Shirts</a></li>#}
+{#											<li><a href="mens.html">Sunglasses</a></li>#}
+{#											<li><a href="mens.html">Swimwear</a></li>#}
 										</ul>
 									</div>
 									<div class="clearfix"></div>
@@ -144,22 +144,22 @@
 										<ul class="multi-column-dropdown">
 											<li><a href= {{url_for('categories_list',category_id=1)}} >kathleenLights</a></li>
 											<li><a href="womens.html">Tati</a></li>
-											<li><a href="womens.html">JefferyStar</a></li>
+											<li><a href="womens.html">JeffreeStar</a></li>
 											<li><a href="womens.html">Nikki Tutorial</a></li>
-											<li><a href="womens.html">xxxxxxxx</a></li>
-											<li><a href="womens.html">xxxxxxxx</a></li>
-											<li><a href="womens.html">xxxxxxxx</a></li>
+											<li><a href="womens.html">Jaclyn Hill</a></li>
+											<li><a href="womens.html">Karima McKimmie</a></li>
+											<li><a href="womens.html">oh emma</a></li>
 										</ul>
 									</div>
 									<div class="col-sm-3 multi-gd-img">
 										<ul class="multi-column-dropdown">
-											<li><a href="womens.html">xxxxxxxx</a></li>
-											<li><a href="womens.html">xxxxxxxx</a></li>
-											<li><a href="womens.html">xxxxxxxx</a></li>
-											<li><a href="womens.html">xxxxxxxx</a></li>
-											<li><a href="womens.html">xxxxxxxx</a></li>
-											<li><a href="womens.html">xxxxxxxx</a></li>
-											<li><a href="womens.html">xxxxxxxx</a></li>
+											<li><a href="womens.html">Tina Yong</a></li>
+											<li><a href="womens.html">Vicky Soupsss</a></li>
+											<li><a href="womens.html">Rainie Tian</a></li>
+{#											<li><a href="womens.html">xxxxxxxx</a></li>#}
+{#											<li><a href="womens.html">xxxxxxxx</a></li>#}
+{#											<li><a href="womens.html">xxxxxxxx</a></li>#}
+{#											<li><a href="womens.html">xxxxxxxx</a></li>#}
 										</ul>
 									</div>
 									<div class="col-sm-6 multi-gd-img multi-gd-text ">
@@ -169,18 +169,19 @@
 								</div>
 							</ul>
 					</li>
-					<li class=" menu__item"><a class="menu__link" href="electronics.html">Electronics</a></li>
-					<li class=" menu__item"><a class="menu__link" href="codes.html">Short Codes</a></li>
-					<li class=" menu__item"><a class="menu__link" href="contact.html">contact</a></li>
+{#					<li class=" menu__item"><a class="menu__link" href="electronics.html">Electronics</a></li>#}
+{#					<li class=" menu__item"><a class="menu__link" href="codes.html">Short Codes</a></li>#}
+					<li class=" menu__item"><a class="menu__link" href="">contact</a></li>
 				  </ul>
 				</div>
+
 			  </div>
 			</nav>
 		</div>
 		<!-- shopping cart  -->
 		<div class="top_nav_right">
 			<div class="cart box_1">
-						<a href= {{url_for('productDescription',productId=1)}} >
+						<a href= {{url_for('cart',productId=1)}} >
 							<h3> <div class="total">
 								<i class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></i>
 								<span class="simpleCart_total"></span> (<span id="simpleCart_quantity" class="simpleCart_quantity"></span> items)</div>
@@ -207,160 +208,165 @@
 <!-- mens -->
 <div class="men-wear">
 	<div class="container">
-		<div class="col-md-4 products-left">
-			<div class="filter-price">
-				<h3>Filter By Price</h3>
-					<ul class="dropdown-menu6">
-						<li>                
-							<div id="slider-range"></div>							
-							<input type="text" id="amount" style="border: 0; color: #ffffff; font-weight: normal;" />
-						</li>			
-					</ul>
-							<!---->
-							<script type='text/javascript'>//<![CDATA[ 
-							$(window).load(function(){
-							 $( "#slider-range" ).slider({
-										range: true,
-										min: 0,
-										max: 9000,
-										values: [ 1000, 7000 ],
-										slide: function( event, ui ) {  $( "#amount" ).val( "$" + ui.values[ 0 ] + " - $" + ui.values[ 1 ] );
-										}
-							 });
-							$( "#amount" ).val( "$" + $( "#slider-range" ).slider( "values", 0 ) + " - $" + $( "#slider-range" ).slider( "values", 1 ) );
-
-							});//]]>  
-
-							</script>
-						<script type="text/javascript" src="js/jquery-ui.js"></script>
-					 <!---->
-			</div>
-			<div class="css-treeview">
-				<h4>Categories</h4>
-				<ul class="tree-list-pad">
-					<li><input type="checkbox" checked="checked" id="item-0" /><label for="item-0"><span></span>Men's Wear</label>
-						<ul>
-							<li><input type="checkbox" id="item-0-0" /><label for="item-0-0">Ethinic Wear</label>
-								<ul>
-									<li><a href="mens.html">Shirts</a></li>
-									<li><a href="mens.html">Caps</a></li>
-									<li><a href="mens.html">Shoes</a></li>
-									<li><a href="mens.html">Pants</a></li>
-									<li><a href="mens.html">SunGlasses</a></li>
-									<li><a href="mens.html">Trousers</a></li>
-								</ul>
-							</li>
-							<li><input type="checkbox"  id="item-0-1" /><label for="item-0-1">Party Wear</label>
-								<ul>
-									<li><a href="mens.html">Shirts</a></li>
-									<li><a href="mens.html">Caps</a></li>
-									<li><a href="mens.html">Shoes</a></li>
-									<li><a href="mens.html">Pants</a></li>
-									<li><a href="mens.html">SunGlasses</a></li>
-									<li><a href="mens.html">Trousers</a></li>
-								</ul>
-							</li>
-							<li><input type="checkbox"  id="item-0-2" /><label for="item-0-2">Casual Wear</label>
-								<ul>
-									<li><a href="mens.html">Shirts</a></li>
-									<li><a href="mens.html">Caps</a></li>
-									<li><a href="mens.html">Shoes</a></li>
-									<li><a href="mens.html">Pants</a></li>
-									<li><a href="mens.html">SunGlasses</a></li>
-									<li><a href="mens.html">Trousers</a></li>
-								</ul>
-							</li>
-						</ul>
-					</li>
-					<li><input type="checkbox" id="item-1" checked="checked" /><label for="item-1">Best Collections</label>
-						<ul>
-							<li><input type="checkbox" checked="checked" id="item-1-0" /><label for="item-1-0">New Arrivals</label>
-								<ul>
-									<li><a href="mens.html">Shirts</a></li>
-									<li><a href="mens.html">Shoes</a></li>
-									<li><a href="mens.html">Pants</a></li>
-									<li><a href="mens.html">SunGlasses</a></li>
-								</ul>
-							</li>
-							
-						</ul>
-					</li>
-					<li><input type="checkbox" checked="checked" id="item-2" /><label for="item-2">Best Offers</label>
-						<ul>
-							<li><input type="checkbox"  id="item-2-0" /><label for="item-2-0">Summer Discount Sales</label>
-								<ul>
-									<li><a href="mens.html">Shirts</a></li>
-									<li><a href="mens.html">Shoes</a></li>
-									<li><a href="mens.html">Pants</a></li>
-									<li><a href="mens.html">SunGlasses</a></li>
-								</ul>
-							</li>
-							<li><input type="checkbox" id="item-2-1" /><label for="item-2-1">Exciting Offers</label>
-								<ul>
-									<li><a href="mens.html">Shirts</a></li>
-									<li><a href="mens.html">Shoes</a></li>
-									<li><a href="mens.html">Pants</a></li>
-									<li><a href="mens.html">SunGlasses</a></li>
-								</ul>
-							</li>
-							<li><input type="checkbox" id="item-2-2" /><label for="item-2-2">Flat Discounts</label>
-								<ul>
-									<li><a href="mens.html">Shirts</a></li>
-									<li><a href="mens.html">Shoes</a></li>
-									<li><a href="mens.html">Pants</a></li>
-									<li><a href="mens.html">SunGlasses</a></li>
-								</ul>
-							</li>
-						</ul>
-					</li>
-				</ul>
-			</div>
-			<div class="community-poll">
-				<h4>Community Poll</h4>
-				<div class="swit form">	
-					<form>
-					<div class="check_box"> <div class="radio"> <label><input type="radio" name="radio" checked=""><i></i>More convenient for shipping and delivery</label> </div></div>
-					<div class="check_box"> <div class="radio"> <label><input type="radio" name="radio"><i></i>Lower Price</label> </div></div>
-					<div class="check_box"> <div class="radio"> <label><input type="radio" name="radio"><i></i>Track your item</label> </div></div>
-					<div class="check_box"> <div class="radio"> <label><input type="radio" name="radio"><i></i>Bigger Choice</label> </div></div>
-					<div class="check_box"> <div class="radio"> <label><input type="radio" name="radio"><i></i>More colors to choose</label> </div></div>	
-					<div class="check_box"> <div class="radio"> <label><input type="radio" name="radio"><i></i>Secured Payment</label> </div></div>
-					<div class="check_box"> <div class="radio"> <label><input type="radio" name="radio"><i></i>Money back guaranteed</label> </div></div>	
-					<div class="check_box"> <div class="radio"> <label><input type="radio" name="radio"><i></i>Others</label> </div></div>		
-					<input type="submit" value="SEND">
-					</form>
-				</div>
-			</div>
-			<div class="clearfix"></div>
-		</div>
+{#		<div class="col-md-4 products-left">#}
+{#			<div class="filter-price">#}
+{#				<h3>Filter By Price</h3>#}
+{#					<ul class="dropdown-menu6">#}
+{#						<li>                #}
+{#							<div id="slider-range"></div>							#}
+{#							<input type="text" id="amount" style="border: 0; color: #ffffff; font-weight: normal;" />#}
+{#						</li>			#}
+{#					</ul>#}
+{#							<!---->#}
+{#							<script type='text/javascript'>//<![CDATA[ #}
+{#							$(window).load(function(){#}
+{#							 $( "#slider-range" ).slider({#}
+{#										range: true,#}
+{#										min: 0,#}
+{#										max: 9000,#}
+{#										values: [ 1000, 7000 ],#}
+{#										slide: function( event, ui ) {  $( "#amount" ).val( "$" + ui.values[ 0 ] + " - $" + ui.values[ 1 ] );#}
+{#										}#}
+{#							 });#}
+{#							$( "#amount" ).val( "$" + $( "#slider-range" ).slider( "values", 0 ) + " - $" + $( "#slider-range" ).slider( "values", 1 ) );#}
+{##}
+{#							});//]]>  #}
+{##}
+{#							</script>#}
+{#						<script type="text/javascript" src="js/jquery-ui.js"></script>#}
+{#					 <!---->#}
+{#			</div>#}
+{#            left side1#}
+{#			<div class="css-treeview">#}
+{#				<h4>Categories</h4>#}
+{#				<ul class="tree-list-pad">#}
+{#					<li><input type="checkbox" checked="checked" id="item-0" /><label for="item-0"><span></span>Men's Wear</label>#}
+{#						<ul>#}
+{#							<li><input type="checkbox" id="item-0-0" /><label for="item-0-0">Ethinic Wear</label>#}
+{#								<ul>#}
+{#									<li><a href="mens.html">Shirts</a></li>#}
+{#									<li><a href="mens.html">Caps</a></li>#}
+{#									<li><a href="mens.html">Shoes</a></li>#}
+{#									<li><a href="mens.html">Pants</a></li>#}
+{#									<li><a href="mens.html">SunGlasses</a></li>#}
+{#									<li><a href="mens.html">Trousers</a></li>#}
+{#								</ul>#}
+{#							</li>#}
+{#							<li><input type="checkbox"  id="item-0-1" /><label for="item-0-1">Party Wear</label>#}
+{#								<ul>#}
+{#									<li><a href="mens.html">Shirts</a></li>#}
+{#									<li><a href="mens.html">Caps</a></li>#}
+{#									<li><a href="mens.html">Shoes</a></li>#}
+{#									<li><a href="mens.html">Pants</a></li>#}
+{#									<li><a href="mens.html">SunGlasses</a></li>#}
+{#									<li><a href="mens.html">Trousers</a></li>#}
+{#								</ul>#}
+{#							</li>#}
+{#							<li><input type="checkbox"  id="item-0-2" /><label for="item-0-2">Casual Wear</label>#}
+{#								<ul>#}
+{#									<li><a href="mens.html">Shirts</a></li>#}
+{#									<li><a href="mens.html">Caps</a></li>#}
+{#									<li><a href="mens.html">Shoes</a></li>#}
+{#									<li><a href="mens.html">Pants</a></li>#}
+{#									<li><a href="mens.html">SunGlasses</a></li>#}
+{#									<li><a href="mens.html">Trousers</a></li>#}
+{#								</ul>#}
+{#							</li>#}
+{#						</ul>#}
+{#					</li>#}
+{#					<li><input type="checkbox" id="item-1" checked="checked" /><label for="item-1">Best Collections</label>#}
+{#						<ul>#}
+{#							<li><input type="checkbox" checked="checked" id="item-1-0" /><label for="item-1-0">New Arrivals</label>#}
+{#								<ul>#}
+{#									<li><a href="mens.html">Shirts</a></li>#}
+{#									<li><a href="mens.html">Shoes</a></li>#}
+{#									<li><a href="mens.html">Pants</a></li>#}
+{#									<li><a href="mens.html">SunGlasses</a></li>#}
+{#								</ul>#}
+{#							</li>#}
+{#							#}
+{#						</ul>#}
+{#					</li>#}
+{#					<li><input type="checkbox" checked="checked" id="item-2" /><label for="item-2">Best Offers</label>#}
+{#						<ul>#}
+{#							<li><input type="checkbox"  id="item-2-0" /><label for="item-2-0">Summer Discount Sales</label>#}
+{#								<ul>#}
+{#									<li><a href="mens.html">Shirts</a></li>#}
+{#									<li><a href="mens.html">Shoes</a></li>#}
+{#									<li><a href="mens.html">Pants</a></li>#}
+{#									<li><a href="mens.html">SunGlasses</a></li>#}
+{#								</ul>#}
+{#							</li>#}
+{#							<li><input type="checkbox" id="item-2-1" /><label for="item-2-1">Exciting Offers</label>#}
+{#								<ul>#}
+{#									<li><a href="mens.html">Shirts</a></li>#}
+{#									<li><a href="mens.html">Shoes</a></li>#}
+{#									<li><a href="mens.html">Pants</a></li>#}
+{#									<li><a href="mens.html">SunGlasses</a></li>#}
+{#								</ul>#}
+{#							</li>#}
+{#							<li><input type="checkbox" id="item-2-2" /><label for="item-2-2">Flat Discounts</label>#}
+{#								<ul>#}
+{#									<li><a href="mens.html">Shirts</a></li>#}
+{#									<li><a href="mens.html">Shoes</a></li>#}
+{#									<li><a href="mens.html">Pants</a></li>#}
+{#									<li><a href="mens.html">SunGlasses</a></li>#}
+{#								</ul>#}
+{#							</li>#}
+{#						</ul>#}
+{#					</li>#}
+{#				</ul>#}
+{#			</div>#}
+{##}
+{#            left side2#}
+{#			<div class="community-poll">#}
+{#				<h4>Community Poll</h4>#}
+{#				<div class="swit form">	#}
+{#					<form>#}
+{#					<div class="check_box"> <div class="radio"> <label><input type="radio" name="radio" checked=""><i></i>More convenient for shipping and delivery</label> </div></div>#}
+{#					<div class="check_box"> <div class="radio"> <label><input type="radio" name="radio"><i></i>Lower Price</label> </div></div>#}
+{#					<div class="check_box"> <div class="radio"> <label><input type="radio" name="radio"><i></i>Track your item</label> </div></div>#}
+{#					<div class="check_box"> <div class="radio"> <label><input type="radio" name="radio"><i></i>Bigger Choice</label> </div></div>#}
+{#					<div class="check_box"> <div class="radio"> <label><input type="radio" name="radio"><i></i>More colors to choose</label> </div></div>	#}
+{#					<div class="check_box"> <div class="radio"> <label><input type="radio" name="radio"><i></i>Secured Payment</label> </div></div>#}
+{#					<div class="check_box"> <div class="radio"> <label><input type="radio" name="radio"><i></i>Money back guaranteed</label> </div></div>	#}
+{#					<div class="check_box"> <div class="radio"> <label><input type="radio" name="radio"><i></i>Others</label> </div></div>		#}
+{#					<input type="submit" value="SEND">#}
+{#					</form>#}
+{#				</div>#}
+{#			</div>#}
+{#			<div class="clearfix"></div>#}
+{#		</div>#}
 		<div class="col-md-8 products-right">
-			<h5>Product Compare(0)</h5>
-			<div class="sort-grid">
-				<div class="sorting">
-					<h6>Sort By</h6>
-					<select id="country1" onChange="change_country(this.value)" class="frm-field required sect">
-						<option value="null">Default</option>
-						<option value="null">Name(A - Z)</option> 
-						<option value="null">Name(Z - A)</option>
-						<option value="null">Price(High - Low)</option>
-						<option value="null">Price(Low - High)</option>	
-						<option value="null">Model(A - Z)</option>
-						<option value="null">Model(Z - A)</option>					
-					</select>
-					<div class="clearfix"></div>
-				</div>
-				<div class="sorting">
-					<h6>Showing</h6>
-					<select id="country2" onChange="change_country(this.value)" class="frm-field required sect">
-						<option value="null">7</option>
-						<option value="null">14</option> 
-						<option value="null">28</option>					
-						<option value="null">35</option>								
-					</select>
-					<div class="clearfix"></div>
-				</div>
-				<div class="clearfix"></div>
-			</div>
+{#			<h5>Product Compare(0)</h5>#}
+{#			<div class="sort-grid">#}
+{#                #}
+{#				<div class="sorting">#}
+{#					<h6>Sort By</h6>#}
+{#					<select id="country1" onChange="change_country(this.value)" class="frm-field required sect">#}
+{#						<option value="null">Default</option>#}
+{#						<option value="null">Name(A - Z)</option> #}
+{#						<option value="null">Name(Z - A)</option>#}
+{#						<option value="null">Price(High - Low)</option>#}
+{#						<option value="null">Price(Low - High)</option>	#}
+{#						<option value="null">Model(A - Z)</option>#}
+{#						<option value="null">Model(Z - A)</option>					#}
+{#					</select>#}
+{#					<div class="clearfix"></div>#}
+{#				</div>#}
+{#				<div class="sorting">#}
+{#					<h6>Showing</h6>#}
+{#					<select id="country2" onChange="change_country(this.value)" class="frm-field required sect">#}
+{#						<option value="null">7</option>#}
+{#						<option value="null">14</option> #}
+{#						<option value="null">28</option>					#}
+{#						<option value="null">35</option>								#}
+{#					</select>#}
+{#					<div class="clearfix"></div>#}
+{#				</div>#}
+{#                #}
+{#				<div class="clearfix"></div>#}
+{#			</div>#}
 			<div class="men-wear-top">
 				<script src= {{url_for('static', filename='s/responsiveslides.min.js')}} ></script>
 				<script>
@@ -382,22 +388,22 @@
 							});
 						});
 				</script>
-				<div  id="top" class="callbacks_container">
-					<ul class="rslides" id="slider3">
-						<li>
-							<img class="img-responsive" src="images/men1.jpg" alt=" "/>
-						</li>
-						<li>
-							<img class="img-responsive" src="images/men2.jpg" alt=" "/>
-						</li>
-						<li>
-							<img class="img-responsive" src="images/men1.jpg" alt=" "/>
-						</li>
-						<li>
-							<img class="img-responsive" src="images/men2.jpg" alt=" "/>
-						</li>
-					</ul>
-				</div>
+{#				<div  id="top" class="callbacks_container">#}
+{#					<ul class="rslides" id="slider3">#}
+{#						<li>#}
+{#							<img class="img-responsive" src="images/men1.jpg" alt=" "/>#}
+{#						</li>#}
+{#						<li>#}
+{#							<img class="img-responsive" src="images/men2.jpg" alt=" "/>#}
+{#						</li>#}
+{#						<li>#}
+{#							<img class="img-responsive" src="images/men1.jpg" alt=" "/>#}
+{#						</li>#}
+{#						<li>#}
+{#							<img class="img-responsive" src="images/men2.jpg" alt=" "/>#}
+{#						</li>#}
+{#					</ul>#}
+{#				</div>#}
 				<div class="clearfix"></div>
 			</div>
 			<div class="men-wear-bottom">
@@ -414,77 +420,75 @@
 				</div>
 				<div class="clearfix"></div>
 			</div>
-				<div class="col-md-4 product-men no-pad-men">
-					<div class="men-pro-item simpleCart_shelfItem">
-						<div class="men-thumb-item">
-							<img src="images/ep2.png" alt="" class="pro-image-front">
-							<img src="images/ep2.png" alt="" class="pro-image-back">
-										<div class="men-cart-pro">
-											<div class="inner-men-cart-pro">
-												<a href="single.html" class="link-product-add-cart">Quick View</a>
-											</div>
-										</div>
-										<span class="product-new-top">New</span>
-										
-						</div>
-						<div class="item-info-product ">
-									<h4><a href="single.html">Watches</a></h4>
-									<div class="info-product-price">
-										<span class="item_price">$45.99</span>
-										<del>$69.71</del>
-									</div>
-									<a href="#" class="item_add single-item hvr-outline-out button2">Add to cart</a>									
-						</div>
-					</div>
-				</div>
-				<div class="col-md-4 product-men no-pad-men">
-					<div class="men-pro-item simpleCart_shelfItem">
-						<div class="men-thumb-item">
-							<img src="images/a2.png" alt="" class="pro-image-front">
-							<img src="images/a2.png" alt="" class="pro-image-back">
-										<div class="men-cart-pro">
-											<div class="inner-men-cart-pro">
-												<a href="single.html" class="link-product-add-cart">Quick View</a>
-											</div>
-										</div>
-										<span class="product-new-top">New</span>
-										
-						</div>
-						<div class="item-info-product ">
-									<h4><a href="single.html">Blazers</a></h4>
-									<div class="info-product-price">
-										<span class="item_price">$45.99</span>
-										<del>$69.71</del>
-									</div>
-									<a href="#" class="item_add single-item hvr-outline-out button2">Add to cart</a>									
-						</div>
-					</div>
-				</div>
-
-
-				<div class="col-md-4 product-men no-pad-men">
-					<div class="men-pro-item simpleCart_shelfItem">
-						<div class="men-thumb-item">
-							<img src="images/mw2.png" alt="" class="pro-image-front">
-							<img src="images/mw2.png" alt="" class="pro-image-back">
-										<div class="men-cart-pro">
-											<div class="inner-men-cart-pro">
-												<a href="single.html" class="link-product-add-cart">Quick View</a>
-											</div>
-										</div>
-										<span class="product-new-top">New</span>
-										
-						</div>
-						<div class="item-info-product ">
-									<h4><a href="single.html">Shirts</a></h4>
-									<div class="info-product-price">
-										<span class="item_price">$45.99</span>
-										<del>$69.71</del>
-									</div>
-									<a href="#" class="item_add single-item hvr-outline-out button2">Add to cart</a>									
-						</div>
-					</div>
-				</div>
+{#				<div class="col-md-4 product-men no-pad-men">#}
+{#					<div class="men-pro-item simpleCart_shelfItem">#}
+{#						<div class="men-thumb-item">#}
+{#							<img src="images/ep2.png" alt="" class="pro-image-front">#}
+{#							<img src="images/ep2.png" alt="" class="pro-image-back">#}
+{#										<div class="men-cart-pro">#}
+{#											<div class="inner-men-cart-pro">#}
+{#												<a href="single.html" class="link-product-add-cart">Quick View</a>#}
+{#											</div>#}
+{#										</div>#}
+{#										<span class="product-new-top">New</span>#}
+{#										#}
+{#						</div>#}
+{#						<div class="item-info-product ">#}
+{#									<h4><a href="single.html">Watches</a></h4>#}
+{#									<div class="info-product-price">#}
+{#										<span class="item_price">$45.99</span>#}
+{#										<del>$69.71</del>#}
+{#									</div>#}
+{#									<a href="#" class="item_add single-item hvr-outline-out button2">Add to cart</a>									#}
+{#						</div>#}
+{#					</div>#}
+{#				</div>#}
+{#				<div class="col-md-4 product-men no-pad-men">#}
+{#					<div class="men-pro-item simpleCart_shelfItem">#}
+{#						<div class="men-thumb-item">#}
+{#							<img src="images/a2.png" alt="" class="pro-image-front">#}
+{#							<img src="images/a2.png" alt="" class="pro-image-back">#}
+{#										<div class="men-cart-pro">#}
+{#											<div class="inner-men-cart-pro">#}
+{#												<a href="single.html" class="link-product-add-cart">Quick View</a>#}
+{#											</div>#}
+{#										</div>#}
+{#										<span class="product-new-top">New</span>#}
+{#										#}
+{#						</div>#}
+{#						<div class="item-info-product ">#}
+{#									<h4><a href="single.html">Blazers</a></h4>#}
+{#									<div class="info-product-price">#}
+{#										<span class="item_price">$45.99</span>#}
+{#										<del>$69.71</del>#}
+{#									</div>#}
+{#									<a href="#" class="item_add single-item hvr-outline-out button2">Add to cart</a>									#}
+{#						</div>#}
+{#					</div>#}
+{#				</div>#}
+{#				<div class="col-md-4 product-men no-pad-men">#}
+{#					<div class="men-pro-item simpleCart_shelfItem">#}
+{#						<div class="men-thumb-item">#}
+{#							<img src="images/mw2.png" alt="" class="pro-image-front">#}
+{#							<img src="images/mw2.png" alt="" class="pro-image-back">#}
+{#										<div class="men-cart-pro">#}
+{#											<div class="inner-men-cart-pro">#}
+{#												<a href="single.html" class="link-product-add-cart">Quick View</a>#}
+{#											</div>#}
+{#										</div>#}
+{#										<span class="product-new-top">New</span>#}
+{#										#}
+{#						</div>#}
+{#						<div class="item-info-product ">#}
+{#									<h4><a href="single.html">Shirts</a></h4>#}
+{#									<div class="info-product-price">#}
+{#										<span class="item_price">$45.99</span>#}
+{#										<del>$69.71</del>#}
+{#									</div>#}
+{#									<a href="#" class="item_add single-item hvr-outline-out button2">Add to cart</a>									#}
+{#						</div>#}
+{#					</div>#}
+{#				</div>#}
 				
 				<div class="clearfix"></div>
 		</div>
@@ -498,20 +502,20 @@
                         <div class="men-thumb-item">
 
 
-                                <img src= {{ data['image'] }} alt="" class="pro-image-front">
-                                <img src= {{ data['image'] }} alt="" class="pro-image-back">
+                                <img src= {{ data[0][3] }} alt="" class="pro-image-front">
+                                <img src= {{ data[0][3] }} alt="" class="pro-image-back">
                                 <div class="men-cart-pro">
                                     <div class="inner-men-cart-pro">
-                                        <a href= {{url_for('productDescription',productId=data['productId'])}} class="link-product-add-cart">Quick View</a>
+                                        <a href= {{url_for('productDescription',productId=data[0][0])}} class="link-product-add-cart">Quick View</a>
                                     </div>
                                 </div>
                                 <span class="product-new-top">New</span>
                         </div>
 
                         <div class="item-info-product ">
-                            <h4><a href= {{url_for('productDescription',productId=data['productId'])}} >{{ data['productName'] }}</a></h4>
+                            <h4><a href= {{url_for('productDescription',productId=data[0][0])}} >{{ data[0][1] }}</a></h4>
                             <div class="info-product-price">
-                                <span class="item_price">{{ data['price'] }}</span>
+                                <span class="item_price">{{ data[0][2] }}</span>
                                 <del>$69.71</del>
                             </div>
                             <a href="#" class="item_add single-item hvr-outline-out button2">Add to cart</a>
@@ -737,22 +741,22 @@
 <!-- footer -->
 <div class="footer">
 	<div class="container">
-		<div class="col-md-3 footer-left">
-			<h2><a href="index.html"><img src="images/logo3.jpg" alt=" " /></a></h2>
-			<p>Neque porro quisquam est, qui dolorem ipsum quia dolor
-			sit amet, consectetur, adipisci velit, sed quia non 
-			numquam eius modi tempora incidunt ut labore 
-			et dolore magnam aliquam quaerat voluptatem.</p>
-		</div>
+{#		<div class="col-md-3 footer-left">#}
+{#			<h2><a href="index.html"><img src="images/logo3.jpg" alt=" " /></a></h2>#}
+{#			<p>Neque porro quisquam est, qui dolorem ipsum quia dolor#}
+{#			sit amet, consectetur, adipisci velit, sed quia non#}
+{#			numquam eius modi tempora incidunt ut labore#}
+{#			et dolore magnam aliquam quaerat voluptatem.</p>#}
+{#		</div>#}
 		<div class="col-md-9 footer-right">
 			<div class="col-sm-6 newsleft">
 				<h3>SIGN UP FOR NEWSLETTER !</h3>
 			</div>
 			<div class="col-sm-6 newsright">
-				<form>
-					<input type="text" value="Email" onFocus="this.value = '';" onBlur="if (this.value == '') {this.value = 'Email';}" required="">
-					<input type="submit" value="Submit">
-				</form>
+{#				<form>#}
+{#					<input type="text" value="Email" onFocus="this.value = '';" onBlur="if (this.value == '') {this.value = 'Email';}" required="">#}
+{#					<input type="submit" value="Submit">#}
+{#				</form>#}
 			</div>
 			<div class="clearfix"></div>
 			<div class="sign-grds">
@@ -767,34 +771,34 @@
 						<li><a href="contact.html">Contact</a></li>
 					</ul>
 				</div>
-				
+
 				<div class="col-md-4 sign-gd-two">
 					<h4>Store Information</h4>
 					<ul>
-						<li><i class="glyphicon glyphicon-map-marker" aria-hidden="true"></i>Address : 1234k Avenue, 4th block, <span>Newyork City.</span></li>
-						<li><i class="glyphicon glyphicon-envelope" aria-hidden="true"></i>Email : <a href="mailto:info@example.com">info@example.com</a></li>
+						<li><i class="glyphicon glyphicon-map-marker" aria-hidden="true"></i>Address : GB <span>Toronto.</span></li>
+						<li><i class="glyphicon glyphicon-envelope" aria-hidden="true"></i>Email : <a href="mailto:xue.geng@mail.utoronto.ca">xue.geng@mail.utoronto.ca</a></li>
 						<li><i class="glyphicon glyphicon-earphone" aria-hidden="true"></i>Phone : +1234 567 567</li>
 					</ul>
 				</div>
-				<div class="col-md-4 sign-gd flickr-post">
-					<h4>Flickr Posts</h4>
-					<ul>
-						<li><a href="single.html"><img src="images/b15.jpg" alt=" " class="img-responsive" /></a></li>
-						<li><a href="single.html"><img src="images/b16.jpg" alt=" " class="img-responsive" /></a></li>
-						<li><a href="single.html"><img src="images/b17.jpg" alt=" " class="img-responsive" /></a></li>
-						<li><a href="single.html"><img src="images/b18.jpg" alt=" " class="img-responsive" /></a></li>
-						<li><a href="single.html"><img src="images/b15.jpg" alt=" " class="img-responsive" /></a></li>
-						<li><a href="single.html"><img src="images/b16.jpg" alt=" " class="img-responsive" /></a></li>
-						<li><a href="single.html"><img src="images/b17.jpg" alt=" " class="img-responsive" /></a></li>
-						<li><a href="single.html"><img src="images/b18.jpg" alt=" " class="img-responsive" /></a></li>
-						<li><a href="single.html"><img src="images/b15.jpg" alt=" " class="img-responsive" /></a></li>
-					</ul>
-				</div>
+{#				<div class="col-md-4 sign-gd flickr-post">#}
+{#					<h4>Flickr Posts</h4>#}
+{#					<ul>#}
+{#						<li><a href="single.html"><img src="images/b15.jpg" alt=" " class="img-responsive" /></a></li>#}
+{#						<li><a href="single.html"><img src="images/b16.jpg" alt=" " class="img-responsive" /></a></li>#}
+{#						<li><a href="single.html"><img src="images/b17.jpg" alt=" " class="img-responsive" /></a></li>#}
+{#						<li><a href="single.html"><img src="images/b18.jpg" alt=" " class="img-responsive" /></a></li>#}
+{#						<li><a href="single.html"><img src="images/b15.jpg" alt=" " class="img-responsive" /></a></li>#}
+{#						<li><a href="single.html"><img src="images/b16.jpg" alt=" " class="img-responsive" /></a></li>#}
+{#						<li><a href="single.html"><img src="images/b17.jpg" alt=" " class="img-responsive" /></a></li>#}
+{#						<li><a href="single.html"><img src="images/b18.jpg" alt=" " class="img-responsive" /></a></li>#}
+{#						<li><a href="single.html"><img src="images/b15.jpg" alt=" " class="img-responsive" /></a></li>#}
+{#					</ul>#}
+{#				</div>#}
 				<div class="clearfix"></div>
 			</div>
 		</div>
 		<div class="clearfix"></div>
-		<p class="copy-right">Copyright &copy; 2016.Company name All rights reserved.<a target="_blank" href="http://www.mycodes.net/">&#x7F51;&#x9875;&#x6A21;&#x677F;</a></p>
+{#		<p class="copy-right">Copyright &copy; 2019 winter.ECE 1779.<a target="_blank" href="">&#x7F51;&#x9875;&#x6A21;&#x677F;</a></p>#}
 	</div>
 </div>
 <!-- //footer -->

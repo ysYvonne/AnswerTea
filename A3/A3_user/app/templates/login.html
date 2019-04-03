@@ -1,30 +1,85 @@
 <html>
 <head>
-	<title>	Online Shopping System </title>
-	<!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <!-- jQuery library -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <!-- Latest compiled JavaScript -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+   <title>    Online Shopping System </title>
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="keywords" content="" />
+    <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
+    function hideURLbar(){ window.scrollTo(0,1); } </script>
+    <!-- //for-mobile-apps -->
+    <link href= {{url_for('static', filename='css/bootstrap.css') }}  rel="stylesheet" type="text/css" media="all" />
+    <!-- pignose css -->
+    <link href= {{url_for('static', filename='css/pignose.layerslider.css') }} rel="stylesheet" type="text/css" media="all" />
+
+
+    <!-- //pignose css -->
+    <link href= {{url_for('static', filename='css/style.css') }} rel="stylesheet" type="text/css" media="all" />
+    <!-- js -->
+    <script type="text/javascript" src= "{{ url_for('static', filename = 'js/jquery-2.1.4.min.js') }}" ></script>
+    <!-- //js -->
+    <!-- cart -->
+    <script src= "{{ url_for('static', filename = 'js/simpleCart.min.js') }}"></script>
+    <!-- cart -->
+    <!-- for bootstrap working -->
+    <script type="text/javascript" src= "{{ url_for('static', filename = 'js/bootstrap-3.1.1.min.js') }}"></script>
+    <!-- //for bootstrap working -->
+    <link href='http://fonts.useso.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.useso.com/css?family=Lato:400,100,100italic,300,300italic,400italic,700,900,900italic,700italic' rel='stylesheet' type='text/css'>
+    <script src= "{{ url_for('static', filename = 'js/jquery.easing.min.js') }}"></script>
 </head>
+<!-- header -->
+<div class="header">
+   <div class="container">
+      <ul>
+         <li><span class="glyphicon glyphicon-time" aria-hidden="true"></span>Free and Fast Delivery</li>
+         <li><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>Free shipping On all orders</li>
+         <li><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span><a href=" ">info@example.com</a ></li>
+      </ul>
+   </div>
+</div>
+
+
+
+<div class="ban-top">
+
+    <!-- shopping cart  -->
+   <div class="cart box_1">
+      <h3> Login </h3>
+   </div>
+    <div class="clearfix"></div>
+
+</div>
+
+
 <body>
-	<div class="container text-center">
-		<p> {{error}} </p>
-		<form action={{url_for('login')}} method="POST">
-			<div class="form-group">
-				<!--<p>Email: <input type="text" name="email"></p>-->
-				<label for="email">Email address:</label>
-				<input type="email" class="form-control" id="email" name="email" placeholder="Enter email">
-			</div>
-			<div class="form-group">
-				<!--<p>Password: <input type="password" name="password"></p>-->
-				<label for="password">Password:</label>
-				<input type="password" class="form-control" id="password" name="password" placeholder="Enter password">
-			</div>
-			<button type="submit" class="btn btn-info">Submit</button><br><br>
-			<a href={{url_for('registrationForm')}} class="btn btn-info" role="button">Register here</a>
-		</form>
-	</div>
+   <div class="container text-center">
+      <p> {{error}} </p >
+      <form action={{url_for('login')}} method="POST">
+         <div class="form-group">
+            <!--<p>Email: <input type="text" name="email"></p >-->
+            <label for="email">Email address:</label>
+            <input type="email" class="form-control" id="email" name="email" placeholder="Enter email">
+         </div>
+         <div class="form-group">
+            <!--<p>Password: <input type="password" name="password"></p >-->
+            <label for="password">Password:</label>
+            <input type="password" class="form-control" id="password" name="password" placeholder="Enter password">
+         </div>
+
+         <button type="submit" class="cart box_1">Submit</button>
+
+
+
+      </form>
+
+
+      <form action={{url_for('registrationForm')}}>
+            <input type="submit" class ="cart box_1" value="Register here">
+      </form>
+
+      <form action={{url_for('root')}}>
+            <input type="submit" class ="cart box_1" value="Back to home">
+      </form>
+   </div>
 </body>
 </html>

@@ -6,7 +6,7 @@ import smtplib
 from app import s3_config
 from werkzeug.utils import secure_filename
 
-a3BucketName = 'ece1779a3itemsbucket'
+a3bucketName = 'ece1779a3itemsbucket'
 
 ALLOWED_EXTENSIONS = set(['jpg', 'png', 'gif'])
 app.secret_key = '\x86j\x94\xab\x15\xedy\xe4\x1f\x0b\xe9\xb9v}C\xb9\xf1\xech\x0bs.\x10$'
@@ -22,12 +22,13 @@ def dashboard():
     s3 = boto3.resource('s3')
     buckets = s3.buckets.all()
     orders = dynamo.orders_getall()
-    return render_template("Dashboard.html",orders = orders , buckets=buckets)
+    return render_template("Dashboard.html" ,orders = orders , buckets=buckets)
 
 @app.route('/add_product')
 def add_product():
     categories = dynamo.categories_list_all()
-    return render_template('add.html', categories=categories)
+    youtubers = dynamo.youtuber_list_all()
+    return render_template('add.html', categories=categories, youtubers = youtubers)
 
 @app.route('/remove_product')
 def remove_product():
@@ -42,13 +43,17 @@ def addItem():
         price = request.form['price']
         description = request.form['description']
         stock = request.form['stock']
+        youtubelink = request.form['youtubelink']
+        rgb = request.form['RGB']
         categoryId = int(request.form['category'])
+        youtuberId = int(request.form['youtubers'])
 
         if productName == '' or price == '' or description == '' or stock == '' or not stock.isdigit():
             flash("Please fill in all the fields")
             return redirect(url_for('add_product'))
-
         # Uploading image
+        # for image in request.files.getlist('image'):
+            # print(image)
         image = request.files['image']
         productId = dynamo.max_productID() + 1
         if image and allowed_file(image.filename):
@@ -56,21 +61,18 @@ def addItem():
             if filename == '':
                 flash("Please upload an image")
                 return redirect(url_for('add_product'))
-
             #save the uploaded file to s3 bucket
             s3 = s3_config.create_connection()
-            if not s3_config.validate_bucket_exists(s3, a3BucketName):
-                s3_config.create_bucket(s3,a3BucketName)
-
-            s3_config.store_data(s3,a3BucketName,'products/'+str(productId)+"_"+filename, image)
-
+            if not s3_config.validate_bucket_exists(s3, a3bucketName):
+                s3_config.create_bucket(s3,a3bucketName)
+            s3_config.store_data(s3,a3bucketName,'products/'+str(productId)+"_"+filename, image)
         else:
             flash("Please upload an image")
             return redirect(url_for('add_product'))
-
         imagename = str(productId)+"_"+filename
         flash("New product has been successfully added")
-        dynamo.products_put(productId,productName,str(float(price)),description,imagename,int(stock),categoryId)
+        dynamo.products_put(productId,productName,str(float(price)),description,imagename,int(stock),
+                            categoryId,youtuberId, youtubelink, rgb)
         return redirect(url_for('add_product'))
 
 

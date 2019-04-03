@@ -5,7 +5,7 @@ from flask import url_for, redirect, request
 from app import s3_config
 from app import app
 
-a3BucketName = 'ece1779a3itemsbucketxue'
+a3BucketName = 'ece1779a3itemsbucket'
 
 # dynamodb = boto3.resource('dynamodb', region_name='us-east-1', endpoint_url="http://localhost:8000")
 dynamodb = boto3.resource('dynamodb', region_name='us-east-1')
@@ -59,7 +59,7 @@ def users_put(password,email,firstName,userdetail):
         }
     )
 
-def products_put(productId,productName,price,description,image,stock,categoryId):
+def products_put(productId,productName,price,description,image,stock,categoryId,youtuberId,videolink,RGB):
     table = dynamodb.Table('products')
 
     table.put_item(
@@ -70,12 +70,18 @@ def products_put(productId,productName,price,description,image,stock,categoryId)
             'description': description,
             'image': image,
             'stock': stock,
-            'categoryId': categoryId
+            'categoryId': categoryId,
+            'youtuberId': youtuberId,
+            'videolink': videolink,
+            'RGB':RGB
+
         }
     )
 
 def kart_getproductId_amount(userId,productId):
+
     table = dynamodb.Table('kart')
+
     response = table.query(
         KeyConditionExpression=Key('userId').eq(userId) & Key('productId').eq(productId)
     )
@@ -254,6 +260,7 @@ def kart_userId_productId(userId):
         records.append(i)
     return records
 
+# get all products for one user
 def kart_get(userId):
     table = dynamodb.Table('kart')
 
@@ -264,9 +271,21 @@ def kart_get(userId):
     for i in response['Items']:
 
         product_detail = products_productId_search(i['productId'])
+
         imageurl = s3_config.get_element_from_bucket(a3BucketName, product_detail[0]['image'])
-        records.append([i['userId'], i['productId'], i['amount'],product_detail[0]['productName'],imageurl,
-                        product_detail[0]['price'],format(int(i['amount'])*float(product_detail[0]['price']),'.2f')])
+
+        amount = i['amount']
+
+        records.append([i['userId'],
+                        i['productId'],
+                        1,
+                        product_detail[0]['productName'],
+                        imageurl,
+                        product_detail[0]['price'],
+                        product_detail[0]['price'],
+                        i['amount']])
+
+    print(records)
     return records
 
 
@@ -411,14 +430,17 @@ def max_productID():
 
 
 def products_productId_search(productId):
+
     table = dynamodb.Table('products')
+
     response = table.query(
         KeyConditionExpression=Key('productId').eq(productId)
     )
     records = []
     for i in response['Items']:
         records.append(i)
-
+    print('products table search:')
+    print(records)
     return records
 
 def products_in_category(categoryId):
@@ -484,3 +506,50 @@ def categories_list_all():
         return records
     else:
         return records
+
+def youtuber_list_all():
+    records = []
+    if check_table_availability('youtubers'):
+        table = dynamodb.Table('youtubers')
+        response = table.scan(
+            ProjectionExpression="youtuberId, youtuberName"
+        )
+
+        for i in response['Items']:
+            records.append([i['youtuberId'],i['youtuberName']])
+
+        while 'LastEvaluatedKey' in response:
+            response = table.scan(
+                ProjectionExpression="youtuberId,youtuberName",
+                ExclusiveStartKey=response['LastEvaluatedKey']
+            )
+
+            for i in response['Items']:
+                records.append([i['youtuberId'],i['youtuberName']])
+        return records
+    else:
+        return records
+
+
+def products_productId_categoryId(categoryId):
+
+    table = dynamodb.Table('products')
+
+    response = table.query(
+        IndexName='categoryIndex',
+        KeyConditionExpression=Key('categoryId').eq(categoryId)
+    )
+
+    records = []
+
+    for i in response['Items']:
+        imageurl = s3_config.get_element_from_bucket(a3BucketName, i["image"])
+        records.append([[i['productId'], i['productName'], i['price'], imageurl]])
+
+    return records
+
+
+    # for i in response['Items']:
+    #     records.append(i)
+    #
+    # return records

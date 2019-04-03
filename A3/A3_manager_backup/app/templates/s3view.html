@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>S3View</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+    <form action="{{ url_for('dashboard')}}">
+        <input type="submit" value="Back" />
+    </form>
+
+    <table class="table table-hover">
+        <thead>
+            <th>Name</th>
+            <th>Size</th>
+            <th>Last Modified</th>
+        </thead>
+        {% for k in keys %}
+        <tr>
+            <td>{{ k.key }}</td>
+            <td>{{ k.size }}</td>
+            <td>{{ k.last_modified }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

@@ -5,7 +5,7 @@ from flask import url_for, redirect, request
 from app import s3_config
 from app import app
 
-a3BucketName = 'ece1779a3itemsbucket'
+a3bucketName = 'ece1779a3itemsbucket'
 
 # dynamodb = boto3.resource('dynamodb', region_name='us-east-1', endpoint_url="http://localhost:8000")
 dynamodb = boto3.resource('dynamodb', region_name='us-east-1')
@@ -14,6 +14,86 @@ dynamodb = boto3.resource('dynamodb', region_name='us-east-1')
 @app.route('/create_table')
 def create_table():
     try:
+        # create orders table
+        dynamodb.create_table(
+            TableName='orders',
+            KeySchema=[
+                {
+                    'AttributeName': 'userId',
+                    'KeyType': 'HASH'
+                },
+                {
+                    'AttributeName': 'orderId',
+                    'KeyType': 'RANGE'
+                }
+            ],
+            GlobalSecondaryIndexes=[
+                {
+                    'IndexName': "orderPriceIndex",
+                    'KeySchema': [
+                        {
+                            'KeyType': 'HASH',
+                            'AttributeName': 'orderprice'
+                        },
+                        {
+                            'KeyType': 'RANGE',
+                            'AttributeName': 'orderId'
+                        }
+                    ],
+                    'Projection': {
+                        'ProjectionType': 'INCLUDE',
+                        'NonKeyAttributes': ['orderdetails', 'orderstatus']
+                    },
+                    'ProvisionedThroughput': {
+                        'ReadCapacityUnits': 5,
+                        'WriteCapacityUnits': 5
+                    }
+                },
+                {
+                    'IndexName': "orderStatusIndex",
+                    'KeySchema': [
+                        {
+                            'KeyType': 'HASH',
+                            'AttributeName': 'orderstatus'
+                        },
+                        {
+                            'KeyType': 'RANGE',
+                            'AttributeName': 'orderId'
+                        }
+                    ],
+                    'Projection': {
+                        'ProjectionType': 'ALL'
+                    },
+                    'ProvisionedThroughput': {
+                        'ReadCapacityUnits': 5,
+                        'WriteCapacityUnits': 5
+                    }
+                }
+            ],
+            AttributeDefinitions=[
+                {
+                    'AttributeName': 'userId',
+                    'AttributeType': 'N'
+                },
+                {
+                    'AttributeName': 'orderId',
+                    'AttributeType': 'N'
+                },
+                {
+                    'AttributeName': 'orderprice',
+                    'AttributeType': 'S'
+                },
+                {
+                    'AttributeName': 'orderstatus',
+                    'AttributeType': 'S'
+                }
+            ],
+            ProvisionedThroughput={
+                'ReadCapacityUnits': 5,
+                'WriteCapacityUnits': 5
+            }
+        )
+
         #create users table
         dynamodb.create_table(
          TableName= "users",
@@ -159,7 +239,7 @@ def create_table():
                 ],
                 'Projection': {
                     'ProjectionType': 'INCLUDE',
-                    'NonKeyAttributes': ['description', 'image', 'stock', 'categoryId']
+                    'NonKeyAttributes': ['description', 'image', 'stock', 'categoryId','youtuberId','videolink','RGB']
                 },
                 'ProvisionedThroughput': {
                     'ReadCapacityUnits': 2,
@@ -172,6 +252,26 @@ def create_table():
                     {
                         'KeyType': 'HASH',
                         'AttributeName': 'categoryId'
+                    },
+                    {
+                        'KeyType': 'RANGE',
+                        'AttributeName': 'productId'
+                    }
+                ],
+                'Projection': {
+                    'ProjectionType': 'ALL'
+                },
+                'ProvisionedThroughput': {
+                    'ReadCapacityUnits': 2,
+                    'WriteCapacityUnits': 2
+                }
+            },
+            {
+                'IndexName': "youtuberIndex",
+                'KeySchema': [
+                    {
+                        'KeyType': 'HASH',
+                        'AttributeName': 'youtuberId'
                     },
                     {
                         'KeyType': 'RANGE',
@@ -202,6 +302,10 @@ def create_table():
             },
             {
                 'AttributeName': 'categoryId',
+                'AttributeType': 'N'
+            },
+            {
+                'AttributeName': 'youtuberId',
                 'AttributeType': 'N'
             }
          ],
@@ -268,13 +372,41 @@ def create_table():
                 'WriteCapacityUnits': 5
             }
         )
+
+        # create youtubers table
+        dynamodb.create_table(
+            TableName="youtubers",
+            KeySchema=[
+                {
+                    'AttributeName': 'youtuberId',
+                    'KeyType': 'HASH'  # Partition key
+                },
+                {
+                    'AttributeName': 'youtuberName',
+                    'KeyType': 'RANGE'
+                }
+            ],
+            AttributeDefinitions=[
+                {
+                    'AttributeName': 'youtuberId',
+                    'AttributeType': 'N'
+                },
+                {
+                    'AttributeName': 'youtuberName',
+                    'AttributeType': 'S'
+                },
+            ],
+            ProvisionedThroughput={
+                'ReadCapacityUnits': 5,
+                'WriteCapacityUnits': 5
+            }
+        )
     except ClientError as ce:
         if ce.response['Error']['Code'] == 'ResourceInUseException':
             print("Table already exists.")
         else:
             print("Unknown exception occurred while querying for the table. Printing full error:")
             print(ce.response)
-    return redirect(url_for('root'))
 
 
 @app.route('/delete_table')
@@ -294,13 +426,17 @@ def delete_table():
         dynamodb.delete_table(
             TableName='categories'
         )
+        dynamodb.delete_table(
+            TableName='youtubers'
+        )
     except ClientError as ce:
         if ce.response['Error']['Code'] == 'ResourceNotFoundException':
             print("Table doesn't exist.")
         else:
             print("Unknown exception occurred while querying for the table. Printing full error:")
             print(ce.response)
-    return redirect(url_for('root'))
+
+    return redirect(url_for('/'))
 
 
 def max_userID():
@@ -352,7 +488,7 @@ def users_put(password,email,firstName,userdetail):
         }
     )
 
-def products_put(productId,productName,price,description,image,stock,categoryId):
+def products_put(productId,productName,price,description,image,stock,categoryId,youtuberId,videolink,RGB):
     table = dynamodb.Table('products')
 
     table.put_item(
@@ -363,7 +499,11 @@ def products_put(productId,productName,price,description,image,stock,categoryId)
             'description': description,
             'image': image,
             'stock': stock,
-            'categoryId': categoryId
+            'categoryId': categoryId,
+            'youtuberId': youtuberId,
+            'videolink': videolink,
+            'RGB':RGB
+
         }
     )
 
@@ -613,7 +753,7 @@ def kart_get(userId):
     for i in response['Items']:
 
         product_detail = products_productId_search(i['productId'])
-        imageurl = s3_config.get_element_from_bucket(a3BucketName, product_detail[0]['image'])
+        imageurl = s3_config.get_element_from_bucket(a3bucketName, product_detail[0]['image'])
         records.append([i['userId'], i['productId'], i['amount'],product_detail[0]['productName'],imageurl,
                         product_detail[0]['price'],format(int(i['amount'])*float(product_detail[0]['price']),'.2f')])
     return records
@@ -721,7 +861,7 @@ def products_list_all():
         )
 
         for i in response['Items']:
-            imageurl = s3_config.get_element_from_bucket(a3BucketName, i['image'])
+            imageurl = s3_config.get_element_from_bucket(a3bucketName, i['image'])
             records.append([[i['productId'], i['productName'], i['price'], i['description'], imageurl,i['stock']]])
 
         while 'LastEvaluatedKey' in response:
@@ -731,7 +871,7 @@ def products_list_all():
             )
 
             for i in response['Items']:
-                imageurl = s3_config.get_element_from_bucket(a3BucketName, i['image'])
+                imageurl = s3_config.get_element_from_bucket(a3bucketName, i['image'])
                 records.append([[i['productId'], i['productName'], i['price'], i['description'], imageurl,i['stock']]])
         return records
     else:
@@ -780,7 +920,7 @@ def products_in_category(categoryId):
     records = []
 
     for i in response['Items']:
-        imageurl = s3_config.get_element_from_bucket(a3BucketName, i['image'])
+        imageurl = s3_config.get_element_from_bucket(a3bucketName, i['image'])
         records.append([[i['productId'],i['productName'],i['price'],imageurl]])
     return records
 
@@ -808,7 +948,7 @@ def products_delete_productId(productId):
     )
     print(result[0]['image'])
     s3 = s3_config.create_connection()
-    s3_config.delete_key(s3, a3BucketName, result[0]['image'])
+    s3_config.delete_key(s3, a3bucketName, result[0]['image'])
 
 
 
@@ -831,6 +971,31 @@ def categories_list_all():
 
             for i in response['Items']:
                 records.append([i['categoryId'],i['categoryName']])
+        return records
+    else:
+        return records
+
+
+
+def youtuber_list_all():
+    records = []
+    if check_table_availability('youtubers'):
+        table = dynamodb.Table('youtubers')
+        response = table.scan(
+            ProjectionExpression="youtuberId, youtuberName"
+        )
+
+        for i in response['Items']:
+            records.append([i['youtuberId'],i['youtuberName']])
+
+        while 'LastEvaluatedKey' in response:
+            response = table.scan(
+                ProjectionExpression="youtuberId,youtuberName",
+                ExclusiveStartKey=response['LastEvaluatedKey']
+            )
+
+            for i in response['Items']:
+                records.append([i['youtuberId'],i['youtuberName']])
         return records
     else:
         return records

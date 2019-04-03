@@ -68,6 +68,17 @@ def get_element_from_bucket(Bucketname, key):
     # url = "https://s3.amazonaws.com/" + Bucketname + '/products/' + key
     return url
 
+# get face pic from Bucket
+def get_face_from_bucket(Bucketname, key):
+    s3 = boto3.client('s3')
+    # get the url of the upload image
+    s3_key = 'facePic/' + key
+    print(s3_key)
+    url = s3.generate_presigned_url(
+        'get_object',
+        Params={'Bucket': Bucketname, 'Key': s3_key})
+    # url = "https://s3.amazonaws.com/" + Bucketname + '/products/' + key
+    return url
 
 # Download the file from S3
 def download_file(s3, Bucketname,filename,username):

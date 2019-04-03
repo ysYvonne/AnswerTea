@@ -1,10 +1,15 @@
-from flask import render_template, session, redirect, request, url_for, flash
+from builtins import int
+
+from flask import render_template, session, redirect, request, url_for, flash, jsonify
 import hashlib
 from app import app
 from app import dynamo
 from app import s3_config
+from app.visage import ApplyMakeup
+from passlib.hash import pbkdf2_sha256
+from werkzeug.utils import secure_filename
 
-a3BucketName = 'ece1779a3itemsbucketxue'
+a3BucketName = 'ece1779a3itemsbucket'
 
 # set secret key for session
 app.secret_key = '\x86j\x94\xab\x15\xedy\xe4\x1f\x0b\xe9\xb9v}C\xb9\xf1\xech\x0bs.\x10$'
@@ -274,46 +279,80 @@ def productDescription():
 
 @app.route("/addToCart")
 def addToCart():
-    if 'email' not in session:
-        return redirect(url_for('loginForm'))
-    else:
-        record = dynamo.users_email_userId(session['email'])
-        userId = record[0][1]
+    # if 'email' not in session:
+    #     return redirect(url_for('loginForm'))
+    # else:
+    #     record = dynamo.users_email_userId(session['email'])
+        # static user id for test
+        # userId = record[0][1]
+        loggedIn, firstName, noOfItems, userId = getLoginDetails()
+        userId = 1
+
         productId = int(request.args.get('productId'))
+
         dynamo.kart_put(userId,int(productId),1)
-        return redirect(url_for('root'))
+
+
+        productData = dynamo.products_productId_search(int(productId))
+        # get corresponding image from s3 bucket
+        imageurl = s3_config.get_element_from_bucket(a3BucketName, productData[0]['image'])
+        productData[0]['image'] = imageurl
+
+# render product detail page
+        return render_template("single.html",
+                               data=productData,
+                               loggedIn=loggedIn,
+                               firstName=firstName,
+                               noOfItems=noOfItems)
 
 
 @app.route("/cart")
 def cart():
-    if 'email' not in session:
-        return redirect(url_for('loginForm'))
+    # if 'email' not in session:
+    #     return redirect(url_for('loginForm'))
     loggedIn, firstName, noOfItems, userId = getLoginDetails()
-    kart = dynamo.kart_get(userId)
+
+    # static user id for test
+    kart = dynamo.kart_get(1)
+
     totalPrice = 0
     i = 0
     while i < len(kart):
         totalPrice = totalPrice + float(kart[i][6])
         i = i + 1
-    return render_template("cart.html",products = kart, totalPrice=format(totalPrice,'.2f'), loggedIn=loggedIn, firstName=firstName, noOfItems=noOfItems)
+
+    print(kart)
+    return render_template("checkout.html",
+                           products = kart,
+                           totalPrice = format(totalPrice,'.2f'),
+                           loggedIn = loggedIn,
+                           firstName=firstName,
+                           noOfItems=noOfItems)
 
 
 @app.route("/removeOneFromCart")
 def removeOneFromCart():
-    if 'email' not in session:
-        return redirect(url_for('loginForm'))
+    # if 'email' not in session:
+    #     return redirect(url_for('loginForm'))
     loggedIn, firstName, noOfItems, userId = getLoginDetails()
+
     productId = int(request.args.get('productId'))
+
     dynamo.kart_removeOne(userId, productId)
+
     return redirect(url_for('cart'))
 
 @app.route("/removeAllFromCart")
 def removeAllFromCart():
-    if 'email' not in session:
-        return redirect(url_for('loginForm'))
+
+    # if 'email' not in session:
+    #     return redirect(url_for('loginForm'))
+
     loggedIn, firstName, noOfItems, userId = getLoginDetails()
+
     productId = int(request.args.get('productId'))
-    dynamo.kart_removeAll(userId, productId)
+
+    dynamo.kart_removeAll(1, productId)
     return redirect(url_for('cart'))
 
 @app.route("/logout")
@@ -322,10 +361,23 @@ def logout():
     return redirect(url_for("root"))
 
 
+# def is_valid(email, password):
+#     data = dynamo.users_email_password(email)
+#     if len(data) != 0:
+#         if data[0][0] == email and data[0][1] == hashlib.md5(password.encode()).hexdigest():
+#             return True
+#         return False
+#     return False
+
 def is_valid(email, password):
+    if email=='' or password=='':
+        return False
     data = dynamo.users_email_password(email)
     if len(data) != 0:
-        if data[0][0] == email and data[0][1] == hashlib.md5(password.encode()).hexdigest():
+        stored_pw=bytes(data[0][1], 'utf-8')
+
+        # if data[0][0] == email and data[0][1] == hashlib.md5(password.encode()).hexdigest():
+        if data[0][0] == email and pbkdf2_sha256.verify(password, stored_pw):
             return True
         return False
     return False
@@ -359,7 +411,9 @@ def register():
                 i = i + 1
             check_email = dynamo.users_email_userId(email)
             if len(check_email) == 0:
-                dynamo.users_put(hashlib.md5(password.encode()).hexdigest(), email, firstName, userdetail)
+                hash_salt_pw = pbkdf2_sha256.encrypt((bytes(password, 'utf-8')), salt_size=16)
+                dynamo.users_put(hash_salt_pw, email, firstName, userdetail)
+                # dynamo.users_put(hashlib.md5(password.encode()).hexdigest(), email, firstName, userdetail)
                 msg = "Registered Successfully"
             else:
                 msg = "Email already exists, please register with another one"
@@ -378,17 +432,66 @@ def categories_list():
 
     category_id = request.args.get('category_id')
 
-    productData = dynamo.products_productId_search(int(category_id))
+
+    productData = dynamo.products_productId_categoryId(int(category_id))
     # get corresponding image from s3 bucket
-    for product in productData:
 
-        imageurl = s3_config.get_element_from_bucket(a3BucketName, product['image'])
-        product['image'] = imageurl
-
-    # render product detail page
+    print('main')
+    print(productData)
     return render_template("list.html",
                            itemdata=productData,
                            loggedIn=loggedIn,
                            firstName=firstName,
-
                            noOfItems=noOfItems)
+
+@app.route("/makeup",methods=["POST"])
+def makeup():
+
+    # product_id = request.form['productId']
+    # image_file = request.files['imageInput']
+
+    # print(image_file)
+    product_id = request.form['product_id']
+    image_file = request.files['img_input']
+    print(image_file)
+
+    process_face(product_id, image_file)
+
+    # test = product_id
+
+    # return jsonify(test)
+    return 0
+
+def process_face(product_id, image_file):
+
+    filename = secure_filename(image_file.filename)
+
+    if image_file and allowed_file(image_file.filename):
+        filename = secure_filename(image_file.filename)
+        if filename == '':
+            flash("Please upload an image")
+
+        # Get the service client and upload to the s3 bucket
+        file_key_name = 'facePic/' + filename
+        s3 = s3_config.create_connection()
+        s3_config.store_data(s3, a3BucketName, file_key_name, image_file)
+
+    else:
+        flash("Please upload an image")
+
+    # get the url of the upload image
+    imageUrl = s3_config.get_face_from_bucket(a3BucketName, filename)
+
+    AM = ApplyMakeup()
+    output_img_stream = AM.apply_lipstick(imageUrl, 255, 255, 0)  # (R,G,B) - (170,10,30)
+
+    # upload after pic to s3
+    fn = filename.split('.')
+    filename_lip = fn[0] + "_lip.jpg"
+    filename_lip_key_name = 'facePic/' + filename_lip
+    s3 = s3_config.create_connection()
+    s3_config.store_data(s3, a3BucketName, filename_lip_key_name, output_img_stream)
+
+    imageUrl_lip = s3_config.get_face_from_bucket(a3BucketName, filename_lip)
+
+    return imageUrl_lip

@@ -120,3 +120,26 @@
     $('[data-imagezoom]').imageZoom();
   });
 })(jQuery);
+
+
+  $("#img_input").on("change", function(e) {
+
+        var file = e.target.files[0]; //获取图片资源
+        alert("0000000000");
+
+  // 只选择图片文件
+        if (!file.type.match('image.*')) {
+            return false;
+        }
+
+        var reader = new FileReader();
+
+        reader.readAsDataURL(file); // 读取文件
+
+  // 渲染文件
+        reader.onload = function(arg) {
+            alert("0000000000");
+            var img = '<img class="preview" src="' + arg.target.result + '" alt="preview"/>';
+             $(".preview_box").empty().append(img);
+        }
+    });

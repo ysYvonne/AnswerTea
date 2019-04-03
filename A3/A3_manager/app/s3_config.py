@@ -17,7 +17,6 @@ def create_bucket(s3, Bucketname):
 # Storing Data
 def store_data(s3, Bucketname, filename, file):
     s3.Bucket(Bucketname).put_object(Key = filename,Body=file)
-    # s3.upload_fileobj(file, Bucketname, filename)
 
 # Delete Key
 def delete_key(s3,Bucketname, key):
@@ -60,7 +59,10 @@ def iterate_bucket(s3, Bucketname):
 # get one element from Bucket
 def get_element_from_bucket(Bucketname, key):
     s3 = boto3.client('s3')
-    url = "https://s3.amazonaws.com/" + Bucketname + '/products/' + key
+    s3_key = 'products/' + key
+    url = s3.generate_presigned_url(
+        'get_object',
+        Params={'Bucket': Bucketname, 'Key': s3_key})
     return url
 
 
