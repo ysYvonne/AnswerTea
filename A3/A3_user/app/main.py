@@ -439,24 +439,46 @@ def registrationForm():
     return render_template("register.html")
 
 
+
 @app.route("/categories_list")
 def categories_list():
 
     loggedIn, firstName, noOfItems, userId = getLoginDetails()
 
     category_id = request.args.get('category_id')
-
-
     productData = dynamo.products_productId_categoryId(int(category_id))
     # get corresponding image from s3 bucket
-
+    type = 'categories'
     print('main')
     print(productData)
     return render_template("list.html",
                            itemdata=productData,
                            loggedIn=loggedIn,
                            firstName=firstName,
-                           noOfItems=noOfItems)
+                           noOfItems=noOfItems,
+                           type = type,
+                           category_id=category_id)
+@app.route("/youtubers_list")
+def youtubers_list():
+
+    loggedIn, firstName, noOfItems, userId = getLoginDetails()
+
+    youtuber_id = request.args.get('youtuber_id')
+
+
+    productData = dynamo.products_in_youtuber(int(youtuber_id))
+    # get corresponding image from s3 bucket
+    type = 'youtubers'
+    print('main')
+    print(productData)
+    return render_template("list.html",
+                           itemdata=productData,
+                           loggedIn=loggedIn,
+                           firstName=firstName,
+                           noOfItems=noOfItems,
+                           type = type,
+                           youtuber_id=youtuber_id)
+
 
 @app.route("/makeup",methods=["POST"])
 def makeup():
