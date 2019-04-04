@@ -9,7 +9,7 @@ from app.visage import ApplyMakeup
 from passlib.hash import pbkdf2_sha256
 from werkzeug.utils import secure_filename
 
-a3BucketName = 'ece1779a3itemsbucket'
+a3BucketName = 'ece1779a3itemsbucketyf'
 
 # set secret key for session
 app.secret_key = '\x86j\x94\xab\x15\xedy\xe4\x1f\x0b\xe9\xb9v}C\xb9\xf1\xech\x0bs.\x10$'

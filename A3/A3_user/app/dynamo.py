@@ -5,7 +5,7 @@ from flask import url_for, redirect, request
 from app import s3_config
 from app import app
 
-a3BucketName = 'ece1779a3itemsbucket'
+a3BucketName = 'ece1779a3itemsbucketyf'
 
 # dynamodb = boto3.resource('dynamodb', region_name='us-east-1', endpoint_url="http://localhost:8000")
 dynamodb = boto3.resource('dynamodb', region_name='us-east-1')
