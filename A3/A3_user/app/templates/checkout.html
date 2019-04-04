@@ -308,13 +308,17 @@
 					<a href={{url_for('root')}}><span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span>Back To Shopping</a>
 				</div>
 				<div class="checkout-left-basket animated wow slideInLeft" data-wow-delay=".5s">
-					<h4>Shopping basket</h4>
+					<h4>Shopping order</h4>
 					<ul>
-						<li>Hand Bag <i>-</i> <span>$45.99</span></li>
-						<li>Watches <i>-</i> <span>$45.99</span></li>
-						<li>Sandals <i>-</i> <span>$45.99</span></li>
-						<li>Wedges <i>-</i> <span>$45.99</span></li>
-						<li>Total <i>-</i> <span>$183.96</span></li>
+                     {% for data in products %}
+
+						<li>{{ data[3]}} <i>-{{ data[7] }}</i> <span>${{ data[5] }}*{{ data[7] }}</span></li>
+
+                     {% endfor %}
+<!--{#						<li>Watches <i>-</i> <span>$45.99</span></li>#}-->
+<!--{#						<li>Sandals <i>-</i> <span>$45.99</span></li>#}-->
+<!--{#						<li>shipping fee <i>-</i> <span>$10</span></li>#}-->
+						<li>Total <i>-</i> <span>${{ totalPrice }}</span></li>
 					</ul>
 				</div>
 				<div class="clearfix"> </div>

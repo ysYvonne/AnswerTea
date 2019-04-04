@@ -247,6 +247,7 @@
 			</div>
 		</div>
 		<div class="col-md-6 single-right-left simpleCart_shelfItem animated wow slideInRight animated" data-wow-delay=".5s" style="visibility: visible; animation-delay: 0.5s; animation-name: slideInRight;">
+					{{ error if error != None }}
 					<h3>{{data[0]['productName']}}</h3>
 					<p><span class="item_price">${{data[0]['price']}}</span></p>
 					<div class="rating1">
@@ -261,6 +262,7 @@
 							<label for="rating2">2</label>
 							<input id="rating1" type="radio" name="rating" value="1">
 							<label for="rating1">1</label>
+
 						</span>
 					</div>
                     <br>
@@ -610,9 +612,16 @@
 
 #_box #return_box img {
   width: 200px;
-
   height: 300px;
+  vertical-align:middle;
 }
+
+#return_box{
+	width: 200px;
+  height: 300px;
+  vertical-align:middle;
+}
+
 
 .login-bottom{
     height: 400px;
@@ -622,6 +631,14 @@
 </style>
 
 <script type="application/javascript">
+
+
+
+	function empty_box(){
+        $("#return_box").empty()
+        $("#_box").empty()
+    }
+
     var category = {{ data[0]['categoryId'] }};
 
     if (category != 1 && category != 2){

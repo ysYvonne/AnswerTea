@@ -9,7 +9,7 @@ from app.visage import ApplyMakeup
 from passlib.hash import pbkdf2_sha256
 from werkzeug.utils import secure_filename
 
-a3BucketName = 'ece1779a3itemsbucket'
+a3BucketName = 'ece1779a3itemsbucketyf'
 
 # set secret key for session
 app.secret_key = '\x86j\x94\xab\x15\xedy\xe4\x1f\x0b\xe9\xb9v}C\xb9\xf1\xech\x0bs.\x10$'
@@ -285,21 +285,35 @@ def addToCart():
     #     record = dynamo.users_email_userId(session['email'])
         # static user id for test
         # userId = record[0][1]
+        error = ''
         loggedIn, firstName, noOfItems, userId = getLoginDetails()
         userId = 1
 
         productId = int(request.args.get('productId'))
 
-        dynamo.kart_put(userId,int(productId),1)
+        # dynamo.kart_put(userId,int(productId),1)
 
 
         productData = dynamo.products_productId_search(int(productId))
-        # get corresponding image from s3 bucket
+        current_stock = productData[0]['stock']
+
+
         imageurl = s3_config.get_element_from_bucket(a3BucketName, productData[0]['image'])
         productData[0]['image'] = imageurl
+        # get corresponding image from s3 bucket
+        if current_stock > 0:
+            dynamo.kart_put(userId, int(productId), 1)
+            # imageurl = s3_config.get_element_from_bucket(a3BucketName, productData[0]['image'])
+            # productData[0]['image'] = imageurl
+            dynamo.stock_update(productId, 1)
+            error='This item has been successfully added to the cart!'
 
 # render product detail page
+
+        else:
+            error = 'This product is currently out of stock!'
         return render_template("single.html",
+                               error = error,
                                data=productData,
                                loggedIn=loggedIn,
                                firstName=firstName,
@@ -318,7 +332,7 @@ def cart():
     totalPrice = 0
     i = 0
     while i < len(kart):
-        totalPrice = totalPrice + float(kart[i][6])
+        totalPrice = totalPrice + float(kart[i][6]) * float(kart[i][7])
         i = i + 1
 
     print(kart)
