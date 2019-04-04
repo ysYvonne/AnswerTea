@@ -1,0 +1,101 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Your Cart</title>
+	<link rel="stylesheet" href={{url_for('static', filename='css/cart.css')}} />
+	<link rel="stylesheet" href={{url_for('static', filename='css/topStyle.css') }} />
+	<!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+<nav class = "navbar navbar-inverse">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href={{url_for('root')}}>
+                Online Shopping System
+            </a>
+        </div>
+
+        <form action={{url_for('search')}} method="POST" class="navbar-form navbar-left">
+            <div class = "input-group">
+                <input type="text" class = "form-control" id = "search" name = "search" placeholder="Search">
+                <div class="input-group-btn">
+                    <button class="btn btn-default" type="submit">
+                        <i class="glyphicon glyphicon-search"></i>
+                    </button>
+                </div>
+            </div>
+        </form>
+        <ul class="nav navbar-nav navbar-right">
+            {% if not loggedIn %}
+            <li><a href={{url_for('loginForm')}}><span class="glyphicon glyphicon-log-in"></span> LogIn</a></li>
+            {% else %}
+            <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown">Hello, {{firstName}}</a>
+                <ul class="dropdown-menu">
+                    <!--<li><a href="/account/orders">Your orders</a></li>-->
+                    <li><a href={{url_for('profileHome')}}>Your profile</a></li>
+                    <li><a href={{url_for('viewOrders')}}>Your orders</a></li>
+                    <li><a href={{url_for('logout')}}>Sign out</a></li>
+                </ul>
+            </li>
+            {% endif %}
+            <li><a href={{url_for('cart')}}><span class="glyphicon glyphicon-shopping-cart"></span> CART <span class="badge">{{ noOfItems }}</span></a></li>
+        </ul>
+    </div>
+</nav>
+<div class = "container" id="cartItems">
+	<h2>Shopping Cart</h2>
+	<div id="tableItems">
+		{% for row in products %}
+		<div>
+			<hr id="seperator">
+			<div id="itemImage">
+				<img src={{row[4]}} id="image"/>
+			</div>
+			<div id="itemName">
+				<span id="itemNameTag">ProductName: {{row[3]}}</span><br>
+				<span id="itemNameTag">Quantity: {{row[2]}}</span><br>
+				<!--<a href="/removeOneFromCart?productId={{row[1]}}">Remove One</a>-->
+                <a href={{url_for('removeOneFromCart',productId=row[1])}}>Remove One</a>
+                <!--<a href="/removeAllFromCart?productId={{row[1]}}">Remove All</a>-->
+                <a href={{url_for('removeAllFromCart',productId=row[1])}}>Remove All</a>
+			</div>
+			<div id="itemPrice">
+				Subtotal: ${{row[6]}}
+			</div>
+        <br><br>
+		</div>
+		{% endfor %}
+		<hr id="seperator">
+		<div id="total">
+			<span id="subtotal">Total</span> : ${{totalPrice}}<br><br>
+            <form action={{ url_for('submit_order') }} method="POST" class="btn btn-info">
+                <button class="btn btn-info" type="submit" name = "sumbitorder">Submit Order
+                    </button>
+        </form>
+		</div>
+    <p><br><br><b>{{ msg if msg != None }}</b></p>
+	</div>
+
+</div>
+
+<footer class="text-center">
+    <a class="up-arrow" href="#" data-toggle="tooltip" title="To TOP">
+        <span class="glyphicon glyphicon-chevron-up"></span>
+    </a><br><br>
+    <p>Authors: Wen Tao and YingQi Yue</p>
+</footer>
+<script>
+    $(document).ready(function(){
+    // Initialize Tooltip
+    $('[data-toggle="tooltip"]').tooltip();
+})
+</script>
+</body>
+</html>
+

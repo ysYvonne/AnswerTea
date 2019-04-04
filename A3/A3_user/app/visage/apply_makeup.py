@@ -22,7 +22,7 @@ from app.visage import DetectLandmarks
 intensity = 0.5  # intensity of the blush
 mid = 378  # Approx x coordinate of center of the face.
 
-POINT_FILE = './visage/point1.txt'
+POINT_FILE = './app/visage/point1.txt'
 
 class ApplyMakeup(DetectLandmarks):
     """
@@ -81,7 +81,13 @@ class ApplyMakeup(DetectLandmarks):
 
     def _read_image_b(self, filename):
 
-        self.image = cv2.imread(filename)
+        with urllib.request.urlopen(filename) as url:
+            s = url.read()
+
+        resp = urllib.request.urlopen(filename)
+        img = np.asarray(bytearray(s), dtype="uint8")
+
+        self.image = cv2.imdecode(img, cv2.IMREAD_COLOR)
 
         self.im_copy = self.image.copy()
 
@@ -333,11 +339,6 @@ class ApplyMakeup(DetectLandmarks):
         self.__fill_color(uol_c, uil_c, lol_c, lil_c)
         self.im_copy = cv2.cvtColor(self.im_copy, cv2.COLOR_BGR2RGB)
 
-        name = 'color_' + str(self.red_l) + '_' + str(self.green_l) + '_' + str(self.blue_l)
-
-        # file_name = 'result_lipstick_' + name + '.jpg'
-        # cv2.imwrite(file_name, self.im_copy)
-
         r, outputImage = cv2.imencode('.jpg', self.im_copy)
         if False == r:
             raise Exception('Error encoding image')
@@ -363,11 +364,6 @@ class ApplyMakeup(DetectLandmarks):
         eyes_points = liner.split('\n\n')
         self.__create_eye_liner(eyes_points)
         self.im_copy = cv2.cvtColor(self.im_copy, cv2.COLOR_BGR2RGB)
-
-        name = 'color_' + str(self.red_l) + '_' + str(self.green_l) + '_' + str(self.blue_l)
-
-        # file_name = 'result_lipstick_' + name + '.jpg'
-        # cv2.imwrite(file_name, self.im_copy)
 
         r, outputImage = cv2.imencode('.jpg', self.im_copy)
         if False == r:
@@ -445,11 +441,6 @@ class ApplyMakeup(DetectLandmarks):
         self.apply_blush_color()
         self.smoothen_blush(x, y)
         self.smoothen_blush(2 * mid * ones(len(x)) - x, y)
-
-        name = 'color_' + str(self.red_l) + '_' + str(self.green_l) + '_' + str(self.blue_l)
-
-        # file_name = 'result_lipstick_' + name + '.jpg'
-        # cv2.imwrite(file_name, self.im_copy)
 
         r, outputImage = cv2.imencode('.jpg', self.im_copy)
         if False == r:

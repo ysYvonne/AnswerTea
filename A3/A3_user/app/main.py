@@ -285,21 +285,35 @@ def addToCart():
     #     record = dynamo.users_email_userId(session['email'])
         # static user id for test
         # userId = record[0][1]
+        error = ''
         loggedIn, firstName, noOfItems, userId = getLoginDetails()
         userId = 1
 
         productId = int(request.args.get('productId'))
 
-        dynamo.kart_put(userId,int(productId),1)
+        # dynamo.kart_put(userId,int(productId),1)
 
 
         productData = dynamo.products_productId_search(int(productId))
-        # get corresponding image from s3 bucket
+        current_stock = productData[0]['stock']
+
+
         imageurl = s3_config.get_element_from_bucket(a3BucketName, productData[0]['image'])
         productData[0]['image'] = imageurl
+        # get corresponding image from s3 bucket
+        if current_stock > 0:
+            dynamo.kart_put(userId, int(productId), 1)
+            # imageurl = s3_config.get_element_from_bucket(a3BucketName, productData[0]['image'])
+            # productData[0]['image'] = imageurl
+            dynamo.stock_update(productId, 1)
+            error='This item has been successfully added to the cart!'
 
 # render product detail page
+
+        else:
+            error = 'This product is currently out of stock!'
         return render_template("single.html",
+                               error = error,
                                data=productData,
                                loggedIn=loggedIn,
                                firstName=firstName,
@@ -318,7 +332,7 @@ def cart():
     totalPrice = 0
     i = 0
     while i < len(kart):
-        totalPrice = totalPrice + float(kart[i][6])
+        totalPrice = totalPrice + float(kart[i][6]) * float(kart[i][7])
         i = i + 1
 
     print(kart)
@@ -425,24 +439,46 @@ def registrationForm():
     return render_template("register.html")
 
 
+
 @app.route("/categories_list")
 def categories_list():
 
     loggedIn, firstName, noOfItems, userId = getLoginDetails()
 
     category_id = request.args.get('category_id')
-
-
     productData = dynamo.products_productId_categoryId(int(category_id))
     # get corresponding image from s3 bucket
-
+    type = 'categories'
     print('main')
     print(productData)
     return render_template("list.html",
                            itemdata=productData,
                            loggedIn=loggedIn,
                            firstName=firstName,
-                           noOfItems=noOfItems)
+                           noOfItems=noOfItems,
+                           type = type,
+                           category_id=category_id)
+@app.route("/youtubers_list")
+def youtubers_list():
+
+    loggedIn, firstName, noOfItems, userId = getLoginDetails()
+
+    youtuber_id = request.args.get('youtuber_id')
+
+
+    productData = dynamo.products_in_youtuber(int(youtuber_id))
+    # get corresponding image from s3 bucket
+    type = 'youtubers'
+    print('main')
+    print(productData)
+    return render_template("list.html",
+                           itemdata=productData,
+                           loggedIn=loggedIn,
+                           firstName=firstName,
+                           noOfItems=noOfItems,
+                           type = type,
+                           youtuber_id=youtuber_id)
+
 
 @app.route("/makeup",methods=["POST"])
 def makeup():

@@ -1,6 +1,6 @@
 {
     "dev": {
-       "project_name": "a3",
+       "project_name": "a3_user_full",
        "keep_warm": false,
        "debug": true,
        "log_level": "DEBUG",

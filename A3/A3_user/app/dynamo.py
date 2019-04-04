@@ -547,3 +547,17 @@ def products_productId_categoryId(categoryId):
         records.append([[i['productId'], i['productName'], i['price'], imageurl]])
 
     return records
+
+#Get products associated with youtuberid
+def products_in_youtuber(youtuberId):
+    table = dynamodb.Table('products')
+    response = table.query(
+        IndexName='youtuberIndex',
+        KeyConditionExpression=Key('youtuberId').eq(youtuberId)
+    )
+    records = []
+
+    for i in response['Items']:
+        imageurl = s3_config.get_element_from_bucket(a3BucketName, i['image'])
+        records.append([[i['productId'],i['productName'],i['price'],imageurl ]])
+    return records

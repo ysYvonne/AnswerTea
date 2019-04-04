@@ -1,0 +1,721 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="6c19349c-c766-413b-9f1b-40de007a686b" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../../A2/manager_UI/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../A2/manager_UI/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../A2/manager_UI/2019-03-26 16:54:06.711635.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../A2/manager_UI/2019-03-29 19:20:30.972826.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../A2/manager_UI/2019-03-29 19:22:31.091508.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../A2/manager_UI/2019-03-29 19:26:11.951816.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../A2/result/2019-03-16 15:34:07.992224.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../A2/result/2019-03-16 16:05:34.305485.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../A2/result/2019-03-16 16:37:03.586273.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../A2/result/2019-03-16 17:29:18.423199.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../A2/result/2019-03-16 17:56:52.744015.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../A2/result/2019-03-16 18:05:58.979003.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../A3_manager/.idea/A3_manager.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../A3_manager/.idea/A3_manager.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../A3_manager/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../A3_manager/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../A3_manager/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../A3_manager/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../A3_manager/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../A3_manager/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../A3_manager/app/dynamo.py" beforeDir="false" afterPath="$PROJECT_DIR$/../A3_manager/app/dynamo.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../A3_manager/app/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/../A3_manager/app/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../A3_manager/app/s3.py" beforeDir="false" afterPath="$PROJECT_DIR$/../A3_manager/app/s3.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../A3_manager/app/s3_config.py" beforeDir="false" afterPath="$PROJECT_DIR$/../A3_manager/app/s3_config.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../A3_manager/app/templates/dashboard.html" beforeDir="false" afterPath="$PROJECT_DIR$/../A3_manager/app/templates/dashboard.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../A3_manager/create_table.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../A3_manager/create_table_new.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../A3_manager/run.py" beforeDir="false" afterPath="$PROJECT_DIR$/../A3_manager/run.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../A3_manager_backup/.idea/A3_manager.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../A3_manager_backup/.idea/encodings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../A3_manager_backup/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../A3_manager_backup/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../A3_manager_backup/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../A3_manager_backup/.idea/workspace.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../A3_manager_backup/app/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../A3_manager_backup/app/dynamo.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../A3_manager_backup/app/main.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../A3_manager_backup/app/s3.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../A3_manager_backup/app/s3_config.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../A3_manager_backup/app/static/dashboard.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../A3_manager_backup/app/templates/add.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../A3_manager_backup/app/templates/dashboard.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../A3_manager_backup/app/templates/remove.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../A3_manager_backup/app/templates/restock.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../A3_manager_backup/app/templates/s3view.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../A3_manager_backup/create_table.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../A3_manager_backup/run.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../A3_manager_backup/zappa_settings.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../A3_user/.idea/codeStyles/Project.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../A3_user/.idea/codeStyles/Project.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../A3_user/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../A3_user/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../A3_user/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../A3_user/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../A3_user/app/dynamo.py" beforeDir="false" afterPath="$PROJECT_DIR$/../A3_user/app/dynamo.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../A3_user/app/images/1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../A3_user/app/images/1779-logo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../A3_user/app/images/2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../A3_user/app/images/btn_next.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../A3_user/app/images/btn_pause.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../A3_user/app/images/btn_play.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../A3_user/app/images/btn_prev.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../A3_user/app/images/close_1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../A3_user/app/images/coupons.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../A3_user/app/images/icons1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../A3_user/app/images/img-sp.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../A3_user/app/images/mark1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../A3_user/app/images/yvonne.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../A3_user/app/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/../A3_user/app/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../A3_user/app/static/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/../A3_user/app/static/css/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../A3_user/app/static/images/a1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../A3_user/app/static/images/a2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../A3_user/app/static/images/a3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../A3_user/app/static/images/a4.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../A3_user/app/static/images/a5.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../A3_user/app/static/images/a6.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../A3_user/app/static/images/a7.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../A3_user/app/static/images/a8.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../A3_user/app/static/images/arrow.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../A3_user/app/static/images/b15.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../A3_user/app/static/images/b16.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../A3_user/app/static/images/b17.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../A3_user/app/static/images/b18.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../A3_user/app/static/images/baa1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../A3_user/app/static/images/baa2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../A3_user/app/static/images/baa3.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../A3_user/app/static/images/d1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../A3_user/app/static/images/d2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../A3_user/app/static/images/d3.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../A3_user/app/static/images/d4.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../A3_user/app/static/images/dig.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../A3_user/app/static/images/e1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../A3_user/app/static/images/e2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../A3_user/app/static/images/e4.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../A3_user/app/static/images/ep1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../A3_user/app/static/images/ep2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../A3_user/app/static/images/ep3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../A3_user/app/static/images/ep4.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../A3_user/app/static/images/g1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../A3_user/app/static/images/g2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../A3_user/app/static/images/g3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../A3_user/app/static/images/levis1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../A3_user/app/static/images/logo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../A3_user/app/static/images/logo3.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../A3_user/app/static/images/men1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../A3_user/app/static/images/men11.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../A3_user/app/static/images/men2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../A3_user/app/static/images/men21.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../A3_user/app/static/images/men3.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../A3_user/app/static/images/men31.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../A3_user/app/static/images/mw1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../A3_user/app/static/images/mw2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../A3_user/app/static/images/mw3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../A3_user/app/static/images/new2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../A3_user/app/static/images/new3.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../A3_user/app/static/images/new4.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../A3_user/app/static/images/p1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../A3_user/app/static/images/p2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../A3_user/app/static/images/p4.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../A3_user/app/static/images/ph1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../A3_user/app/static/images/ph2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../A3_user/app/static/images/ph3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../A3_user/app/static/images/ph4.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../A3_user/app/static/images/search.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../A3_user/app/static/images/shoppingCart.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../A3_user/app/static/images/tick-mark1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../A3_user/app/static/images/w1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../A3_user/app/static/images/w2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../A3_user/app/static/images/w3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../A3_user/app/static/images/w4.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../A3_user/app/static/images/watch.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../A3_user/app/static/images/wed1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../A3_user/app/static/images/wed2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../A3_user/app/templates/checkout.html" beforeDir="false" afterPath="$PROJECT_DIR$/../A3_user/app/templates/checkout.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../A3_user/app/templates/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/../A3_user/app/templates/home.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../A3_user/app/templates/list.html" beforeDir="false" afterPath="$PROJECT_DIR$/../A3_user/app/templates/list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../A3_user/app/templates/single.html" beforeDir="false" afterPath="$PROJECT_DIR$/../A3_user/app/templates/single.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../A3_user/app/templates/single_1.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../A3_user/app/templates/single_2.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../A3_user/app/templates/single_3.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../A3_user/app/visage/apply_makeup.py" beforeDir="false" afterPath="$PROJECT_DIR$/../A3_user/app/visage/apply_makeup.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../A3_user/test_db.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../A3_user/zappa_settings.json" beforeDir="false" afterPath="$PROJECT_DIR$/../A3_user/zappa_settings.json" afterDir="false" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CoverageDataManager">
+    <SUITE FILE_PATH="coverage/A3_user$test_db.coverage" NAME="test_db Coverage Results" MODIFIED="1553540191252" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/A3_user$s3_config.coverage" NAME="s3_config Coverage Results" MODIFIED="1553840067163" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/app" />
+    <SUITE FILE_PATH="coverage/A3_user$run.coverage" NAME="run Coverage Results" MODIFIED="1553561095275" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/A3_user$A3_user.coverage" NAME="A3_user Coverage Results" MODIFIED="1553227431374" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/dynamo.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="195">
+              <caret line="16" column="31" selection-start-line="16" selection-start-column="31" selection-end-line="16" selection-end-column="31" />
+              <folding>
+                <element signature="e#0#12#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/zappa_settings.json">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="30">
+              <caret line="2" column="26" selection-start-line="2" selection-start-column="26" selection-end-line="2" selection-end-column="26" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/templates/home.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1290">
+              <caret line="133" column="82" selection-start-line="133" selection-start-column="68" selection-end-line="133" selection-end-column="82" />
+              <folding>
+                <element signature="n#div#0;n#body#0;n#html#0;n#!!top" />
+                <element signature="n#div#1;n#body#0;n#html#0;n#!!top" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/main.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="6765">
+              <caret line="458" column="27" selection-start-line="458" selection-start-column="13" selection-end-line="458" selection-end-column="27" />
+              <folding>
+                <element signature="e#0#24#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/templates/list.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="8625">
+              <caret line="717" column="28" selection-start-line="717" selection-start-column="28" selection-end-line="717" selection-end-column="28" />
+              <folding>
+                <element signature="n#div#0;n#body#0;n#html#0;n#!!top" />
+                <element signature="n#div#1;n#body#0;n#html#0;n#!!top" />
+                <element signature="n#div#2;n#body#0;n#html#0;n#!!top" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/run.py">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>email</find>
+      <find>logo</find>
+      <find>kart</find>
+      <find>kart_move</find>
+      <find>kart_getproductId_amount</find>
+      <find>kart_remove</find>
+      <find>products_productId_search</find>
+      <find>contact</find>
+      <find>ba3</find>
+      <find>ba1</find>
+      <find>remove</find>
+      <find>myModal4</find>
+      <find>login</find>
+      <find>kart_get</find>
+      <find>root</find>
+      <find>men2</find>
+      <find>review</find>
+      <find>cart</find>
+      <find>kart_put</find>
+      <find>stock_update</find>
+      <find>submit</find>
+      <find>bucker</find>
+      <find>search</find>
+      <find>addtoca</find>
+      <find>try on</find>
+      <find>try on me</find>
+      <find>close1</find>
+      <find>rem</find>
+      <find>{{url_for('cart')}}</find>
+      <find>youtubers_list</find>
+    </findStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/test_db.py" />
+        <option value="$PROJECT_DIR$/app/s3_config.py" />
+        <option value="$PROJECT_DIR$/app/templates/productDescription.html" />
+        <option value="$PROJECT_DIR$/app/static/js/pignose.layerslider.js" />
+        <option value="$PROJECT_DIR$/app/templates/home.html" />
+        <option value="$PROJECT_DIR$/app/static/js/imagezoom.js" />
+        <option value="$PROJECT_DIR$/app/templates/checkout.html" />
+        <option value="$PROJECT_DIR$/app/visage/detect_features.py" />
+        <option value="$PROJECT_DIR$/app/visage/apply_makeup.py" />
+        <option value="$PROJECT_DIR$/zappa_settings.json" />
+        <option value="$PROJECT_DIR$/app/dynamo.py" />
+        <option value="$PROJECT_DIR$/app/templates/single.html" />
+        <option value="$PROJECT_DIR$/app/main.py" />
+        <option value="$PROJECT_DIR$/app/templates/list.html" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectFrameBounds">
+    <option name="y" value="23" />
+    <option name="width" value="1280" />
+    <option name="height" value="777" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="A3_user_deploy" type="b2602c69:ProjectViewProjectNode" />
+              <item name="A3_user_deploy" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="A3_user_deploy" type="b2602c69:ProjectViewProjectNode" />
+              <item name="A3_user_deploy" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="A3_user_deploy" type="b2602c69:ProjectViewProjectNode" />
+              <item name="A3_user_deploy" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="static" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="Scope" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/app/static/images" />
+      <recent name="$PROJECT_DIR$/app/images" />
+      <recent name="$PROJECT_DIR$/app/templates" />
+      <recent name="$PROJECT_DIR$/app/static" />
+      <recent name="$PROJECT_DIR$/app" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager" selected="Python.run">
+    <configuration name="run" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="A3_user" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/run.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="s3_config" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="A3_user" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="C:\Users\yafan\Desktop\1779\A1\venv\Scripts\python.exe" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/run.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="test_db" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="A3_user" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/test_db.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="A3_user" type="Python.FlaskServer" factoryName="Flask server">
+      <module name="A3_user" />
+      <option name="target" value="$PROJECT_DIR$/app/__init__.py" />
+      <option name="targetType" value="PATH" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="launchJavascriptDebuger" value="false" />
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="Python.run" />
+      <item itemvalue="Python.s3_config" />
+      <item itemvalue="Python.test_db" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.run" />
+        <item itemvalue="Python.s3_config" />
+        <item itemvalue="Python.test_db" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="6c19349c-c766-413b-9f1b-40de007a686b" name="Default Changelist" comment="" />
+      <created>1553222629880</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1553222629880</updated>
+      <workItem from="1553222631440" duration="3049000" />
+      <workItem from="1553531025274" duration="3445000" />
+      <workItem from="1553556521768" duration="1493000" />
+      <workItem from="1553560121370" duration="41861000" />
+      <workItem from="1554047759470" duration="17574000" />
+      <workItem from="1554078374500" duration="16685000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="84107000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="0" y="23" width="1280" height="777" extended-state="0" />
+    <editor active="true" />
+    <layout>
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.19301033" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="DB Browser" order="2" />
+      <window_info id="Favorites" order="3" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.3678832" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.106571935" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="8" />
+      <window_info anchor="bottom" id="DB Execution Console" order="9" />
+      <window_info anchor="bottom" id="Database Changes" order="10" />
+      <window_info anchor="bottom" id="Terminal" order="11" weight="0.42919707" />
+      <window_info anchor="bottom" id="Event Log" order="12" side_tool="true" />
+      <window_info anchor="bottom" id="Python Console" order="13" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="SciView" order="3" />
+      <window_info anchor="right" id="Database" order="4" />
+    </layout>
+    <layout-to-restore>
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.19466881" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="DB Browser" order="2" />
+      <window_info id="Favorites" order="3" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.36847827" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="8" />
+      <window_info anchor="bottom" id="DB Execution Console" order="9" />
+      <window_info anchor="bottom" id="Database Changes" order="10" />
+      <window_info anchor="bottom" id="Terminal" order="11" visible="true" weight="0.1921875" />
+      <window_info anchor="bottom" id="Event Log" order="12" side_tool="true" />
+      <window_info anchor="bottom" id="Python Console" order="13" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="SciView" order="3" />
+      <window_info anchor="right" id="Database" order="4" />
+    </layout-to-restore>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/app/visage/__init__.py</url>
+          <line>5</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/app/static/js/bootstrap-3.1.1.min.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/static/css/bootstrap.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="1" column="45" selection-start-line="1" selection-start-column="45" selection-end-line="1" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/templates/register.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" column="97" selection-start-line="3" selection-start-column="39" selection-end-line="3" selection-end-column="97" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/static/css/home.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="15" column="21" lean-forward="true" selection-start-line="15" selection-start-column="21" selection-end-line="15" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/templates/login.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="14" column="36" selection-start-line="14" selection-start-column="36" selection-end-line="14" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/templates/orders.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="16" column="35" selection-start-line="16" selection-start-column="35" selection-end-line="16" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/s3_config.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="62" column="7" selection-start-line="62" selection-start-column="7" selection-end-line="62" selection-end-column="7" />
+          <folding>
+            <element signature="e#0#12#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/templates/cart.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="63" column="88" lean-forward="true" selection-start-line="63" selection-start-column="16" selection-end-line="63" selection-end-column="88" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/images/ba1.jpg" />
+    <entry file="file://$PROJECT_DIR$/app/images/ba3.jpg" />
+    <entry file="file://$PROJECT_DIR$/app/static/images/baa1.jpg" />
+    <entry file="file://$PROJECT_DIR$/app/static/images/ba3.jpg">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/static/images/ba2.jpg">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/static/images/ba1.jpg">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/static/images/1779-logo.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/static/images/ba1_s.jpg">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/static/js/imagezoom.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2142">
+          <caret line="126" column="45" selection-start-line="126" selection-start-column="45" selection-end-line="126" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/static/js/pignose.layerslider.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="17" column="35" selection-start-line="17" selection-start-column="35" selection-end-line="17" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/static/images/ba2_s.jpg">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test_db.py" />
+    <entry file="file://$PROJECT_DIR$/app/__init__.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/visage/__init__.py" />
+    <entry file="file://$PROJECT_DIR$/venv/lib/python3.6/site-packages/numpy/__init__.py" />
+    <entry file="file://$PROJECT_DIR$/venv/lib/python3.6/site-packages/scipy/__init__.py" />
+    <entry file="file://$APPLICATION_HOME_DIR$/helpers/typeshed/stdlib/3/itertools.pyi">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/visage/apply_makeup.py" />
+    <entry file="file://$PROJECT_DIR$/app/visage/detect_features.py" />
+    <entry file="file://$PROJECT_DIR$/app/static/images/shoppingCart.png" />
+    <entry file="file://$PROJECT_DIR$/app/templates/single.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="610" lean-forward="true" selection-start-line="610" selection-end-line="610" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/static/css/style.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="131">
+          <caret line="2724" lean-forward="true" selection-start-line="2724" selection-end-line="2724" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/templates/checkout.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="118">
+          <caret line="200" column="34" selection-start-line="200" selection-start-column="31" selection-end-line="200" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/templates/productDescription.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="21">
+          <caret line="45" column="43" selection-start-line="45" selection-start-column="24" selection-end-line="45" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/dynamo.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="16" column="31" selection-start-line="16" selection-start-column="31" selection-end-line="16" selection-end-column="31" />
+          <folding>
+            <element signature="e#0#12#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/zappa_settings.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" column="26" selection-start-line="2" selection-start-column="26" selection-end-line="2" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/templates/home.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1290">
+          <caret line="133" column="82" selection-start-line="133" selection-start-column="68" selection-end-line="133" selection-end-column="82" />
+          <folding>
+            <element signature="n#div#0;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#div#1;n#body#0;n#html#0;n#!!top" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/main.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="6765">
+          <caret line="458" column="27" selection-start-line="458" selection-start-column="13" selection-end-line="458" selection-end-column="27" />
+          <folding>
+            <element signature="e#0#24#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/run.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/templates/list.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="8625">
+          <caret line="717" column="28" selection-start-line="717" selection-start-column="28" selection-end-line="717" selection-end-column="28" />
+          <folding>
+            <element signature="n#div#0;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#div#1;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#div#2;n#body#0;n#html#0;n#!!top" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>

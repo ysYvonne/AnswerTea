@@ -99,37 +99,38 @@
     <!--</form></div>-->
     <hr>
 <div class = "container">
-    <h2> Orders View </h2>
-    <table class="table table-bordered" id = "OrderView" width="80%">
-        <thead>
-         <tr>
-        <th>UserId</th>
-        <th>OrderId</th>
-        <th>Order Details</th>
-        <th>Order Price</th>
-        <th>Order Status</th>
-         </tr>
-        </thead>
-        <tbody>
-    {% for row in orders %}
-         <tr>
-        <td>{{ row[0] }}</td>
-        <td>{{ row[1] }}</td>
-        <td>{{ row[2] }}</td>
-        <td>{{ row[3] }}</td>
-        <td>{{ row[4] }}</td>
-        {% if row[4] != "completed" %}
-        <td>
-        <form action="{{url_for('complete_order',userId = row[0],orderId = row[1])}}" method="POST">
-                        <input type="submit" value="Mark as Complete" />
-                    </form>
-        </td>
-         {% endif %}
-        </tr>
-        {% endfor %}
-    </tbody>
-    </table>
-    </div>
+    <!--<h2> Orders View </h2>-->
+    <!--<table class="table table-bordered" id = "OrderView" width="80%">-->
+        <!--<thead>-->
+         <!--<tr>-->
+        <!--<th>UserId</th>-->
+        <!--<th>OrderId</th>-->
+        <!--<th>Order Details</th>-->
+        <!--<th>Order Price</th>-->
+        <!--<th>Order Status</th>-->
+         <!--</tr>-->
+        <!--</thead>-->
+        <!--<tbody>-->
+    <!--{% for row in orders %}-->
+         <!--<tr>-->
+        <!--<td>{{ row[0] }}</td>-->
+        <!--<td>{{ row[1] }}</td>-->
+        <!--<td>{{ row[2] }}</td>-->
+        <!--<td>{{ row[3] }}</td>-->
+        <!--<td>{{ row[4] }}</td>-->
+        <!--{% if row[4] != "completed" %}-->
+        <!--<td>-->
+        <!--<form action="{{url_for('complete_order',userId = row[0],orderId = row[1])}}" method="POST">-->
+                        <!--<input type="submit" value="Mark as Complete" />-->
+                    <!--</form>-->
+        <!--</td>-->
+         <!--{% endif %}-->
+        <!--</tr>-->
+        <!--{% endfor %}-->
+    <!--</tbody>-->
+    <!--</table>-->
+    <!--</div>-->
+
 
     <hr>
     <div class = "container" id="S3">
@@ -141,7 +142,7 @@
         </thead>
         {% for bucket in buckets %}
             <tr>
-            {% if bucket.name == "ece1779a3itemsbucketyf" %}
+            {% if bucket.name == "ece1779a3itemsbucket" %}
                 <td>{{ bucket.name }}</td>
                 <td>{{ bucket.creation_date }}</td>
                 <td>

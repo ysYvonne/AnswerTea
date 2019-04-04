@@ -1,0 +1,1046 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>List</title>
+<!-- for-mobile-apps -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
+		function hideURLbar(){ window.scrollTo(0,1); } </script>
+<!-- //for-mobile-apps -->
+<link href= {{url_for('static', filename='css/bootstrap.css')}}  rel="stylesheet" type="text/css" media="all" />
+<link rel="stylesheet" type="text/css" href= {{url_for('static', filename='css/jquery-ui.css')}}>
+<link href= {{url_for('static', filename='css/style.css')}}  rel="stylesheet" type="text/css" media="all" />
+<!-- js -->
+<script type="text/javascript" src= {{url_for('static', filename='js/jquery-2.1.4.min.js')}} ></script>
+<!-- //js -->
+<!-- cart -->
+	<script src={{url_for('static', filename='js/simpleCart.min.js')}}></script>
+<!-- cart -->
+<!-- for bootstrap working -->
+	<script type="text/javascript" src={{url_for('static', filename='js/bootstrap-3.1.1.min.js')}} ></script>
+<!-- //for bootstrap working -->
+<link href='http://fonts.useso.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+<link href='http://fonts.useso.com/css?family=Lato:400,100,100italic,300,300italic,400italic,700,900,900italic,700italic' rel='stylesheet' type='text/css'>
+<script src={{url_for('static', filename='js/jquery.easing.min.js')}} ></script>
+</head>
+
+
+
+<body>
+
+<!-- header -->
+<div class="header">
+	<div class="container">
+		<ul>
+			<li><span class="glyphicon glyphicon-time" aria-hidden="true"></span>Free and Fast Delivery</li>
+			<li><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>Free shipping On all orders</li>
+			<li><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span><a href="mailto:xue.geng@mail.utoronto.ca">xue.geng@mail.utoronto.ca</a></li>
+		</ul>
+	</div>
+</div>
+<!-- //header -->
+<!-- header-bot -->
+<div class="header-bot">
+	<div class="container">
+		<div class="col-md-3 header-left">
+			<h1><a href=""><img src="{{url_for('static', filename='images/1779-logo.png')}}"></a></h1>
+		</div>
+		<div class="col-md-6 header-middle">
+			<!--<form>-->
+				<!--<div class="search">-->
+					<!--<input type="search" value="Search" onFocus="this.value = '';" onBlur="if (this.value == '') {this.value = 'Search';}" required="">-->
+				<!--</div>-->
+				<!--<div class="section_room">-->
+					<!--<select id="country" onChange="change_country(this.value)" class="frm-field required">-->
+						<!--<option value="null">All categories</option>-->
+						<!--<option value="null">Electronics</option>-->
+						<!--<option value="AX">kids Wear</option>-->
+						<!--<option value="AX">Youtuber</option>-->
+						<!--<option value="AX">category</option>-->
+						<!--<option value="AX">Watches</option>-->
+					<!--</select>-->
+				<!--</div>-->
+				<!--<div class="sear-sub">-->
+					<!--<input type="submit" value=" ">-->
+				<!--</div>-->
+				<!--<div class="clearfix"></div>-->
+			<!--</form>-->
+		</div>
+		<div class="col-md-3 header-right footer-bottom">
+			<ul>
+				<li><a href="#" class="use1" data-toggle="modal" data-target="#myModal4"><span>Login</span></a>
+
+				</li>
+				<li><a class="fb"></a></li>
+				<li><a class="twi"></a></li>
+				<li><a class="insta"></a></li>
+				<li><a class="you"></a></li>
+			</ul>
+		</div>
+		<div class="clearfix"></div>
+	</div>
+</div>
+<!-- //header-bot -->
+<!-- banner -->
+<div class="ban-top">
+	<div class="container">
+		<div class="top_nav_left">
+			<nav class="navbar navbar-default">
+			  <div class="container-fluid">
+				<!-- Brand and toggle get grouped for better mobile display -->
+				<div class="navbar-header">
+				  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				  </button>
+				</div>
+				<!-- Collect the nav links, forms, and other content for toggling -->
+				<div class="collapse navbar-collapse menu--shylock" id="bs-example-navbar-collapse-1">
+				  <ul class="nav navbar-nav menu__list">
+					<li class="active menu__item menu__item--current"><a class="menu__link" href={{url_for('root')}}>Home <span class="sr-only">(current)</span></a></li>
+					<li class="dropdown menu__item">
+						<a href="#" class="dropdown-toggle menu__link" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Categories <span class="caret"></span></a>
+							<ul class="dropdown-menu multi-column columns-3">
+								<div class="row">
+									<div class="col-sm-6 multi-gd-img1 multi-gd-text ">
+										<a href="mens.html"><img src=  "{{url_for('static', filename='images/woo1.jpg')}}" alt=" "/></a>
+									</div>
+									<div class="col-sm-3 multi-gd-img">
+										<ul class="multi-column-dropdown">
+											<li><a href={{url_for('categories_list',category_id=1)}}>Lipstick</a></li>
+											<li><a href={{url_for('categories_list',category_id=2)}}>Blush</a></li>
+											<li><a href={{url_for('categories_list',category_id=3)}}>EyeLiner</a></li>
+											<li><a href={{url_for('categories_list',category_id=4)}}>Face</a></li>
+											<li><a href={{url_for('categories_list',category_id=5)}}>Eye</a></li>
+											<li><a href={{url_for('categories_list',category_id=6)}}>Others</a></li>
+									<div class="clearfix"></div>
+								</div>
+							</ul>
+					</li>
+					<li class="dropdown menu__item">
+						<a href="#" class="dropdown-toggle menu__link" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Youtuber<span class="caret"></span></a>
+							<ul class="dropdown-menu multi-column columns-3">
+								<div class="row">
+									<div class="col-sm-3 multi-gd-img">
+										<ul class="multi-column-dropdown">
+											<li><a href= {{url_for('youtubers_list',youtuber_id=1)}} >kathleenLights</a></li>
+											<li><a href={{url_for('youtubers_list',youtuber_id=2)}}>Tati</a></li>
+											<li><a href={{url_for('youtubers_list',youtuber_id=3)}}>JeffreeStar</a></li>
+											<li><a href={{url_for('youtubers_list',youtuber_id=4)}}>Nikki Tutorial</a></li>
+											<li><a href={{url_for('youtubers_list',youtuber_id=5)}}>Jaclyn Hill</a></li>
+											<li><a href={{url_for('youtubers_list',youtuber_id=7)}}>Karima McKimmie</a></li>
+											<li><a href={{url_for('youtubers_list',youtuber_id=8)}}>oh emma</a></li>
+										</ul>
+									</div>
+									<div class="col-sm-3 multi-gd-img">
+										<ul class="multi-column-dropdown">
+											<li><a href={{url_for('youtubers_list',youtuber_id=9)}}>Tina Yong</a></li>
+											<li><a href={{url_for('youtubers_list',youtuber_id=10)}}>Vicky Soupsss</a></li>
+											<li><a href={{url_for('youtubers_list',youtuber_id=6)}}>Rainie Tian</a></li>
+{#											<li><a href="womens.html">xxxxxxxx</a></li>#}
+{#											<li><a href="womens.html">xxxxxxxx</a></li>#}
+{#											<li><a href="womens.html">xxxxxxxx</a></li>#}
+{#											<li><a href="womens.html">xxxxxxxx</a></li>#}
+										</ul>
+									</div>
+									<div class="col-sm-6 multi-gd-img multi-gd-text ">
+										<a href="womens.html"><img src= "{{url_for('static', filename='images/woo.jpg')}}" alt=" "/></a>
+									</div>
+									<div class="clearfix"></div>
+								</div>
+							</ul>
+					</li>
+{#					<li class=" menu__item"><a class="menu__link" href="electronics.html">Electronics</a></li>#}
+{#					<li class=" menu__item"><a class="menu__link" href="codes.html">Short Codes</a></li>#}
+					<li class=" menu__item"><a class="menu__link" href="">contact</a></li>
+				  </ul>
+				</div>
+
+			  </div>
+			</nav>
+		</div>
+		<!-- shopping cart  -->
+		<div class="top_nav_right">
+			<div class="cart box_1">
+						<a href= {{url_for('cart',productId=1)}} >
+							<h3> <div class="total">
+								<i class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></i>
+								<!--<span class="simpleCart_total"></span> (<span id="simpleCart_quantity" class="simpleCart_quantity"></span> items)</div>-->
+							</div>
+							</h3>
+						</a>
+						<!--<p><a href="javascript:;" class="simpleCart_empty">Empty Cart</a></p>-->
+
+			</div>
+		</div>
+		<div class="clearfix"></div>
+	</div>
+</div>
+<!-- //banner-top -->
+<!-- banner -->
+
+
+
+<div class="page-head">
+	<div class="container">
+		{% if type == 'youtubers' %}
+			{% if youtuber_id == '1' %}
+				<h3>KathleenLight</h3>
+
+			{% elif youtuber_id == '2' %}
+				<h3>Tati</h3>
+
+			{% elif youtuber_id == '3' %}
+				<h3>JeffreeStar</h3>
+
+			{% elif youtuber_id == '4' %}
+				<h3>Nikkie Tutorial</h3>
+
+			{% elif youtuber_id == '5' %}
+				<h3>Jaclyn Hill</h3>
+
+			{% elif youtuber_id == '6' %}
+				<h3>Rainie Tian</h3>
+
+			{% elif youtuber_id == '7' %}
+				<h3>Karima McKimmie</h3>
+
+			{% elif youtuber_id == '8' %}
+				<h3>Oh Emma</h3>
+
+			{% elif youtuber_id == '9' %}
+				<h3>Tina Yong</h3>
+
+			{% elif youtuber_id == '10' %}
+				<h3>Vicky Soupsss</h3>
+
+			{%endif%}
+
+		{% else %}
+			{% if category_id == '1' %}
+				<h3>Lipstick</h3>
+
+			{% elif category_id == '2' %}
+				<h3>Blush</h3>
+
+			{% elif category_id == '3' %}
+				<h3>Eyeliner</h3>
+
+			{% elif category_id == '4' %}
+				<h3>Face</h3>
+
+			{% elif category_id == '5' %}
+				<h3>Eye</h3>
+
+			{% elif category_id == '6' %}
+				<h3>Others</h3>
+			{%endif%}
+
+		{%endif%}
+
+	</div>
+</div>
+
+<!--<div class="page-head">-->
+	<!--<div class="container">-->
+		<!--<h3>KathleenLight</h3>-->
+	<!--</div>-->
+<!--</div>-->
+<!-- //banner -->
+<!-- mens -->
+<div class="men-wear">
+	<div class="container">
+{#		<div class="col-md-4 products-left">#}
+{#			<div class="filter-price">#}
+{#				<h3>Filter By Price</h3>#}
+{#					<ul class="dropdown-menu6">#}
+{#						<li>                #}
+{#							<div id="slider-range"></div>							#}
+{#							<input type="text" id="amount" style="border: 0; color: #ffffff; font-weight: normal;" />#}
+{#						</li>			#}
+{#					</ul>#}
+{#							<!---->#}
+{#							<script type='text/javascript'>//<![CDATA[ #}
+{#							$(window).load(function(){#}
+{#							 $( "#slider-range" ).slider({#}
+{#										range: true,#}
+{#										min: 0,#}
+{#										max: 9000,#}
+{#										values: [ 1000, 7000 ],#}
+{#										slide: function( event, ui ) {  $( "#amount" ).val( "$" + ui.values[ 0 ] + " - $" + ui.values[ 1 ] );#}
+{#										}#}
+{#							 });#}
+{#							$( "#amount" ).val( "$" + $( "#slider-range" ).slider( "values", 0 ) + " - $" + $( "#slider-range" ).slider( "values", 1 ) );#}
+{##}
+{#							});//]]>  #}
+{##}
+{#							</script>#}
+{#						<script type="text/javascript" src="js/jquery-ui.js"></script>#}
+{#					 <!---->#}
+{#			</div>#}
+{#            left side1#}
+{#			<div class="css-treeview">#}
+{#				<h4>Categories</h4>#}
+{#				<ul class="tree-list-pad">#}
+{#					<li><input type="checkbox" checked="checked" id="item-0" /><label for="item-0"><span></span>Men's Wear</label>#}
+{#						<ul>#}
+{#							<li><input type="checkbox" id="item-0-0" /><label for="item-0-0">Ethinic Wear</label>#}
+{#								<ul>#}
+{#									<li><a href="mens.html">Shirts</a></li>#}
+{#									<li><a href="mens.html">Caps</a></li>#}
+{#									<li><a href="mens.html">Shoes</a></li>#}
+{#									<li><a href="mens.html">Pants</a></li>#}
+{#									<li><a href="mens.html">SunGlasses</a></li>#}
+{#									<li><a href="mens.html">Trousers</a></li>#}
+{#								</ul>#}
+{#							</li>#}
+{#							<li><input type="checkbox"  id="item-0-1" /><label for="item-0-1">Party Wear</label>#}
+{#								<ul>#}
+{#									<li><a href="mens.html">Shirts</a></li>#}
+{#									<li><a href="mens.html">Caps</a></li>#}
+{#									<li><a href="mens.html">Shoes</a></li>#}
+{#									<li><a href="mens.html">Pants</a></li>#}
+{#									<li><a href="mens.html">SunGlasses</a></li>#}
+{#									<li><a href="mens.html">Trousers</a></li>#}
+{#								</ul>#}
+{#							</li>#}
+{#							<li><input type="checkbox"  id="item-0-2" /><label for="item-0-2">Casual Wear</label>#}
+{#								<ul>#}
+{#									<li><a href="mens.html">Shirts</a></li>#}
+{#									<li><a href="mens.html">Caps</a></li>#}
+{#									<li><a href="mens.html">Shoes</a></li>#}
+{#									<li><a href="mens.html">Pants</a></li>#}
+{#									<li><a href="mens.html">SunGlasses</a></li>#}
+{#									<li><a href="mens.html">Trousers</a></li>#}
+{#								</ul>#}
+{#							</li>#}
+{#						</ul>#}
+{#					</li>#}
+{#					<li><input type="checkbox" id="item-1" checked="checked" /><label for="item-1">Best Collections</label>#}
+{#						<ul>#}
+{#							<li><input type="checkbox" checked="checked" id="item-1-0" /><label for="item-1-0">New Arrivals</label>#}
+{#								<ul>#}
+{#									<li><a href="mens.html">Shirts</a></li>#}
+{#									<li><a href="mens.html">Shoes</a></li>#}
+{#									<li><a href="mens.html">Pants</a></li>#}
+{#									<li><a href="mens.html">SunGlasses</a></li>#}
+{#								</ul>#}
+{#							</li>#}
+{#							#}
+{#						</ul>#}
+{#					</li>#}
+{#					<li><input type="checkbox" checked="checked" id="item-2" /><label for="item-2">Best Offers</label>#}
+{#						<ul>#}
+{#							<li><input type="checkbox"  id="item-2-0" /><label for="item-2-0">Summer Discount Sales</label>#}
+{#								<ul>#}
+{#									<li><a href="mens.html">Shirts</a></li>#}
+{#									<li><a href="mens.html">Shoes</a></li>#}
+{#									<li><a href="mens.html">Pants</a></li>#}
+{#									<li><a href="mens.html">SunGlasses</a></li>#}
+{#								</ul>#}
+{#							</li>#}
+{#							<li><input type="checkbox" id="item-2-1" /><label for="item-2-1">Exciting Offers</label>#}
+{#								<ul>#}
+{#									<li><a href="mens.html">Shirts</a></li>#}
+{#									<li><a href="mens.html">Shoes</a></li>#}
+{#									<li><a href="mens.html">Pants</a></li>#}
+{#									<li><a href="mens.html">SunGlasses</a></li>#}
+{#								</ul>#}
+{#							</li>#}
+{#							<li><input type="checkbox" id="item-2-2" /><label for="item-2-2">Flat Discounts</label>#}
+{#								<ul>#}
+{#									<li><a href="mens.html">Shirts</a></li>#}
+{#									<li><a href="mens.html">Shoes</a></li>#}
+{#									<li><a href="mens.html">Pants</a></li>#}
+{#									<li><a href="mens.html">SunGlasses</a></li>#}
+{#								</ul>#}
+{#							</li>#}
+{#						</ul>#}
+{#					</li>#}
+{#				</ul>#}
+{#			</div>#}
+{##}
+{#            left side2#}
+{#			<div class="community-poll">#}
+{#				<h4>Community Poll</h4>#}
+{#				<div class="swit form">	#}
+{#					<form>#}
+{#					<div class="check_box"> <div class="radio"> <label><input type="radio" name="radio" checked=""><i></i>More convenient for shipping and delivery</label> </div></div>#}
+{#					<div class="check_box"> <div class="radio"> <label><input type="radio" name="radio"><i></i>Lower Price</label> </div></div>#}
+{#					<div class="check_box"> <div class="radio"> <label><input type="radio" name="radio"><i></i>Track your item</label> </div></div>#}
+{#					<div class="check_box"> <div class="radio"> <label><input type="radio" name="radio"><i></i>Bigger Choice</label> </div></div>#}
+{#					<div class="check_box"> <div class="radio"> <label><input type="radio" name="radio"><i></i>More colors to choose</label> </div></div>	#}
+{#					<div class="check_box"> <div class="radio"> <label><input type="radio" name="radio"><i></i>Secured Payment</label> </div></div>#}
+{#					<div class="check_box"> <div class="radio"> <label><input type="radio" name="radio"><i></i>Money back guaranteed</label> </div></div>	#}
+{#					<div class="check_box"> <div class="radio"> <label><input type="radio" name="radio"><i></i>Others</label> </div></div>		#}
+{#					<input type="submit" value="SEND">#}
+{#					</form>#}
+{#				</div>#}
+{#			</div>#}
+{#			<div class="clearfix"></div>#}
+{#		</div>#}
+		<div class="col-md-8 products-right">
+{#			<h5>Product Compare(0)</h5>#}
+{#			<div class="sort-grid">#}
+{#                #}
+{#				<div class="sorting">#}
+{#					<h6>Sort By</h6>#}
+{#					<select id="country1" onChange="change_country(this.value)" class="frm-field required sect">#}
+{#						<option value="null">Default</option>#}
+{#						<option value="null">Name(A - Z)</option> #}
+{#						<option value="null">Name(Z - A)</option>#}
+{#						<option value="null">Price(High - Low)</option>#}
+{#						<option value="null">Price(Low - High)</option>	#}
+{#						<option value="null">Model(A - Z)</option>#}
+{#						<option value="null">Model(Z - A)</option>					#}
+{#					</select>#}
+{#					<div class="clearfix"></div>#}
+{#				</div>#}
+{#				<div class="sorting">#}
+{#					<h6>Showing</h6>#}
+{#					<select id="country2" onChange="change_country(this.value)" class="frm-field required sect">#}
+{#						<option value="null">7</option>#}
+{#						<option value="null">14</option> #}
+{#						<option value="null">28</option>					#}
+{#						<option value="null">35</option>								#}
+{#					</select>#}
+{#					<div class="clearfix"></div>#}
+{#				</div>#}
+{#                #}
+{#				<div class="clearfix"></div>#}
+{#			</div>#}
+			<div class="men-wear-top">
+				<script src= {{url_for('static', filename='s/responsiveslides.min.js')}} ></script>
+				<script>
+						// You can also use "$(window).load(function() {"
+						$(function () {
+						 // Slideshow 4
+						$("#slider3").responsiveSlides({
+							auto: true,
+							pager: true,
+							nav: false,
+							speed: 500,
+							namespace: "callbacks",
+							before: function () {
+						$('.events').append("<li>before event fired.</li>");
+						},
+						after: function () {
+							$('.events').append("<li>after event fired.</li>");
+							}
+							});
+						});
+				</script>
+{#				<div  id="top" class="callbacks_container">#}
+{#					<ul class="rslides" id="slider3">#}
+{#						<li>#}
+{#							<img class="img-responsive" src="images/men1.jpg" alt=" "/>#}
+{#						</li>#}
+{#						<li>#}
+{#							<img class="img-responsive" src="images/men2.jpg" alt=" "/>#}
+{#						</li>#}
+{#						<li>#}
+{#							<img class="img-responsive" src="images/men1.jpg" alt=" "/>#}
+{#						</li>#}
+{#						<li>#}
+{#							<img class="img-responsive" src="images/men2.jpg" alt=" "/>#}
+{#						</li>#}
+{#					</ul>#}
+{#				</div>#}
+				<div class="clearfix"></div>
+			</div>
+			<div class="men-wear-bottom">
+								{% if type == 'youtubers' %}
+					{% if youtuber_id == '1' %}
+						<div class="col-sm-4 men-wear-left">
+							<img class="img-responsive" src= '{{url_for('static', filename='images/woo.jpg')}} ' alt=" " />
+						</div>
+						<div class="col-sm-8 men-wear-right">
+							<h4>KathleenLight</h4>
+							<p>Hey! I'm Kathleen. An oddball Aquarius with a love for all things beauty! I keep it simple on this channel with reviews and tutorials and sometimes I do fun challenges, but for the most part, I stay pretty old school.
+								I upload on Mondays, Wednesdays and Fridays unless otherwise noted (usually on Twitter so be sure to follow me there). If I am doing a sponsored video, it will be on one of my off days so you get bonus content :)<br>
+								I absolutely love getting ideas from you guys so please always tell me what kind of videos you want to see in the comments and don't forget to subscribe and click the notification bell to stay up to date with my content.</p>
+					{% elif youtuber_id == '2' %}
+						<div class="col-sm-4 men-wear-left">
+							<img class="img-responsive" src= '{{url_for('static', filename='images/Tati.jpg')}} ' alt=" " />
+						</div>
+						<div class="col-sm-8 men-wear-right">
+						<h4>Tati</h4>
+						<p>I'M TOTALLY ADDICTED TO MAKEUP and upload unbiased Product Reviews, Tips, Hauls and Tutorial videos on Drugstore & Luxury Beauty Products five days per week! xo's ~ Tati </p>
+					{% elif youtuber_id == '3' %}
+						<div class="col-sm-4 men-wear-left">
+							<img class="img-responsive" src= '{{url_for('static', filename='images/jeffreestar.jpg')}} ' alt=" " />
+						</div>
+						<div class="col-sm-8 men-wear-right">
+						<h4>JeffreeStar</h4>
+						<p>MAKEUP ARTIST/COSMETICS CREATOR. Singer/song writer. Fashion obsessed. Mother to 6 Pomeranians.<br>
+						* SHOP MY BRAND: http://www.jeffreestarcosmetics.com<br>
+						+ FOLLOW MY BRAND ON Instagram: http://instagram.com/jeffreestarcosmetics </p>
+					{% elif youtuber_id == '4' %}
+						<div class="col-sm-4 men-wear-left">
+							<img class="img-responsive" src= '{{url_for('static', filename='images/nikkie.jpg')}} ' alt=" " />
+						</div>
+						<div class="col-sm-8 men-wear-right">
+						<h4>Nikkie Tutorial</h4>
+						<p>Nikkie, better known by her YouTube channel name NikkieTutorials, is a Dutch makeup artist and beauty vlogger.She gained online popularity in 2015 after her YouTube video, "The Power of Makeup", went viral and inspired many other videos of people showing their faces with and without makeup.As of March 2019, her YouTube channel has 11 million subscribers and is close to 12 million and over 1 billion video views</p>
+					{% elif youtuber_id == '5' %}
+						<div class="col-sm-4 men-wear-left">
+							<img class="img-responsive" src= '{{url_for('static', filename='images/jacklyn_hill.jpg')}} ' alt=" " />
+						</div>
+						<div class="col-sm-8 men-wear-right">
+						<h4>Jaclyn Hill</h4>
+						<p>Hi I'm Jaclyn Hill from JaclynHill1 on YouTube.  I am a professional makeup artist. I'm young, ambitious & full of life. I post makeup tutorials and makeup reviews on all different holidays and themes, like smokey eye tutorials, how to shape and sculpt brow tutorials, challenges/tags, celebrity makeup tutorials like the Kardashians and Jenners along with other celebrity makeup looks, hair tutorials and more! I hope you love my makeup tutorials.  </p>
+					{% elif youtuber_id == '6' %}
+						<div class="col-sm-4 men-wear-left">
+							<img class="img-responsive" src= '{{url_for('static', filename='images/rainie_tian.jpg')}} ' alt=" " />
+						</div>
+						<div class="col-sm-8 men-wear-right">
+						<h4>Rainie Tian</h4>
+						<p>Hi there!  Welcome to Rainie's Beauty Channel!
+						I am a 23year-old girl who loves to share everything about beauty, fashion, life hacks and inspirations.
+						On this channel I regularly post 2 times a week about beauty, lifestyle, vlogs, and sometimes song covers!!
+						I currently live in Toronto Area, Canada
+						I only believe in positive vibes and everything truthful and inspiring.
+
+						My other social accounts please search @Rainie Tian.
+
+						For Business Inquiry: book@rainietian.ca
+
+						Thanks for discovering me! </p>
+					{% elif youtuber_id == '7' %}
+						<div class="col-sm-4 men-wear-left">
+							<img class="img-responsive" src= '{{url_for('static', filename='images/Karima_McKimmie.jpg')}} ' alt=" " />
+						</div>
+						<div class="col-sm-8 men-wear-right">
+						<h4>Karima McKimmie</h4>
+						<p>Oh hi, so you love makeup too? <br>
+							My name is Karima and my channel is full of in-depth makeup tutorials, product reviews and skincare tidbits.
+							Subscribe and leave me a comment, I would love to chat :) <br>
+
+							For all business enquiries, please email Jill Birmingham from MAXCONNECTORS via enquiries@shamelessfripperies.com </p>
+					{% elif youtuber_id == '8' %}
+						<div class="col-sm-4 men-wear-left">
+							<img class="img-responsive" src= '{{url_for('static', filename='images/emma.jpg')}} ' alt=" " />
+						</div>
+						<div class="col-sm-8 men-wear-right">
+						<h4>Oh Emma</h4>
+						<p>Hi beautiful faces, I am a girl who wants to share my passion in beauty, fashion, and lifestyle with you. Subscribe now! </p>
+					{% elif youtuber_id == '9' %}
+						<div class="col-sm-4 men-wear-left">
+							<img class="img-responsive" src= '{{url_for('static', filename='images/tina.jpg')}} ' alt=" " />
+						</div>
+						<div class="col-sm-8 men-wear-right">
+						<h4>Tina Yong</h4>
+						<p>Hi Everyone! Thanks for visiting my channel. My name is Tina Yong and I'm a makeup artist, foodie and jet setter based in Sydney & Singapore.
+							Here on my channel, I create content about makeup, lifestyle and traveling. I hope you enjoy watching them as much as I have enjoyed creating them :)<br>
+
+							Follow me on instagram @tina_yong</p>
+					{% elif youtuber_id == '10' %}
+						<div class="col-sm-4 men-wear-left">
+							<img class="img-responsive" src= '{{url_for('static', filename='images/vickey.jpg')}} ' alt=" " />
+						</div>
+						<div class="col-sm-8 men-wear-right">
+						<h4>Vicky Soupsss</h4>
+						<p>No bio yet:( </p>
+					{%endif%}
+
+				{% else %}
+					{% if category_id == '1' %}
+						<div class="col-sm-4 men-wear-left">
+							<img class="img-responsive" src= '{{url_for('static', filename='images/lipstick.jpg')}} ' alt=" " />
+						</div>
+						<div class="col-sm-8 men-wear-right">
+						<h3>Lipstick</h3>
+						<p>Lipstick is a cosmetic product containing pigments, oils, waxes, and emollients that apply color, texture, and protection to the lips.
+							Many colors and types of lipstick exist. Some lipsticks are also lip balms, to add color and hydration.
+							Although the name originally applied to the baton (stick) of material, within a tubular container, usually around 10mm in diameter and 50mm in length the term now generally relates to the material itself, regardless of method of application.</p>
+
+					{% elif category_id == '2' %}
+						<div class="col-sm-4 men-wear-left">
+							<img class="img-responsive" src= '{{url_for('static', filename='images/blush.jpg')}} ' alt=" " />
+						</div>
+						<div class="col-sm-8 men-wear-right">
+						<h3>Blush</h3>
+						<p>Blush is a cosmetic for coloring the cheeks in varying shades, or the lips red. It is applied as a powder or cream.</p>
+
+					{% elif category_id == '3' %}
+						<div class="col-sm-4 men-wear-left">
+							<img class="img-responsive" src= '{{url_for('static', filename='images/eyeliner.jpg')}} ' alt=" " />
+						</div>
+						<div class="col-sm-8 men-wear-right">
+						<h3>Eyeliner</h3>
+						<p>Eye liner or eyeliner is a cosmetic used to define the eyes. It is applied around the contours of the eye(s) to create a variety of aesthetic effects. </p>
+
+					{% elif category_id == '4' %}
+						<div class="col-sm-4 men-wear-left">
+							<img class="img-responsive" src= '{{url_for('static', filename='images/face_foudation.jpg')}} ' alt=" " />
+						</div>
+						<div class="col-sm-8 men-wear-right">
+						<h3>Face</h3>
+						<p>Foundation is a multi-coloured makeup applied to the face to create an even, uniform colour to the complexion, to cover flaws and, sometimes, to change the natural skin tone. Some foundations also function as a moisturizer, sunscreen, astringent or base layer for more complex cosmetics. Foundation applied to the body is generally referred to as "body painting." or "body makeup." </p>
+
+					{% elif category_id == '5' %}
+						<div class="col-sm-4 men-wear-left">
+							<img class="img-responsive" src= '{{url_for('static', filename='images/cat_eye.jpg')}} ' alt=" " />
+						</div>
+						<div class="col-sm-8 men-wear-right">
+						<h3>Eye</h3>
+						<p>Eye makeup is a type of cosmetics which aims to make the eyes look noticeable and attractive. It is mostly used by females, and by stage performers of all types.
+							Eye makeup is an important part of the fashion and cosmetic industries. The main types of eye makeup are:
+							Mascara and Eye shadow. </p>
+
+					{% elif category_id == '6' %}
+						<div class="col-sm-4 men-wear-left">
+							<img class="img-responsive" src= '{{url_for('static', filename='images/others.jpg')}} ' alt=" " />
+						</div>
+						<div class="col-sm-8 men-wear-right">
+						<h3>Others</h3>
+						<p>Other cosmetic tools are included in this section. </p>
+					{%endif%}
+				{%endif%}
+				</div>
+				<div class="clearfix"></div>
+			</div>
+{#				<div class="col-md-4 product-men no-pad-men">#}
+{#					<div class="men-pro-item simpleCart_shelfItem">#}
+{#						<div class="men-thumb-item">#}
+{#							<img src="images/ep2.png" alt="" class="pro-image-front">#}
+{#							<img src="images/ep2.png" alt="" class="pro-image-back">#}
+{#										<div class="men-cart-pro">#}
+{#											<div class="inner-men-cart-pro">#}
+{#												<a href="single.html" class="link-product-add-cart">Quick View</a>#}
+{#											</div>#}
+{#										</div>#}
+{#										<span class="product-new-top">New</span>#}
+{#										#}
+{#						</div>#}
+{#						<div class="item-info-product ">#}
+{#									<h4><a href="single.html">Watches</a></h4>#}
+{#									<div class="info-product-price">#}
+{#										<span class="item_price">$45.99</span>#}
+{#										<del>$69.71</del>#}
+{#									</div>#}
+{#									<a href="#" class="item_add single-item hvr-outline-out button2">Add to cart</a>									#}
+{#						</div>#}
+{#					</div>#}
+{#				</div>#}
+{#				<div class="col-md-4 product-men no-pad-men">#}
+{#					<div class="men-pro-item simpleCart_shelfItem">#}
+{#						<div class="men-thumb-item">#}
+{#							<img src="images/a2.png" alt="" class="pro-image-front">#}
+{#							<img src="images/a2.png" alt="" class="pro-image-back">#}
+{#										<div class="men-cart-pro">#}
+{#											<div class="inner-men-cart-pro">#}
+{#												<a href="single.html" class="link-product-add-cart">Quick View</a>#}
+{#											</div>#}
+{#										</div>#}
+{#										<span class="product-new-top">New</span>#}
+{#										#}
+{#						</div>#}
+{#						<div class="item-info-product ">#}
+{#									<h4><a href="single.html">Blazers</a></h4>#}
+{#									<div class="info-product-price">#}
+{#										<span class="item_price">$45.99</span>#}
+{#										<del>$69.71</del>#}
+{#									</div>#}
+{#									<a href="#" class="item_add single-item hvr-outline-out button2">Add to cart</a>									#}
+{#						</div>#}
+{#					</div>#}
+{#				</div>#}
+{#				<div class="col-md-4 product-men no-pad-men">#}
+{#					<div class="men-pro-item simpleCart_shelfItem">#}
+{#						<div class="men-thumb-item">#}
+{#							<img src="images/mw2.png" alt="" class="pro-image-front">#}
+{#							<img src="images/mw2.png" alt="" class="pro-image-back">#}
+{#										<div class="men-cart-pro">#}
+{#											<div class="inner-men-cart-pro">#}
+{#												<a href="single.html" class="link-product-add-cart">Quick View</a>#}
+{#											</div>#}
+{#										</div>#}
+{#										<span class="product-new-top">New</span>#}
+{#										#}
+{#						</div>#}
+{#						<div class="item-info-product ">#}
+{#									<h4><a href="single.html">Shirts</a></h4>#}
+{#									<div class="info-product-price">#}
+{#										<span class="item_price">$45.99</span>#}
+{#										<del>$69.71</del>#}
+{#									</div>#}
+{#									<a href="#" class="item_add single-item hvr-outline-out button2">Add to cart</a>									#}
+{#						</div>#}
+{#					</div>#}
+{#				</div>#}
+				
+				<div class="clearfix"></div>
+		</div>
+		<div class="clearfix"></div>
+		<div class="single-pro">
+
+{#            1#}
+            {% for data in itemdata %}
+                <div class="col-md-3 product-men">
+                    <div class="men-pro-item simpleCart_shelfItem">
+						<div class="men-thumb-item">
+
+							<img src= {{ data[0][3] }} alt="" class="pro-image-front">
+							<img src= {{ data[0][3] }} alt="" class="pro-image-back">
+							<div class="men-cart-pro">
+								<div class="inner-men-cart-pro">
+									<a href= {{url_for('productDescription',productId=data[0][0])}} class="link-product-add-cart">Quick View</a>
+								</div>
+							</div>
+							<span class="product-new-top">New</span>
+						</div>
+
+						<div class="item-info-product ">
+							<h4><a href= {{url_for('productDescription',productId=data[0][0])}} >{{ data[0][1] }}</a></h4>
+							<div class="info-product-price">
+								<span class="item_price">${{ data[0][2] }}</span>
+								<!--<del>$69.71</del>-->
+							</div>
+							<a href="#" class="item_add single-item hvr-outline-out button2">Add to cart</a>
+						</div>
+                    </div>
+                </div>
+			{% endfor %}
+
+<!--{#            2#}-->
+			<!--<div class="col-md-3 product-men">-->
+				<!--<div class="men-pro-item simpleCart_shelfItem">-->
+					<!--<div class="men-thumb-item">-->
+						<!--<img src="images/mw1.png" alt="" class="pro-image-front">-->
+						<!--<img src="images/mw1.png" alt="" class="pro-image-back">-->
+							<!--<div class="men-cart-pro">-->
+								<!--<div class="inner-men-cart-pro">-->
+									<!--<a href="single.html" class="link-product-add-cart">Quick View</a>-->
+								<!--</div>-->
+							<!--</div>-->
+							<!--<span class="product-new-top">New</span>				-->
+					<!--</div>-->
+					<!--<div class="item-info-product ">-->
+						<!--<h4><a href="single.html">Sandals</a></h4>-->
+						<!--<div class="info-product-price">-->
+							<!--<span class="item_price">$45.99</span>-->
+							<!--<del>$69.71</del>-->
+						<!--</div>-->
+						<!--<a href="#" class="item_add single-item hvr-outline-out button2">Add to cart</a>									-->
+					<!--</div>-->
+				<!--</div>-->
+			<!--</div>-->
+
+
+
+<!--{#            3#}-->
+			<!--<div class="col-md-3 product-men">-->
+				<!--<div class="men-pro-item simpleCart_shelfItem">-->
+					<!--<div class="men-thumb-item">-->
+						<!--<img src="images/ep3.png" alt="" class="pro-image-front">-->
+						<!--<img src="images/ep3.png" alt="" class="pro-image-back">-->
+							<!--<div class="men-cart-pro">-->
+								<!--<div class="inner-men-cart-pro">-->
+									<!--<a href="single.html" class="link-product-add-cart">Quick View</a>-->
+								<!--</div>-->
+							<!--</div>-->
+							<!--<span class="product-new-top">New</span>				-->
+					<!--</div>-->
+					<!--<div class="item-info-product ">-->
+						<!--<h4><a href="single.html">Watches</a></h4>-->
+						<!--<div class="info-product-price">-->
+							<!--<span class="item_price">$45.99</span>-->
+							<!--<del>$69.71</del>-->
+						<!--</div>-->
+						<!--<a href="#" class="item_add single-item hvr-outline-out button2">Add to cart</a>									-->
+					<!--</div>-->
+				<!--</div>-->
+			<!--</div>-->
+
+
+<!--{#            4#}-->
+			<!--<div class="col-md-3 product-men">-->
+				<!--<div class="men-pro-item simpleCart_shelfItem">-->
+					<!--<div class="men-thumb-item">-->
+						<!--<img src="images/mw3.png" alt="" class="pro-image-front">-->
+						<!--<img src="images/mw3.png" alt="" class="pro-image-back">-->
+							<!--<div class="men-cart-pro">-->
+								<!--<div class="inner-men-cart-pro">-->
+									<!--<a href="single.html" class="link-product-add-cart">Quick View</a>-->
+								<!--</div>-->
+							<!--</div>-->
+							<!--<span class="product-new-top">New</span>				-->
+					<!--</div>-->
+					<!--<div class="item-info-product ">-->
+						<!--<h4><a href="single.html">Shoes</a></h4>-->
+						<!--<div class="info-product-price">-->
+							<!--<span class="item_price">$45.99</span>-->
+							<!--<del>$69.71</del>-->
+						<!--</div>-->
+						<!--<a href="#" class="item_add single-item hvr-outline-out button2">Add to cart</a>									-->
+					<!--</div>-->
+				<!--</div>-->
+			<!--</div>-->
+
+
+<!--{#            5#}-->
+			<!--<div class="col-md-3 product-men yes-marg">-->
+							<!--<div class="men-pro-item simpleCart_shelfItem">-->
+								<!--<div class="men-thumb-item">-->
+									<!--<img src="images/g3.png" alt="" class="pro-image-front">-->
+									<!--<img src="images/g3.png" alt="" class="pro-image-back">-->
+										<!--<div class="men-cart-pro">-->
+											<!--<div class="inner-men-cart-pro">-->
+												<!--<a href="single.html" class="link-product-add-cart">Quick View</a>-->
+											<!--</div>-->
+										<!--</div>-->
+										<!--<span class="product-new-top">New</span>-->
+										<!---->
+								<!--</div>-->
+								<!--<div class="item-info-product ">-->
+									<!--<h4><a href="single.html">Shirts</a></h4>-->
+									<!--<div class="info-product-price">-->
+										<!--<span class="item_price">$45.99</span>-->
+										<!--<del>$69.71</del>-->
+									<!--</div>-->
+									<!--<a href="#" class="item_add single-item hvr-outline-out button2">Add to cart</a>									-->
+								<!--</div>-->
+							<!--</div>-->
+						<!--</div>-->
+						<!--<div class="col-md-3 product-men yes-marg">-->
+							<!--<div class="men-pro-item simpleCart_shelfItem">-->
+								<!--<div class="men-thumb-item">-->
+									<!--<img src="images/ep4.png" alt="" class="pro-image-front">-->
+									<!--<img src="images/ep4.png" alt="" class="pro-image-back">-->
+										<!--<div class="men-cart-pro">-->
+											<!--<div class="inner-men-cart-pro">-->
+												<!--<a href="single.html" class="link-product-add-cart">Quick View</a>-->
+											<!--</div>-->
+										<!--</div>-->
+										<!--<span class="product-new-top">New</span>-->
+										<!---->
+								<!--</div>-->
+								<!--<div class="item-info-product ">-->
+									<!--<h4><a href="single.html">Watches</a></h4>-->
+									<!--<div class="info-product-price">-->
+										<!--<span class="item_price">$119.99</span>-->
+										<!--<del>$150.71</del>-->
+									<!--</div>-->
+									<!--<a href="#" class="item_add single-item hvr-outline-out button2">Add to cart</a>									-->
+								<!--</div>-->
+							<!--</div>-->
+						<!--</div>-->
+			<!--<div class="col-md-3 product-men yes-marg">-->
+							<!--<div class="men-pro-item simpleCart_shelfItem">-->
+								<!--<div class="men-thumb-item">-->
+									<!--<img src="images/mw2.png" alt="" class="pro-image-front">-->
+									<!--<img src="images/mw2.png" alt="" class="pro-image-back">-->
+										<!--<div class="men-cart-pro">-->
+											<!--<div class="inner-men-cart-pro">-->
+												<!--<a href="single.html" class="link-product-add-cart">Quick View</a>-->
+											<!--</div>-->
+										<!--</div>-->
+										<!--<span class="product-new-top">New</span>-->
+										<!---->
+								<!--</div>-->
+								<!--<div class="item-info-product ">-->
+									<!--<h4><a href="single.html">T shirts</a></h4>-->
+									<!--<div class="info-product-price">-->
+										<!--<span class="item_price">$45.99</span>-->
+										<!--<del>$69.71</del>-->
+									<!--</div>-->
+									<!--<a href="#" class="item_add single-item hvr-outline-out button2">Add to cart</a>									-->
+								<!--</div>-->
+							<!--</div>-->
+						<!--</div>-->
+			<!--<div class="col-md-3 product-men yes-marg">-->
+							<!--<div class="men-pro-item simpleCart_shelfItem">-->
+								<!--<div class="men-thumb-item">-->
+									<!--<img src="images/g2.png" alt="" class="pro-image-front">-->
+									<!--<img src="images/g2.png" alt="" class="pro-image-back">-->
+										<!--<div class="men-cart-pro">-->
+											<!--<div class="inner-men-cart-pro">-->
+												<!--<a href="single.html" class="link-product-add-cart">Quick View</a>-->
+											<!--</div>-->
+										<!--</div>-->
+										<!--<span class="product-new-top">New</span>-->
+										<!---->
+								<!--</div>-->
+								<!--<div class="item-info-product ">-->
+									<!--<h4><a href="single.html"> Shirts</a></h4>-->
+									<!--<div class="info-product-price">-->
+										<!--<span class="item_price">$45.99</span>-->
+										<!--<del>$69.71</del>-->
+									<!--</div>-->
+									<!--<a href="#" class="item_add single-item hvr-outline-out button2">Add to cart</a>									-->
+								<!--</div>-->
+							<!--</div>-->
+						<!--</div>-->
+			<!--<div class="clearfix"></div>-->
+		<!--</div>-->
+		<!--<div class="pagination-grid text-right">-->
+			<!--<ul class="pagination paging">-->
+				<!--<li><a href="#" aria-label="Previous"><span aria-hidden="true">«</span></a></li>-->
+				<!--<li class="active"><a href="#">1<span class="sr-only">(current)</span></a></li>-->
+				<!--<li><a href="#">2</a></li>-->
+				<!--<li><a href="#">3</a></li>-->
+				<!--<li><a href="#">4</a></li>-->
+				<!--<li><a href="#">5</a></li>-->
+				<!--<li><a href="#" aria-label="Next"><span aria-hidden="true">»</span></a></li>-->
+			<!--</ul>-->
+		<!--</div>-->
+	</div>
+</div>	
+<!-- //mens -->
+<!-- //product-nav -->
+<div class="coupons">
+	<div class="container">
+		<div class="coupons-grids text-center">
+			<div class="col-md-3 coupons-gd">
+				<h3>Buy your product in a simple way</h3>
+			</div>
+			<div class="col-md-3 coupons-gd">
+				<span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+				<h4>LOGIN TO YOUR ACCOUNT</h4>
+				<p>Log into your account to learn more about out products and try on me!</p>
+			</div>
+			<div class="col-md-3 coupons-gd">
+				<span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+				<h4>SELECT YOUR ITEM</h4>
+				<p>Select the product you like, watch the video to learn why youtubers recommended, and try it out.</p>
+			</div>
+			<div class="col-md-3 coupons-gd">
+				<span class="glyphicon glyphicon-credit-card" aria-hidden="true"></span>
+				<h4>MAKE PAYMENT</h4>
+				<p>Simple and secure payment process and fast shipping!</p>
+			</div>
+			<div class="clearfix"> </div>
+		</div>
+	</div>
+</div>
+<!-- footer -->
+<div class="footer">
+	<div class="container">
+{#		<div class="col-md-3 footer-left">#}
+{#			<h2><a href="index.html"><img src="images/logo3.jpg" alt=" " /></a></h2>#}
+{#			<p>Neque porro quisquam est, qui dolorem ipsum quia dolor#}
+{#			sit amet, consectetur, adipisci velit, sed quia non#}
+{#			numquam eius modi tempora incidunt ut labore#}
+{#			et dolore magnam aliquam quaerat voluptatem.</p>#}
+{#		</div>#}
+		<div class="col-md-9 footer-right">
+			<div class="col-sm-6 newsleft">
+				<h3>SIGN UP FOR NEWSLETTER !</h3>
+			</div>
+			<div class="col-sm-6 newsright">
+{#				<form>#}
+{#					<input type="text" value="Email" onFocus="this.value = '';" onBlur="if (this.value == '') {this.value = 'Email';}" required="">#}
+{#					<input type="submit" value="Submit">#}
+{#				</form>#}
+			</div>
+			<div class="clearfix"></div>
+			<div class="sign-grds">
+				<div class="col-md-4 sign-gd">
+					<h4>Information</h4>
+					<ul>
+						<li>Home</li>
+						<li>Category</li>
+						<li>Youtubers</li>
+						<li>Contact</li>
+					</ul>
+				</div>
+
+				<div class="col-md-4 sign-gd-two">
+					<h4>Store Information</h4>
+					<ul>
+						<li><i class="glyphicon glyphicon-map-marker" aria-hidden="true"></i>Address : GB <span>Toronto.</span></li>
+						<li><i class="glyphicon glyphicon-envelope" aria-hidden="true"></i>Email : <a href="mailto:xue.geng@mail.utoronto.ca">xue.geng@mail.utoronto.ca</a></li>
+						<li><i class="glyphicon glyphicon-earphone" aria-hidden="true"></i>Phone : +1234 567 567</li>
+					</ul>
+				</div>
+{#				<div class="col-md-4 sign-gd flickr-post">#}
+{#					<h4>Flickr Posts</h4>#}
+{#					<ul>#}
+{#						<li><a href="single.html"><img src="images/b15.jpg" alt=" " class="img-responsive" /></a></li>#}
+{#						<li><a href="single.html"><img src="images/b16.jpg" alt=" " class="img-responsive" /></a></li>#}
+{#						<li><a href="single.html"><img src="images/b17.jpg" alt=" " class="img-responsive" /></a></li>#}
+{#						<li><a href="single.html"><img src="images/b18.jpg" alt=" " class="img-responsive" /></a></li>#}
+{#						<li><a href="single.html"><img src="images/b15.jpg" alt=" " class="img-responsive" /></a></li>#}
+{#						<li><a href="single.html"><img src="images/b16.jpg" alt=" " class="img-responsive" /></a></li>#}
+{#						<li><a href="single.html"><img src="images/b17.jpg" alt=" " class="img-responsive" /></a></li>#}
+{#						<li><a href="single.html"><img src="images/b18.jpg" alt=" " class="img-responsive" /></a></li>#}
+{#						<li><a href="single.html"><img src="images/b15.jpg" alt=" " class="img-responsive" /></a></li>#}
+{#					</ul>#}
+{#				</div>#}
+				<div class="clearfix"></div>
+			</div>
+		</div>
+		<div class="clearfix"></div>
+{#		<p class="copy-right">Copyright &copy; 2019 winter.ECE 1779.<a target="_blank" href="">&#x7F51;&#x9875;&#x6A21;&#x677F;</a></p>#}
+	</div>
+</div>
+<!-- //footer -->
+<!-- login -->
+<div class="modal fade" id="myModal4" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog" role="document">
+               <div class="modal-content modal-info">
+                  <div class="modal-header">
+                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                  </div>
+                  <div class="modal-body modal-spa">
+                     <div class="login-grids">
+                        {% if not loggedIn %}
+                        <div class="login">
+
+                           <div class="login-right">
+
+                              <h3>Log in with your account</h3>
+                              <div class="sign-in">
+								<form action={{url_for('loginForm')}}>
+								   <input type="submit" value="Login">
+								</form>
+                              </div>
+
+                           </div>
+
+
+                           <div class="login-bottom">
+
+                              <h3>Sign up for free</h3>
+                              <div class="sign-in">
+
+								<form action={{url_for('registrationForm')}}>
+								   <input type="submit" value="Signup">
+								</form>
+                              </div>
+
+                           </div>
+
+                           <div class="clearfix"></div>
+                        </div>
+                        <p>By logging in you agree to our <a href="#">Terms and Conditions</a > and <a href="#">Privacy Policy</a ></p >
+
+                        {% else %}
+                        <div class="login">
+                           <center>
+                              <h3>Hello {{firstName}}</h3>
+                                 <div class="sign-in">
+                                    <form action={{url_for('profileHome')}}>
+                                       <input type="submit" class ="cart box_1" value="Your Profile">
+                                    </form>
+                                    <form action={{url_for('logout')}}>
+                                       <input type="submit" class ="cart box_1" value="Logout">
+                                    </form>
+                                 </div>
+                           </center>
+
+                        </div>
+                        {% endif %}
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+<!-- //login -->
+</body>
+</html>

@@ -1,8 +1,8 @@
 from flask import render_template, redirect, url_for, request,flash
 from app import app
 import boto3
-from app import dynamo
 import smtplib
+from app import dynamo
 from app import s3_config
 from werkzeug.utils import secure_filename
 

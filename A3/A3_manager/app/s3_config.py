@@ -2,7 +2,6 @@ import boto3
 import botocore
 import os.path
 
-
 # creating the connection for Amazon s3 and create a bucket to store all contents
 def create_connection():
     s3 = boto3.resource('s3')
